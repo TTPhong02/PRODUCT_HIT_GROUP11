@@ -1,0 +1,81 @@
+
+:root {
+  --black-color: #000;
+}
+.item-comment {
+  border-bottom: 1px solid var(--black-color);
+
+  .user {
+    display: flex;
+    align-items: center;
+    padding: 30px 15px 0;
+
+    .avt-user {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .name-user {
+      padding-left: 9px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      color: var(--black-color)
+    }
+  }
+
+  .user-status {
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+
+    .list-star {
+
+      .icon-star {
+        font-size: 12px;
+        color: #fbbc05;
+      }
+    }
+
+    .time-review {
+      padding-left: 10px;
+      font-size: 12px;
+      line-height: 14px;
+      color: var(--black-color);
+    }
+  }
+
+  .content-comment {
+    padding: 0 25px;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--black-color);
+  }
+
+  .list-image__comment {
+    display: flex;
+    padding: 20px 25px;
+
+    .item-image__comment {
+      width: 60px;
+      height: 60px;
+      background-repeat: no-repeat;
+      margin-right: 25px;
+    }
+  }
+
+  .user-like {
+    margin-bottom: 50px;
+    padding-left: 25px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #666;
+    cursor: pointer;
+
+    .icon-like {
+      padding-right: 10px;
+    }
+  }
+}

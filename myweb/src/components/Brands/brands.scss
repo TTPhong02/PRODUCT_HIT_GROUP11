@@ -1,0 +1,11 @@
+// brand
+.item-brand {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  border-right: 2px dotted #999;
+
+  &:last-child {
+    border-right: none;
+  }
+}

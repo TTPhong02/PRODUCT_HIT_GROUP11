@@ -1,0 +1,44 @@
+.slide-bar {
+  width: 100%;
+  margin: 0 auto;
+  height: 360px;
+
+  .img-demo {
+    text-align: center;
+    object-fit: cover;
+  }
+}
+
+.btn-next::before {
+    font-size: 50px;
+    // line-height: 1;
+    opacity: .5;
+    color: white;
+    background-color: transparent;
+}
+
+.btn-prev::before {
+  font-size: 50px;
+  // line-height: 1;
+  opacity: .5;
+  color: white;
+  background-color: transparent;
+}
+
+// Tablet + moblie
+@media (max-width:  63.9375em) {
+  .slide-bar {
+    height: 100%;   
+  }
+}
+
+/* Tablet */
+@media (min-width: 46.25em) and (max-width:  63.9375em) {
+    
+}
+
+/* Mobile */
+@media (max-width: 46.1875em) {
+  
+}
+
