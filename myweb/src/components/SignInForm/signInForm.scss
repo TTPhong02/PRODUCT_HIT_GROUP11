@@ -1,0 +1,144 @@
+:root {
+  --primary-color: #DD0B0B;
+  --white: #fff;
+  --black: #000;
+}
+
+.sign-in {
+  max-width: 100%;
+  width: 480px;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #000;
+  margin: 50px auto;
+
+  .title-sign-in {
+    text-align: center;
+    padding: 24px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .form-sign-in {
+    padding: 0 40px;
+    text-align: left;
+    
+    .label-form {
+      margin-top: 24px;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: var(--black);
+      display: block;
+
+      .note-label {
+        color: var(--primary-color);
+      }
+    }
+
+    .input-account {
+      width: 100%;
+      border: 1px solid var(--black);
+      height: 32px;
+      font-size: 14px;
+      margin-top: 4px;
+      padding: 0 5px;
+      background: #FFFFFF;
+      border: 0.2px solid rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    .errors-form {
+      padding: 5px 0;
+      font-size: 10px;
+      opacity: 0.7;
+      color: #DD0B0B;
+    }
+
+    .save-account {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+
+      span {
+        padding-left: 5px;
+        font-size: 12px;
+      }
+    }
+
+    .btn-submit {
+      color: var(--white);
+      background-color: var(--primary-color);
+      padding: 8px 18px;
+      margin: 24px 0;
+      font-size: 14px;
+      border-radius: 2px;
+    }
+  }
+
+  .form-help {
+    padding: 0 40px;
+    font-size: 12px;
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+
+    .next-page {
+      text-decoration: underline;
+    }
+  }
+
+  .sign-in-more {
+    text-align: center;
+
+    p {
+      font-size: 12px;
+      color: var(--black);
+      font-weight: 400;
+      padding-top: 48px;
+    }
+
+    .login-social {
+      display: flex;
+      justify-content: center;
+      margin: 16px 0;
+
+      .google-login {
+        box-shadow: none !important;
+        margin-left: 22px;
+        width: 32px;
+        height: 32px;
+
+        div {
+          margin-right: 0 !important;
+          padding: 0 !important;
+
+          svg {
+            transform: scale(1.7) !important;
+          }
+        }
+
+        span {
+          display: none;
+        }
+      }
+      
+      span {
+        width: 32px;
+        height: 32px;
+      }
+      .kep-login-facebook {
+        background-color: #1877F2;
+        padding: 0;
+        border: none;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        padding-left: 8px;
+        font-size: 28px;
+      }
+    }
+  }
+}

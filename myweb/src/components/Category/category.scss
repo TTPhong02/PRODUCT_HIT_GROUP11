@@ -1,0 +1,40 @@
+// Category
+.category {
+  margin: 90px 40px;
+  border: 1px solid var(--border-category);
+  border-radius: 19px;
+
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    border-right: 1px solid #C8BFBF;
+    cursor: pointer;
+    
+    &:last-child {
+      border-right: none;
+    }
+
+    svg {
+      width: 48px;
+      height: 52px;
+    }
+    
+    p {
+      font-size: 2rem;
+      line-height: 2.3rem;
+      font-weight: 600;
+      padding-top: 8px;
+      color: var(--color-category);
+    }
+  }
+}
+
+// Tablet + moblie
+@media (max-width:  63.9375em) {
+  .category {
+    margin: 30px 10px;
+  }
+}
