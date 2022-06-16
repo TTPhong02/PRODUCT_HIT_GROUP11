@@ -1,0 +1,28 @@
+.down{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 200px;
+    li:hover {
+        color: red;
+    }
+    &_manage{
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    &_cart{
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    &_signout{
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    &_voucher{
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+}

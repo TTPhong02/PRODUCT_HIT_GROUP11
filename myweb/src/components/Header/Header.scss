@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header{
+    z-index: 1000;
+    background-color: #FFF;
+    max-width: 100%;
+    height: 80px;
+    width: 1440px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid #ccc;
+    &_menu{
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left : 40px;
+        .header_menu-nav:hover .header_menu-nav_down{
+            display: block;
+        }
+        li:hover{
+            color: red;
+        }
+        &-nav{
+            position: relative;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            margin: 5px 10px;
+            text-align: center;
+            
+            &_down{
+                top: 105%;
+                position:absolute;
+                font-size: 1.6rem ;
+                font-weight: 600;
+                background-color: #fff;
+                box-shadow: 0px 0px 5px 2px rgb(238, 236, 236);
+                z-index: 1000;
+                width: 150px;
+                display: none;
+                li{
+                    padding: 10px 10px;
+                    cursor: pointer;
+                }
+                
+            }     
+        }
+    }
+    &_logo{
+       &-image{
+        cursor: pointer;
+           img{
+               width: 40px;
+               height: 40px;
+           }
+       }
+
+    }
+    &_option{
+        cursor: pointer;
+        :hover{
+            i{
+                color : red;
+            }
+        }
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin : 0px 40px;
+        &-item{
+            padding: 5px 10px;
+            font-size: 25px;
+            position: relative;
+            &_hoversearch{
+                z-index: 1000;
+                display: none;
+            }
+            &_hovercart{
+                position:absolute;
+                z-index: 10000;
+                right: 10%;
+                width: 400px;
+                top: 100%;
+                border-top: 1px solid rgb(223, 217, 217) ;
+                box-shadow: 0px 0px 5px 5px rgb(238, 236, 236);
+                display: none;
+            }
+            &_down{
+                top: 100%;
+                right: 20%;
+                display:none ;
+            }
+        }
+        .header_option-item:hover .header_option-item_hovercart{
+            display: block;
+        }
+        .header_option-item:hover .header_option-item_hoversearch{
+            display: block;
+        }
+        .header_option-item:hover .header_option-item_down{
+            display: block;
+        }
+        
+    }
+    
+}
