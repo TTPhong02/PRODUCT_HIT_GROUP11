@@ -1,11 +1,11 @@
 import React from "react";
 import "./productView.scss";
-import Brands from "../Brands/Brands";
-import InfoProduct from "../InfoProduct/InfoProduct";
-import ViewImagesProduct from "../ViewImagesProduct/ViewImagesProduct";
-import ProductReviews from "../ProductReviews/ProductReviews";
-import AdditionalInformation from "../AdditionialInfomation/AdditionalInformation";
-import UserReview from "../UserReview/UserReview";
+import Brands from "../../components/Brands/Brands";
+import InfoProduct from "../../components/InfoProduct/InfoProduct";
+import ViewImagesProduct from "../../components/ViewImagesProduct/ViewImagesProduct";
+import ProductReviews from "../../components/ProductReviews/ProductReviews";
+import AdditionalInformation from "../../components/AdditionialInfomation/AdditionalInformation";
+import UserReview from "../../components/UserReview/UserReview";
 const ProductView = () => {
   return (
     <div className="contain-page">
@@ -22,6 +22,8 @@ const ProductView = () => {
         {/* <AdditionalInformation /> */}
       </div>
       <div className="user-review">
+        <UserReview />
+        <UserReview />
         <UserReview />
       </div>
       <Brands />
