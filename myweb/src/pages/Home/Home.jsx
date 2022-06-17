@@ -12,7 +12,7 @@ import Brands from "../../components/Brands/Brands";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="container ">
       <SliderBar />
       <Category />
       <ProductsHot />
