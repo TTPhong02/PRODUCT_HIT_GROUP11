@@ -1,4 +1,7 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import Product from "../Product";
 import "./productsHot.scss";
 
@@ -63,18 +66,36 @@ const ProductsHot = () => {
     },
   ];
 
+  const [products, setProducts] = useState([]);
+
+  const fetchProduct = async () => {
+    try {
+      const res = await axios.get(
+        `https://product-hit.herokuapp.com/api/v1/products`
+      );
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
   return (
     <div className="container-content">
       <h1 className="title-content"># Sản phẩm bán chạy</h1>
       <p className="desc-title">Top những sản phẩm được mưa nhiều nhất</p>
       <div className="products-list grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2">
-        {productsHot.map((item) => (
+        {products.map((item) => (
           <Product
             key={item.id.toString()}
-            src={item.src}
-            name={item.name}
-            price={item.price}
+            src={item.images[0].imageUrl}
+            name={item.title}
+            price={item.priceCurrent}
             sale={item.sale}
+            slug={item.slug}
           />
         ))}
       </div>
