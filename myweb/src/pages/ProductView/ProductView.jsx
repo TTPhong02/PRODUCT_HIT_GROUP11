@@ -25,7 +25,10 @@ const ProductView = () => {
         <UserReview />
         <UserReview />
         <UserReview />
+<<<<<<< HEAD
         <UserReview />
+=======
+>>>>>>> 8e2637e (update code view product...)
       </div>
       <Brands />
     </div>
