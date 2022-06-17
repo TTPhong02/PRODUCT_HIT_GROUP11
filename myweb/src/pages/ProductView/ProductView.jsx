@@ -25,6 +25,7 @@ const ProductView = () => {
         <UserReview />
         <UserReview />
         <UserReview />
+        <UserReview />
       </div>
       <Brands />
     </div>
