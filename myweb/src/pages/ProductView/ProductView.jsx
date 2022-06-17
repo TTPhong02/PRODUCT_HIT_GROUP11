@@ -87,6 +87,7 @@ const ProductView = () => {
       </div>
       <WriteReviews />
       <p className="title-products">Sản phẩm tương tự</p>
+
       <div className="products-list grid lg:grid-cols-5 lg:grid-rows-1 md:grid-cols-2 sm:grid-cols-2">
         {productsHot.map((item) => (
           <Product
