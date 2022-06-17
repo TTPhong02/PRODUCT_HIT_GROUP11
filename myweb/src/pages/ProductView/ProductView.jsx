@@ -67,9 +67,6 @@ const ProductView = () => {
       <div className="user-review">
         <UserReview />
         <UserReview />
-        <UserReview />
-        <UserReview />
-
         <div className="btn-view__more">
           <div className="btn-more btn-move">
             <FontAwesomeIcon icon={faAngleLeft} />
