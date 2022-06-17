@@ -13,7 +13,6 @@ const WriteReviews = () => {
   return (
     <div className="content-reviews">
       <p className="title-container">Viết nhận xét</p>
-      <p className="title-container">Viết nhận xét</p>
       <p className="text-reviews">Đánh giá</p>
       <div className="user-vote">
         <FontAwesomeIcon icon={faStar} />
