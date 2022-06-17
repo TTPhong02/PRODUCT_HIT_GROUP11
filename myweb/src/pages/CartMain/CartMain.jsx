@@ -48,10 +48,12 @@ export const CartMain = () => {
                 ))
                 
             }
-            <button className="cartmain_product_back">
-                <i className="fa-solid fa-arrow-left"></i>
-                 Tiếp tục xem Sản Phẩm
-            </button>
+            <Link to={'/'}>
+                <button className="cartmain_product_back">
+                    <i className="fa-solid fa-arrow-left"></i>
+                    Tiếp tục xem Sản Phẩm
+                </button> 
+            </Link>
             <button className="cartmain_product_update">
                 Cập Nhật Giỏ Hàng
             </button>
