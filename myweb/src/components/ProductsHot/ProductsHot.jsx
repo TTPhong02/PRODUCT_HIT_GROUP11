@@ -30,7 +30,7 @@ const ProductsHot = () => {
     <div className="container-content">
       <h1 className="title-content"># Sản phẩm bán chạy</h1>
       <p className="desc-title">Top những sản phẩm được mưa nhiều nhất</p>
-      <div className="products-list grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2">
+      <div className="products-list grid lg:grid-rows-2 lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2">
         {products.map((item) => (
           <Product
             key={item.id.toString()}
