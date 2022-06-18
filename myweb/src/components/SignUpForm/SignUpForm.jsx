@@ -1,6 +1,8 @@
-import { useFormik } from "formik";
 import React from "react";
 import "./signUpForm.scss";
+import { useFormik } from "formik";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -33,7 +35,7 @@ const validate = (values) => {
   if (!values.password) {
     errors.password = "Vui lòng nhập mật khẩu";
   } else if (
-    !/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(
+    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
       values.password
     )
   ) {
@@ -51,6 +53,7 @@ const validate = (values) => {
 };
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       userName: "",
@@ -61,10 +64,26 @@ const SignUpForm = () => {
       enterPassword: "",
     },
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      try {
+        const resData = await axios.post(
+          "https://product-hit.herokuapp.com/api/v1/users/register",
+          values
+        );
+
+        if (resData.request.status === 200) {
+          alert("Đăng ký thành công");
+          navigate("/signIn");
+        }
+      } catch (err) {
+        alert("Đăng ký không thành công");
+        console.log(err);
+        alert(JSON.stringify(values, null, 2));
+      }
+      // console.log(values);
     },
   });
+
   return (
     <div className="sign-up">
       <h2 className="title-sign-up">Đăng ký tài khoản</h2>

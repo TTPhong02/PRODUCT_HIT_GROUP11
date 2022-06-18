@@ -1,10 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./product.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Product = (props) => {
   const { src, name, price, sale, slug } = props;
+  // let params = useParams();
+  // const product = getProductBySlug(params.slug);
+  const money = price.toLocaleString("it-IT", {
+    style: "currency",
+    currency: "vnd",
+  });
+
   return (
     <Link
       to={`/products/:${slug}`}
@@ -17,7 +24,7 @@ const Product = (props) => {
         </div>
       )}
       <p className="name-product">{name}</p>
-      <p className="price-product">{price} vnđ</p>
+      <p className="price-product">{money}</p>
     </Link>
   );
 };
