@@ -1,8 +1,6 @@
 import React from "react";
 import "./home.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SliderBar from "../../components/SlideBar/index";
-import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import Category from "../../components/Category/Category";
 import SaleAdv from "../../components/SaleAdv/SaleAdv";
 import ProductsHot from "../../components/ProductsHot/ProductsHot";
