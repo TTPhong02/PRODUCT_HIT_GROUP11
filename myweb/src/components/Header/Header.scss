@@ -74,9 +74,10 @@
         align-items: center;
         margin : 0px 40px;
         &-item{
-            padding: 5px 10px;
+            padding: 5px 20px;
             font-size: 25px;
             position: relative;
+            
             &_hoversearch{
                 z-index: 1000;
                 display: none;
