@@ -18,7 +18,7 @@ export const CartProduct  = () => {
             productInCart.map( (item,index) =>(
                 <ProductInCart
                 item={item}
-                key = {index}
+                key={index}
                 />
             ))
 

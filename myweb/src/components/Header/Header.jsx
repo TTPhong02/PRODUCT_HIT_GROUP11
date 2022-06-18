@@ -8,7 +8,7 @@ import { CartProduct } from '../Cart/CartProduct';
 const Header = () => {
   return (
     <div className=' header grid grid-cols-12 items-center justify-between mx-auto '>
-        <ul className=' header_menu col-span-7  '>
+        <ul className=' header_menu col-span-6  '>
             <li className='header_menu-nav' >
                 <Link to={ '/'}>
                     Trang Chủ
@@ -46,7 +46,7 @@ const Header = () => {
                 </Link>
             </div>
         </div>
-        <div className="col-span-3 header_option">
+        <div className="col-span-9 header_option col-start-12">
             <div className="header_option-item border-r border-zinc-400">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <div className="header_option-item_hoversearch">

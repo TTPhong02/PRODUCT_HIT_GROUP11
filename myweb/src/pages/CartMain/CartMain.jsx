@@ -8,25 +8,30 @@ import { ProducInMainCart } from '../../components/ProductInCart/ProducInMainCar
 import './CartMain.scss';
 import { Link } from 'react-router-dom';
 import { Voucher } from '../../components/Voucher/Voucher';
+import voucherData from '../../assets/fakedata/voucher';
 export const CartMain = () => {
-    const product = productData.getAllProducts()
-    // const cartItems = useSelector(state => state.cartItems.value) 
-    // console.log(cartItems);
+    // const product = productData.getAllProducts()
 
-    // const [ cartProducts, setCartProducts ] = useState([])
+    const cartItems = useSelector(state => state.cartItems.value) 
 
-    // const [totalProducts, setTotalProducts] = useState(0)
+    const voucher = voucherData.getAllVoucher()
 
-    // const [ totalPrice, setTotalPrice ] = useState(0) 
+    const [ cartProducts, setCartProducts ] = useState([])
 
-    // useEffect(() => {
-    //     setCartProducts(productData.getCartItemsInfo(cartItems))
+    const [totalProducts, setTotalProducts] = useState(0)
 
-    //     setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+    const [ totalPrice, setTotalPrice ] = useState(0) 
 
-    //     setTotalProducts(cartItems.reduce((total, item) => total + (Number(item.quantity)), 0))
+    const [totalPriceVoucher,setTotalPriceVoucher] = useState(0)
 
-    // }, [cartItems])
+    useEffect(() => {
+        setCartProducts(productData.getAllProducts(cartItems))
+
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+
+        setTotalProducts(cartItems.reduce((total, item) => total + (Number(item.quantity)), 0))
+
+    }, [cartItems])
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">
@@ -40,7 +45,7 @@ export const CartMain = () => {
                 <h2 className='col-span-2 mr-1'>Tổng</h2>
             </div>
             {
-                product.map( (item,index) =>(
+                cartProducts.map( (item,index) =>(
                     <ProducInMainCart 
                     item={item}
                     key = {index}
@@ -65,11 +70,11 @@ export const CartMain = () => {
             <div className="cartmain_bill_infor">
                 <div className="cartmain_bill_infor_temp ">
                     <h3>Tạm Tính</h3>
-                    <p>999999đ</p>
+                    <p>{totalPrice}</p>
                 </div>
                 <div className="cartmain_bill_infor_sum">
                     <h3>Tổng</h3>
-                    <p>999999đ</p>
+                    <p>{totalPrice}</p>
                 </div>
                 <div className="cartmain_bill_infor_sale">
                     <h3>Ưu Đãi</h3>
