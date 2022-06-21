@@ -90,6 +90,19 @@
     }
   }
 
+  .password {
+    position: relative;
+
+    .icon-toggle-password {
+      position: absolute;
+      opacity: 0.6;
+      font-size: 14px;
+      right: 17px;
+      top: 27px;
+      cursor: pointer;
+    }
+  }
+
   .sign-in-more {
     text-align: center;
 
