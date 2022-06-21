@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./productView.scss";
 import Brands from "../../components/Brands/Brands";
 import InfoProduct from "../../components/InfoProduct/InfoProduct";
@@ -10,6 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import WriteReviews from "../../components/WriteReviews/WriteReviews";
 import Product from "../../components/Product/index";
+import { useParams } from "react-router-dom";
+
 const ProductView = () => {
   const productsHot = [
     {
@@ -50,52 +53,84 @@ const ProductView = () => {
     },
   ];
 
+  const [products, setProducts] = useState([]);
+
+  const fetchProduct = async () => {
+    try {
+      const res = await axios.get(
+        `https://hit-sneaker.herokuapp.com/api/v1/products`
+      );
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
+  let param = useParams();
+
+  const getProductBySlug = (slug) => products.find((e) => e.slug === slug);
+  const product = getProductBySlug(param.slug);
+
+  // console.log(product);
+
   return (
     <div className="contain-page">
-      <div className="info-product">
-        <ViewImagesProduct />
-        <InfoProduct />
-      </div>
-      <div className="more-info">
-        <div className="nav-more">
-          <p className="addition-info active">Thông tin bổ sung</p>
-          <p className="reviews-product">Đánh giá (123)</p>
-        </div>
-        <ProductReviews />
-        {/* <AdditionalInformation /> */}
-      </div>
-      <div className="user-review">
-        <UserReview />
-        <UserReview />
-        <div className="btn-view__more">
-          <div className="btn-more btn-move">
-            <FontAwesomeIcon icon={faAngleLeft} />
+      {product ? (
+        <>
+          <div className="info-product">
+            <ViewImagesProduct product={product} />
+            {/* <ViewImagesProduct product={product} /> */}
+            <InfoProduct product={product} />
           </div>
-          <div className="btn-more active">1</div>
-          <div className="btn-more">2</div>
-          <div className="btn-more">3</div>
-          <div className="btn-more">4</div>
-          <div className="btn-more">5</div>
-          <div className="btn-more">...</div>
-          <div className="btn-more btn-move">
-            <FontAwesomeIcon icon={faAngleRight} />
+          <div className="more-info">
+            <div className="nav-more">
+              <p className="addition-info active">Thông tin bổ sung</p>
+              <p className="reviews-product">Đánh giá (123)</p>
+            </div>
+            <ProductReviews />
+            {/* <AdditionalInformation /> */}
           </div>
-        </div>
-      </div>
-      <WriteReviews />
-      <p className="title-products">Sản phẩm tương tự</p>
+          <div className="user-review">
+            <UserReview />
+            <UserReview />
+            <div className="btn-view__more">
+              <div className="btn-more btn-move">
+                <FontAwesomeIcon icon={faAngleLeft} />
+              </div>
+              <div className="btn-more active">1</div>
+              <div className="btn-more">2</div>
+              <div className="btn-more">3</div>
+              <div className="btn-more">4</div>
+              <div className="btn-more">5</div>
+              <div className="btn-more">...</div>
+              <div className="btn-more btn-move">
+                <FontAwesomeIcon icon={faAngleRight} />
+              </div>
+            </div>
+          </div>
+          <WriteReviews />
+          <p className="title-products">Sản phẩm tương tự</p>
 
-      <div className="products-list grid lg:grid-cols-5 lg:grid-rows-1 md:grid-cols-2 sm:grid-cols-2">
-        {productsHot.map((item) => (
-          <Product
-            key={item.id.toString()}
-            src={item.src}
-            name={item.name}
-            price={item.price}
-            sale={item.sale}
-          />
-        ))}
-      </div>
+          <div className="products-list grid lg:grid-cols-5 lg:grid-rows-1 md:grid-cols-2 sm:grid-cols-2">
+            {productsHot.map((item) => (
+              <Product
+                key={item.id.toString()}
+                src={item.src}
+                name={item.name}
+                price={item.price}
+                sale={item.sale}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+
       <Brands />
     </div>
   );

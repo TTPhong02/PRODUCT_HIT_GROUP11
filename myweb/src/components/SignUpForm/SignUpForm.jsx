@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signUpForm.scss";
 import { useFormik } from "formik";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
-  if (!values.userName) {
-    errors.userName = "Vui lòng nhập tên tài khoản";
-  } else if (values.userName.length < 6) {
-    errors.userName = "Vui lòng nhập tên tài khoản tối thiểu 6 kí tự";
+  if (!values.username) {
+    errors.username = "Vui lòng nhập tên tài khoản";
+  } else if (values.username.length < 6) {
+    errors.username = "Vui lòng nhập tên tài khoản tối thiểu 6 kí tự";
   }
 
   if (!values.email) {
@@ -18,18 +18,26 @@ const validate = (values) => {
     errors.email = "Email không hợp lệ";
   }
 
-  if (!values.phoneNumber) {
-    errors.phoneNumber = "Vui lòng nhập số điện thoại";
+  if (!values.phone) {
+    errors.phone = "Vui lòng nhập số điện thoại";
   } else if (
     !/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/.test(
-      values.phoneNumber
+      values.phone
     )
   ) {
-    errors.phoneNumber = "Số điện thoại không hợp lệ";
+    errors.phone = "Số điện thoại không hợp lệ";
   }
 
-  if (!values.fullName) {
-    errors.fullName = "Vui lòng nhập họ và tên";
+  if (!values.firstName) {
+    errors.firstName = "Vui lòng nhập họ";
+  }
+
+  if (!values.lastName) {
+    errors.lastName = "Vui lòng nhập tên";
+  }
+
+  if (!values.gender) {
+    errors.gender = "Vui lòng chọn giới tính";
   }
 
   if (!values.password) {
@@ -53,32 +61,46 @@ const validate = (values) => {
 };
 
 const SignUpForm = () => {
+  const [accept, setAccept] = useState(false);
   const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
-      userName: "",
       email: "",
-      phoneNumber: "",
-      fullName: "",
+      firstName: "",
+      gender: "",
+      lastName: "",
       password: "",
+      phone: "",
+      username: "",
       enterPassword: "",
     },
     validate,
     onSubmit: async (values) => {
       try {
-        const resData = await axios.post(
-          "https://product-hit.herokuapp.com/api/v1/users/register",
-          values
-        );
+        if (accept) {
+          const resData = await axios.post(
+            "https://product-hit.herokuapp.com/api/v1/users/register",
+            {
+              email: values.email,
+              firstName: values.firstName,
+              gender: values.gender,
+              lastName: values.lastName,
+              password: values.password,
+              phone: values.phone,
+              username: values.username,
+            }
+          );
 
-        if (resData.request.status === 200) {
-          alert("Đăng ký thành công");
-          navigate("/signIn");
+          if (resData.request.status === 200) {
+            alert("Đăng ký thành công");
+          }
+        } else {
+          alert("Bạn chưa đồng ý với các điều khoản của chúng tôi");
         }
       } catch (err) {
         alert("Đăng ký không thành công");
         console.log(err);
-        alert(JSON.stringify(values, null, 2));
       }
       // console.log(values);
     },
@@ -88,22 +110,24 @@ const SignUpForm = () => {
     <div className="sign-up">
       <h2 className="title-sign-up">Đăng ký tài khoản</h2>
       <form className="form-sign-up" onSubmit={formik.handleSubmit}>
-        <label className="label-form" htmlFor="userName">
+        {/* Tên tài khoản */}
+        <label className="label-form" htmlFor="username">
           Tên tài khoản
           <span className="note-label"> *</span>
         </label>
         <input
-          id="userName"
+          id="username"
           className="input-account"
-          name="userName"
+          name="username"
           onChange={formik.handleChange}
-          value={formik.values.userName}
+          value={formik.values.username}
           type="text"
         />
-        {formik.errors.userName ? (
-          <div className="errors-form">{formik.errors.userName}</div>
+        {formik.errors.username ? (
+          <div className="errors-form">{formik.errors.username}</div>
         ) : null}
 
+        {/* email */}
         <label className="label-form" htmlFor="email">
           Email đăng ký
           <span className="note-label"> *</span>
@@ -120,38 +144,90 @@ const SignUpForm = () => {
           <div className="errors-form">{formik.errors.email}</div>
         ) : null}
 
-        <label className="label-form" htmlFor="phoneNumber">
+        {/* Số điện thoại */}
+        <label className="label-form" htmlFor="phone">
           Số điện thoại
           <span className="note-label"> *</span>
         </label>
         <input
-          id="phoneNumber"
+          id="phone"
           className="input-account"
-          name="phoneNumber"
+          name="phone"
           onChange={formik.handleChange}
-          value={formik.values.phoneNumber}
+          value={formik.values.phone}
           type="text"
         />
-        {formik.errors.phoneNumber ? (
-          <div className="errors-form">{formik.errors.phoneNumber}</div>
+        {formik.errors.phone ? (
+          <div className="errors-form">{formik.errors.phone}</div>
         ) : null}
 
-        <label className="label-form" htmlFor="fullName">
-          Họ và tên
-          <span className="note-label"> *</span>
-        </label>
-        <input
-          id="fullName"
-          className="input-account"
-          name="fullName"
-          onChange={formik.handleChange}
-          value={formik.values.fullName}
-          type="text"
-        />
-        {formik.errors.fullName ? (
-          <div className="errors-form">{formik.errors.fullName}</div>
+        {/* Họ tên */}
+        <div className="full-name">
+          <div className="box-input-last-name">
+            <label className="label-form" htmlFor="fullName">
+              Họ
+              <span className="note-label"> *</span>
+            </label>
+            <input
+              id="lastName"
+              className="input-name"
+              name="lastName"
+              onChange={formik.handleChange}
+              value={formik.values.lastName}
+              type="text"
+            />
+            {formik.errors.lastName ? (
+              <div className="errors-form">{formik.errors.lastName}</div>
+            ) : null}
+          </div>
+
+          <div className="box-input-first-name">
+            <label className="label-form" htmlFor="fullName">
+              Tên
+              <span className="note-label"> *</span>
+            </label>
+            <input
+              id="firstName"
+              className="input-name"
+              name="firstName"
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+              type="text"
+            />
+            {formik.errors.firstName ? (
+              <div className="errors-form">{formik.errors.firstName}</div>
+            ) : null}
+          </div>
+        </div>
+
+        {/* Giới tính */}
+        <div className="input-gender">
+          <label className="select-gender">
+            <input
+              type="radio"
+              name="gender"
+              // value="male"
+              value={(formik.values.gender = "male")}
+              onChange={formik.handleChange}
+            />
+            <span>Nam</span>
+          </label>
+          <label className="select-gender">
+            <input
+              type="radio"
+              name="gender"
+              // value="female"
+              value={(formik.values.gender = "female")}
+              onChange={formik.handleChange}
+            />
+            <span>Nữ</span>
+          </label>
+        </div>
+        {formik.errors.gender ? (
+          <div className="errors-form">{formik.errors.gender}</div>
         ) : null}
 
+        {/* Mật khẩu */}
         <label className="label-form" htmlFor="password">
           Mật khẩu
           <span className="note-label"> *</span>
@@ -168,6 +244,7 @@ const SignUpForm = () => {
           <div className="errors-form">{formik.errors.password}</div>
         ) : null}
 
+        {/* Nhập lại mật khẩu */}
         <label className="label-form" htmlFor="password">
           Nhập lại mật khẩu
           <span className="note-label"> *</span>
@@ -185,7 +262,13 @@ const SignUpForm = () => {
         ) : null}
 
         <div className="accept-rules">
-          <input type="checkbox" name="accept-rules" id="accept-rules" />
+          <input
+            checked={accept}
+            onClick={() => setAccept(!accept)}
+            type="checkbox"
+            name="accept-rules"
+            id="accept-rules"
+          />
           <span className="">
             Tôi đồng ý với các điều khoản sử dụng dịch vụ.
             <a href="">Chi tiết</a>
@@ -200,6 +283,12 @@ const SignUpForm = () => {
           Đăng ký
         </button>
       </form>
+      <p className="to-sign-in">
+        Đã có tài khoản?
+        <Link className="link-sign-in" to="/signIn">
+          Đăng nhập ngay
+        </Link>
+      </p>
     </div>
   );
 };
