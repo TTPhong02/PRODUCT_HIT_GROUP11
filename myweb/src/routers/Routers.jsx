@@ -7,6 +7,7 @@ import SignInForm from "../components/SignInForm/SignInForm";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 import ForgotPassword from "../components/ForgotPassword/ForgotPassword";
 import ProductView from "../pages/ProductView/ProductView";
+import Contact from "../pages/Contact/Contact";
 const Routers = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const Routers = () => {
       <Route path="/forgotPassword" element={<ForgotPassword />} />
       <Route path="/cart" element={<CartMain />} />
       <Route path="/myvoucher" element={<Voucher />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 };
