@@ -25,7 +25,7 @@ export const CartMain = () => {
     const [totalPriceVoucher,setTotalPriceVoucher] = useState(0)
 
     useEffect(() => {
-        setCartProducts(productData.getAllProducts(cartItems))
+        setCartProducts(productData.getCartItemsInfo(cartItems))
 
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
 

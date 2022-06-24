@@ -5,18 +5,24 @@ import { removeItem } from '../../redux/CartItem/CartItemSlice'
 import './ProductInMainCart.scss'
 export const ProducInMainCart = (props) => {
     const dispatch = useDispatch()
+
     const [item,setItem] = useState(props.item)
+
     const [quantity, setQuantity] = useState(0)
+
     useEffect(() => {
         setItem(props.item)
         setQuantity(props.item.quantity)
     }, [props.item])
+
     const updateQuantity = (option) =>{
         if(option === '+'){
             dispatch(updateQuantity({...item, quantity: quantity+1}))
+            // console.log(quantity)
         }
         if(option ==='-'){
             dispatch(updateQuantity({...item , quantity:quantity-1 === 0 ? 1 : quantity -1 }))
+            // console.log(quantity)
         }
     }
     const deleteItem = () => {

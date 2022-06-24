@@ -60,7 +60,7 @@ const Footertest = () => {
             <h2 className=' font-bold '>Đăng kí nhận tin</h2>
             <p>Gửi email đăng kí để nhận thông báo mới nhất về khuyến mãi, sự kiện nổi bật dành cho khách hàng</p>
             <form className="footer_content-email" onSubmit={handleSend}>
-                <input  type="text" placeholder='Nhập email' onChange={ (e) => setText(e.targer.value)} />
+                <input  type="text" placeholder='Nhập email' onChange={ (e) => setSent(e.target.value)} />
                 <button type='submit'>Đăng kí</button> 
             </form>
             <div className="footer_content-social">
