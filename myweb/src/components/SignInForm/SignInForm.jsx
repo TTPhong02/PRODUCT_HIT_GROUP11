@@ -14,10 +14,10 @@ const validate = (values) => {
 
   if (!values.userName) {
     errors.userName = "Vui lòng nhập tên người dùng hoặc địa chỉ email";
-  } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userName)
-  ) {
-    errors.userName = "Email không hợp lệ!";
+    // } else if (
+    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userName)
+    // ) {
+    // errors.userName = "Email không hợp lệ!";
   } else if (values.userName.length < 8) {
     errors.userName = "Tên tài khoản ít nhất 8 ký tự!";
   }
@@ -56,8 +56,11 @@ const SignInForm = () => {
     validate,
     onSubmit: async (values) => {
       const resData = await axios.post(
-        "https://hit-sneaker.herokuapp.com/api/v1/users",
-        values
+        "https://hitsneaker-demo.herokuapp.com/auth/login",
+        {
+          password: values.password,
+          username: values.userName,
+        }
       );
 
       if (resData.request.status === 200) {
