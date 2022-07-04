@@ -6,23 +6,22 @@ export const UserDown = () => {
     <ul className="down">
 
         <li className="down_manage">
-            <Link to={'/'}>Quản lý tài khoản</Link>
+            <Link to={"/"}>Quản lý tài khoản</Link>
         </li>
         <li className="down_cart">
-            <Link to={'/cart'}>
+            <Link to={"/cart"}>
                 Giỏ hàng của tôi
             </Link>
         </li>
         <li className="down_voucher">
-            <Link to={'/myvoucher'}>Voucher của tôi</Link>
+            <Link to={"/myvoucher"}>Voucher của tôi</Link>
         </li>
         <li className="down_signin">
-            <Link to={'/signIn'}>Đăng Nhập</Link>
+            <Link to={"/signIn"}>Đăng Nhập</Link>
         </li>
         <li className="down_signout">
-            <Link to={'/'}>Đăng xuất</Link>
+            <Link to={"/"}>Đăng xuất</Link>
         </li>
-
     </ul>
   );
 };
