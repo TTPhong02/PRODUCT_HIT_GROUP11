@@ -9,9 +9,7 @@ export const UserDown = () => {
             <Link to={"/"}>Quản lý tài khoản</Link>
         </li>
         <li className="down_cart">
-            <Link to={"/cart"}>
-                Giỏ hàng của tôi
-            </Link>
+            <Link to={"/cart"}>Giỏ hàng của tôi</Link>
         </li>
         <li className="down_voucher">
             <Link to={"/myvoucher"}>Voucher của tôi</Link>
