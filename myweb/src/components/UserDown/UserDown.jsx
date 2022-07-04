@@ -1,9 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './UserDown.scss'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./UserDown.scss";
 export const UserDown = () => {
   return (
     <ul className="down">
+
         <li className="down_manage">
             <Link to={'/'}>Quản lý tài khoản</Link>
         </li>
@@ -21,6 +22,7 @@ export const UserDown = () => {
         <li className="down_signout">
             <Link to={'/'}>Đăng xuất</Link>
         </li>
+
     </ul>
-  )
-}
+  );
+};
