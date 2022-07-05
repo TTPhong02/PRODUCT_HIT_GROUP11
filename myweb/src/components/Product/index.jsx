@@ -14,7 +14,7 @@ const Product = (props) => {
 
   return (
     <Link
-      to={`/products/:${slug}`}
+      to={`/products/${slug}`}
       className="item-product lg:col-span-1 lg:row-span-1 md:col-span-1 sm:col-span-1"
     >
       <img className="img-product" src={src} alt="" />
@@ -24,7 +24,7 @@ const Product = (props) => {
         </div>
       )}
       <p className="name-product">{name}</p>
-      <p className="price-product">{money}</p>
+      <p className="price-product">{price} VND</p>
     </Link>
   );
 };

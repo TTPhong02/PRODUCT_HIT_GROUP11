@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./signInForm.scss";
-
 import { useFormik } from "formik";
 import GoogleLogin from "react-google-login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { google } from "fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LoginFacebookReact from "react-facebook-login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // login email
 const validate = (values) => {
@@ -14,10 +14,10 @@ const validate = (values) => {
 
   if (!values.userName) {
     errors.userName = "Vui lòng nhập tên người dùng hoặc địa chỉ email";
-  } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userName)
-  ) {
-    errors.userName = "Email không hợp lệ!";
+    // } else if (
+    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userName)
+    // ) {
+    // errors.userName = "Email không hợp lệ!";
   } else if (values.userName.length < 8) {
     errors.userName = "Tên tài khoản ít nhất 8 ký tự!";
   }
@@ -41,19 +41,34 @@ const responseFacebook = (response) => {
   alert("Trạng thái: ", response);
 };
 
-const componentClicked = (data) => {
-  alert("lỗi");
-};
+// const componentClicked = (data) => {
+//   alert("lỗi");
+// };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       userName: "",
       password: "",
     },
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      const resData = await axios.post(
+        "https://hitsneaker-demo.herokuapp.com/auth/login",
+        {
+          password: values.password,
+          username: values.userName,
+        }
+      );
+
+      if (resData.request.status === 200) {
+        console.log("Đăng nhập thành công");
+        navigate("/");
+        localStorage.setItem("accessToken", resData.data.token);
+        localStorage.setItem("isLogin", true);
+      }
     },
   });
 
@@ -66,6 +81,8 @@ const SignInForm = () => {
   const onFailure = (res) => {
     console.log("LOGIN FAILED! res: ", res);
   };
+
+  const [type, setType] = useState("password");
 
   return (
     <div className="sign-in">
@@ -87,18 +104,33 @@ const SignInForm = () => {
           <div className="errors-form">{formik.errors.userName}</div>
         ) : null}
 
-        <label className="label-form" htmlFor="userName">
-          Mật khẩu
-          <span className="note-label"> *</span>
-        </label>
-        <input
-          id="password"
-          className="input-account"
-          name="password"
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.passWord}
-        />
+        <div className="password">
+          <label className="label-form" htmlFor="userName">
+            Mật khẩu
+            <span className="note-label"> *</span>
+          </label>
+          <input
+            id="password"
+            className="input-account"
+            name="password"
+            type={type}
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+          {type === "password" ? (
+            <FontAwesomeIcon
+              onClick={() => setType("text")}
+              className="icon-toggle-password"
+              icon={faEye}
+            />
+          ) : (
+            <FontAwesomeIcon
+              onClick={() => setType("password")}
+              className="icon-toggle-password"
+              icon={faEyeSlash}
+            />
+          )}
+        </div>
         {formik.errors.password ? (
           <div className="errors-form">{formik.errors.password}</div>
         ) : null}
@@ -115,6 +147,7 @@ const SignInForm = () => {
           Đăng nhập
         </button>
       </form>
+
       <div className="form-help">
         <Link className="next-page" to="/forgotPassword">
           Quên mật khẩu
@@ -123,6 +156,8 @@ const SignInForm = () => {
           Chưa có tài khoản? Đăng ký ngay
         </Link>
       </div>
+
+      {/* Đăng nhập bằng google và facebook */}
       <div className="sign-in-more">
         <p>hoặc đăng nhập bằng</p>
         <div className="login-social">

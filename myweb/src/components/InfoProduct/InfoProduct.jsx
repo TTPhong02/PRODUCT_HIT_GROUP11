@@ -3,7 +3,7 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import React, { useState } from "react";
 import "./infoProduct.scss";
 
-const InfoProduct = () => {
+const InfoProduct = ({ product }) => {
   const category = "sneaker";
   const [quantity, setQuantity] = useState(1);
   const handleMinus = () => {
@@ -22,12 +22,10 @@ const InfoProduct = () => {
         <span>/{category}</span>
       </div>
 
-      <h1 className="name-product">
-        Giày Thể Thao Nam Biti’s Hunter X Liteknit DSMH02201XNH (Xanh Nhớt)
-      </h1>
+      <h1 className="name-product">{product.title}</h1>
 
       <p className="price-product">
-        899.000
+        {product.priceCurrent}
         <span className="monetary-unit">đ</span>
       </p>
 

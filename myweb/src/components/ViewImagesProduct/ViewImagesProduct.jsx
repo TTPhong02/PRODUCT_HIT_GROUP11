@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import "./viewImagesProduct.scss";
 import "animate.css";
 
-const ViewImagesProduct = () => {
+const ViewImagesProduct = ({ product }) => {
+  console.log(product);
   const listImage = [
     {
       id: 1,
@@ -48,19 +49,19 @@ const ViewImagesProduct = () => {
     <div>
       <div className="view-list__image">
         <div className="list-image__small">
-          {listImage.map((item, index) => (
+          {product.images.map((item, index) => (
             <div
               key={index}
               onClick={() => handleClick(index)}
               className={`item-img__small ${clicked === index && "active"}`}
             >
-              <img src={item.urlImg} alt="" />
+              <img src={item.imageUrl} alt="" />
             </div>
           ))}
         </div>
         <div className="view-image-big">
           <div className="item-img__big">
-            <img src={listImage[i].urlImg} alt="" />
+            <img src={product.images[i].imageUrl} alt="" />
           </div>
         </div>
       </div>
