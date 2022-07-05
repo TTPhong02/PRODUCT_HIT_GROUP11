@@ -20,7 +20,6 @@ export const UserDown = () => {
         <li className="down_signout">
             <Link to={"/"}>Đăng xuất</Link>
         </li>
-
     </ul>
   );
 };
