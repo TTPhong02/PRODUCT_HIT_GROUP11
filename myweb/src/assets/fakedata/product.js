@@ -6,7 +6,8 @@ const product = [
         price: "500.000",
         color: "Đỏ",
         size : "41",
-        quantity : '2'
+        // quantity : '1',
+        slug: 'giay-01'
     },
     {
         id:2,
@@ -15,7 +16,8 @@ const product = [
         price: "400.000",
         color: "Đen",
         size : "42",
-        quantity : '2'
+        // quantity : '2',
+        slug: 'giay-02'
     },
     {
         id:3,
@@ -24,7 +26,8 @@ const product = [
         price: "100.000",
         color: "Xám",
         size : "43",
-        quantity : '2'
+        // quantity : '1',
+        slug: 'giay-03'
     },
     {
         id:4,
@@ -33,7 +36,8 @@ const product = [
         price: "150.000",
         color: "Xám",
         size : "44",
-        quantity : '2'
+        // quantity : '1',
+        slug: 'giay-04'
     }
 ]
 const getAllProducts = () => product

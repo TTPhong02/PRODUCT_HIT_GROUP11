@@ -25,7 +25,7 @@ export const CartMain = () => {
     const [totalPriceVoucher,setTotalPriceVoucher] = useState(0)
 
     useEffect(() => {
-        setCartProducts(productData.getAllProducts(cartItems))
+        setCartProducts(productData.getCartItemsInfo(cartItems))
 
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
 
@@ -35,6 +35,7 @@ export const CartMain = () => {
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">
+            
             <h1>GIỎ HÀNG</h1>
         </div>
         <div className="cartmain_product col-span-7">

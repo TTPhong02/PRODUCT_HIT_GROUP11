@@ -3,7 +3,18 @@ import { createSlice } from "@reduxjs/toolkit"
 // const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 const initialState = {
-    value: []
+    value: [
+        {
+            id:1,
+            src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+            name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
+            price: "500.000",
+            color: "Đỏ",
+            size : "41",
+            quantity : '1',
+            slug: 'giay-01'
+        }
+    ]
 }
 // console.log(initialState.value.length)
 export const cartItemSlice = createSlice({
