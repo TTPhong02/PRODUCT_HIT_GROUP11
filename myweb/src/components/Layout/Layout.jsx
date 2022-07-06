@@ -8,7 +8,7 @@ const Layout = () => {
     <BrowserRouter>
         <div>
             <Header/>
-                <div>
+                <div className='my-32'>
                     <Routers/>
                 </div>
             <Footer/>

@@ -8,11 +8,31 @@ const initialState = {
             id:1,
             src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
             name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-            price: "500.000",
-            color: "Đỏ",
+            price: 500000,
+            color: "Xanh",
             size : "41",
-            quantity : '1',
+            quantity : 1,
             slug: 'giay-01'
+        },
+        {
+            id:2,
+            src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+            name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
+            price: 200000,
+            color: "Đỏ",
+            size : "40",
+            quantity : 1,
+            slug: 'giay-02'
+        },
+        {
+            id:3,
+            src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+            name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
+            price: 250000,
+            color: "Vàng",
+            size : "44",
+            quantity : 1,
+            slug: 'giay-03'
         }
     ]
 }
@@ -40,9 +60,6 @@ export const cartItemSlice = createSlice({
                     id: state.value.length > 0 ? state.value[state.value.length - 1].id + 1 : 1
                 }]
             }
-
-            // localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
-            // console.log(state.value);
         },
         updateItem: (state, action) => {
             const itemUpdate = action.payload
@@ -56,8 +73,9 @@ export const cartItemSlice = createSlice({
                     ...itemUpdate,
                     id: item[0].id
                 }]
+                state.value = sortItems(state.value)
 
-                // localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
+
             } 
 
         },
@@ -66,7 +84,7 @@ export const cartItemSlice = createSlice({
 
             state.value = delItem(state.value, removeItem)
 
-            // localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
+            state.value = sortItems(state.value)
         }
     }
 })

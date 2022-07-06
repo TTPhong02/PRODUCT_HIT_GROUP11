@@ -35,7 +35,7 @@ export const CartMain = () => {
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">
-            
+
             <h1>GIỎ HÀNG</h1>
         </div>
         <div className="cartmain_product col-span-7">
@@ -71,11 +71,11 @@ export const CartMain = () => {
             <div className="cartmain_bill_infor">
                 <div className="cartmain_bill_infor_temp ">
                     <h3>Tạm Tính</h3>
-                    <p>{totalPrice}</p>
+                    <p>{totalPrice} VND</p>
                 </div>
                 <div className="cartmain_bill_infor_sum">
                     <h3>Tổng</h3>
-                    <p>{totalPrice}</p>
+                    <p>{totalPrice} VND</p>
                 </div>
                 <div className="cartmain_bill_infor_sale">
                     <h3>Ưu Đãi</h3>

@@ -1,7 +1,7 @@
 .cartmain{
     width: 1300px;
     max-width: 100%;
-    padding : 100px 0px;
+    // padding : 100px 0px;
     margin: auto;
     &_title{
         font-size: 3rem;
@@ -51,30 +51,34 @@
             border-top: 3px   solid #ccc;
             border-bottom: 3px   solid #ccc;
             &_temp{
-                padding:10px 0px;
+                padding:11px 0px;
                 font-size: 2rem;
                 display: flex;
                 border-bottom: 1px solid #ccc;
                 justify-content: space-between;
                 p{
                     color: red;
+                    font-size: 1.8rem;
                 }
             }
             &_sum{
-                padding:10px 0px;
+                padding:11px 0px;
                 font-size: 2rem;
                 display: flex;
+                font-weight: 400;
                 justify-content: space-between;
                 p{
                     color: red;
+                    font-size: 1.8rem;
                 }
             }
             &_sale{
                 font-size: 2rem;
                 display: flex;
                 justify-content: space-between;
-                padding:10px 0px;
+                padding:11px 0px;
                 p{
+                    font-size: 1.8rem;
                     color: red;
                 }
             }

@@ -6,8 +6,15 @@ import { CartMain } from '../../pages/CartMain/CartMain';
 import './Cart.scss'
 import productData from '../../assets/fakedata/product';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 export const CartProduct  = () => {
-  const productInCart = productData.getAllProducts()
+  const cartItems = useSelector(state => state.cartItems.value)
+  const [productInCart,setProductInCart] = useState([])
+  const [ totalPrice, setTotalPrice ] = useState(0) 
+  useEffect(()=>{
+    setProductInCart(productData.getCartItemsInfo(cartItems))
+    setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+  })
   return (
     <div className="cart">
         <div className="cart_title">
@@ -25,7 +32,7 @@ export const CartProduct  = () => {
           }
         </div>
         <div className="cart_price">
-          <h2 className='my-5'>Tạm Tính : </h2>
+          <h2 className='my-5'>Tạm Tính : {totalPrice} VND</h2>
         </div>
         <div className="cart_button">
           <Link to={'/cart'}>
