@@ -18,7 +18,7 @@ export const ProductInCart = (props) => {
             <p className='product_infor-size pr-2 pb-2'>Kích Cỡ: {item.size}</p>
             <div className="product_infor-sumprice flex pb-5">
                 <p className='pr-2 '>{item.quantity} x </p>
-                <p className='pr-2 - text-red-500 font-bold'>{item.price} đ</p>
+                <p className='pr-2 - text-red-500 font-bold'>{item.price} VND</p>
             </div>
         </div>
     </div>
