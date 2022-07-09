@@ -14,22 +14,14 @@ export const CartMain = () => {
 
     const cartItems = useSelector(state => state.cartItems.value) 
 
-    const voucher = voucherData.getAllVoucher()
-
     const [ cartProducts, setCartProducts ] = useState([])
 
-    const [totalProducts, setTotalProducts] = useState(0)
-
     const [ totalPrice, setTotalPrice ] = useState(0) 
-
-    const [totalPriceVoucher,setTotalPriceVoucher] = useState(0)
 
     useEffect(() => {
         setCartProducts(productData.getCartItemsInfo(cartItems))
 
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
-
-        setTotalProducts(cartItems.reduce((total, item) => total + (Number(item.quantity)), 0))
 
     }, [cartItems])
   return (
@@ -89,7 +81,7 @@ export const CartMain = () => {
                     <Voucher/>
                 </div>
             </div>
-            <Link to={'/cart'} className='cartmain_bill_pay'>
+            <Link to={'/payment'} className='cartmain_bill_pay'>
                 <button className='cartmain_bill_pay_btn'>
                     TIẾN HÀNH THANH TOÁN
                 </button>

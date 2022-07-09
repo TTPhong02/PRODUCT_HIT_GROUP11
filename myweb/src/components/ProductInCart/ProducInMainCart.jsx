@@ -18,11 +18,9 @@ export const ProducInMainCart = (props) => {
     const updateQuantity = (option) =>{
         if(option === '+'){
             dispatch(updateItem({...item, quantity: quantity+1}))
-
         }
         if(option ==='-'){
             dispatch(updateItem({...item , quantity:quantity-1 === 0 ? 1 : quantity -1 }))
-            // console.log(quantity)
         }
     }
     const deleteItem = () => {

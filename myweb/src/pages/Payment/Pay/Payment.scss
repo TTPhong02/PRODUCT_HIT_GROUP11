@@ -1,0 +1,133 @@
+.pay{
+    margin: auto;
+    width: 100%;
+    max-width: 1440px;
+    &_title{
+        font-size: 3rem;
+        font-weight: 500;
+    }
+    &_content{
+        &_infor{
+            margin: 20px 20px 0px 0px;
+            border-top: 3px solid #ccc;
+            &_title{
+                font-size: 2rem;
+                font-weight: 500;
+                margin:10px 0px 20px 40px;
+            }
+            &_form{
+                margin: 0px 150px 0px 40px;
+                &_name{
+                    margin: 10px 0px;
+                    font-size: 2rem;
+                    input{
+                        font-size: 1.4rem;
+                    }
+                }
+                &_phone{
+                    margin: 10px 0px;
+                    font-size: 2rem;
+                    input{
+                        font-size: 1.4rem;
+                    }
+                }
+                &_email{
+                    margin: 10px 0px;
+                    font-size: 2rem;
+                    input{
+                        font-size: 1.4rem;
+                    }
+                }
+                &_address{
+                    margin: 10px 0px;
+                    font-size: 2rem;
+                    input{
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            &_bonus{
+                margin: 20px 150px 0px 40px;
+                &_title{
+                    font-size: 2rem;
+                    margin: 10px 0px;
+                }
+                &_note{
+                    font-size: 1.8rem;
+                    input{
+                        font-size: 1.4rem;
+                    }
+                }
+                
+            }
+        }
+        &_cart{
+            margin: 20px 40px 0px 0px;
+            border: 3px solid red;
+            border-radius: 3px;
+            &_title{
+                margin: 10px 20px;
+                font-size: 2rem;
+                font-weight: 500;
+            }
+            &_product{
+                border-top: 2px  solid #000;
+                border-bottom: 2px solid #000;
+                margin: 10px 20px;
+                &_head{
+                    margin: 10px 0px;
+                    display: flex;
+                    font-size: 1.8rem;
+                    justify-content: space-between;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                }
+                &_main{
+                    width: 80%;
+                    font-size: 1.2rem;
+                    overflow-y: auto;
+                    height: 150px;
+                }
+                &_pricevoucher{
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 1.8rem;
+                    padding: 5px 0px;
+                    margin-top: 10px;
+                    border-top: 1px solid #ccc;
+                }
+                &_priceafter{
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 1.8rem;
+                    padding: 5px 0px;
+                    border-top: 1px solid #ccc;
+                }
+            }
+            &_typepay{
+                &_bank{
+                    margin: 10px 20px;
+                    font-size: 1.7rem;
+                    label{
+                        padding: 0px 5px;
+                    }
+                }
+            }
+            &_buttonpay{
+                margin: 10px 20px;
+                button{
+                    font-size: 1.8rem;
+                    background-color: red;
+                    padding: 10px 20px;
+                    color: #fff;
+                    border-radius: 6px;
+                    
+                }
+                p{
+                    font-size: 1.27rem;
+                    margin: 20px 0px;
+                }
+            }
+        }
+    }
+}
