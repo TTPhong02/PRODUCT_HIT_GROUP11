@@ -1,4 +1,4 @@
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./productReviews.scss";
@@ -15,7 +15,7 @@ const ProductReviews = () => {
             <FontAwesomeIcon className="icon-star" icon={faStar} />
             <FontAwesomeIcon className="icon-star" icon={faStar} />
             <FontAwesomeIcon className="icon-star" icon={faStar} />
-            <FontAwesomeIcon className="icon-star" icon={faStar} />
+            <FontAwesomeIcon className="icon-star" icon={faStarHalfStroke} />
           </div>
           <div className="comment-quantity">123 Bài đánh giá</div>
         </div>

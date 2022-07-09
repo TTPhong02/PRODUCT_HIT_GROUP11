@@ -222,19 +222,19 @@ const Products = () => {
             </div>
             <div className="title-sort">Thương hiệu</div>
             <ul className="sort-by-brand">
-              <li className="item-brand">
+              <li className="item-brand-filter">
                 <input type="checkbox" name="" id="" />
                 Nike
               </li>
-              <li className="item-brand">
+              <li className="item-brand-filter">
                 <input type="checkbox" name="" id="" />
                 Adidas
               </li>
-              <li className="item-brand">
+              <li className="item-brand-filter">
                 <input type="checkbox" name="" id="" />
                 Puma
               </li>
-              <li className="item-brand">
+              <li className="item-brand-filter">
                 <input type="checkbox" name="" id="" />
                 Jordan
               </li>

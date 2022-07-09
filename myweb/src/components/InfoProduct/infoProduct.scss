@@ -51,6 +51,7 @@
     .ranking {
       .icon-star {
         padding-left: 4px;
+        color: #fbbc05;
       }
     }
 
@@ -61,6 +62,7 @@
       border-left: 1px solid var(--text-color-address);
     }
   }
+
 
   .select-color {
     display: flex;
@@ -81,8 +83,8 @@
       height: 30px;
       cursor: pointer;
     }
-    .item-color:active{
-      border: 2px solid #ccc;
+    .activeColor {
+      border: 2px solid #000;
     }
   }
 
@@ -101,9 +103,10 @@
       color: var(--text-color);
     }
 
+
     .item-size {
       text-align: center;
-      font-weight: 300;
+      font-weight: 500;
       font-size: 16px;
       line-height: 34px;
       color: var(--text-color);
@@ -114,9 +117,11 @@
       margin: 0 20px;
       cursor: pointer;
     }
-    .item-size:active{
-      background-color: #ccc;
-      color: #000;
+
+    .activeSize {
+      background-color: var(--color-price);
+      border: 1px solid var(--color-price);
+      color: var(--white-color);
     }
   }
 

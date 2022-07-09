@@ -1,0 +1,1 @@
+export const API = 'https://hit-sneaker.herokuapp.com/api/v1/';
