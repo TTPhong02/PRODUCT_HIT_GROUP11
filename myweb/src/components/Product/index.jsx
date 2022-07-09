@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./product.scss";
 import { Link, useParams } from "react-router-dom";
+import numberWithCommas from "../../utils/numberWithCommas";
 
 const Product = (props) => {
   const { src, name, price, sale, slug } = props;
@@ -24,7 +25,7 @@ const Product = (props) => {
         </div>
       )}
       <p className="name-product">{name}</p>
-      <p className="price-product">{price} VND</p>
+      <p className="price-product">{numberWithCommas(price)} VND</p>
     </Link>
   );
 };
