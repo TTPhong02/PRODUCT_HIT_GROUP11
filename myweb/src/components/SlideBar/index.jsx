@@ -28,7 +28,7 @@ const SlideBar = () => {
           ...style,
           display: "block",
           background: "transperent",
-          marginLeft: "100px",
+          marginLeft: "70px",
           position: "absolute",
           zIndex: "2",
         }}
