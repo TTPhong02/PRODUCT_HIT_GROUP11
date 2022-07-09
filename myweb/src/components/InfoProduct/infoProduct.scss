@@ -81,6 +81,9 @@
       height: 30px;
       cursor: pointer;
     }
+    .item-color:active{
+      border: 2px solid #ccc;
+    }
   }
 
   .select-size {
@@ -110,6 +113,10 @@
       border-radius: 2px;
       margin: 0 20px;
       cursor: pointer;
+    }
+    .item-size:active{
+      background-color: #ccc;
+      color: #000;
     }
   }
 

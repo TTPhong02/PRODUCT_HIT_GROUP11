@@ -7,6 +7,7 @@ export const ProductInCart = (props) => {
     useEffect(()=>{
         setItem(props.item)
     })
+
   return (
     <div className="product">
         <div className="product_image">

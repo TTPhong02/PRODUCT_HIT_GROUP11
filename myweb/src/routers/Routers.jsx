@@ -9,6 +9,8 @@ import ForgotPassword from "../components/ForgotPassword/ForgotPassword";
 import ProductView from "../pages/ProductView/ProductView";
 import Contact from "../pages/Contact/Contact";
 import Products from "../pages/Products/Products";
+import { Payment } from "../pages/Payment/Pay/Payment";
+import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
 
 const Routers = () => {
   return (
@@ -22,6 +24,10 @@ const Routers = () => {
       <Route path="/myvoucher" element={<Voucher />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
+      <Route path="/payment" element={<Payment/>}>
+      </Route>
+      <Route path="/paysuccess" element={<PayDone/>}/>
+      
     </Routes>
   );
 };

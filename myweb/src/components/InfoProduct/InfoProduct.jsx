@@ -2,10 +2,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import React, { useState } from "react";
 import "./infoProduct.scss";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/CartItem/CartItemSlice";
+import ProductReviews from "../ProductReviews/ProductReviews";
 
 const InfoProduct = ({ product }) => {
   const category = "sneaker";
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch()
+  const [color, setColor] = useState('')
+  const [size,setSize]= useState('')
+  const addToCart =() =>{
+    dispatch(addItem({
+      id: product.id,
+      slug:product.slug,
+      color: color,
+      size: size,
+      quantity: quantity,
+      price: product.priceCurrent,
+      src: product.images[0].imageUrl,
+      name: product.title
+    }))
+    alert('Đã thêm vào giỏ hàng!')
+  }
   const handleMinus = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -15,6 +34,12 @@ const InfoProduct = ({ product }) => {
   const handleAdd = () => {
     setQuantity(quantity + 1);
   };
+  const handleColor = (color)=>{
+    setColor(color)
+  }
+  const handleSize = (size)=>{
+    setSize(size)
+  }
   return (
     <div className="details-product">
       <div className="address-name__category">
@@ -40,26 +65,26 @@ const InfoProduct = ({ product }) => {
 
       <div className="select-color">
         <div className="color-product">Màu sắc</div>
-        <div style={{ backgroundColor: "#FA8F21" }} className="item-color">
+        <div style={{ backgroundColor: "#FA8F21" }} className="item-color" onClick={() => handleColor('Cam')}>
           {" "}
         </div>
-        <div style={{ backgroundColor: "#4285F4" }} className="item-color">
+        <div style={{ backgroundColor: "#4285F4" }} className="item-color" onClick={() => handleColor('Xanh Biển')}>
           {" "}
         </div>
-        <div style={{ backgroundColor: "#AA0606" }} className="item-color">
+        <div style={{ backgroundColor: "#AA0606" }} className="item-color" onClick={() => handleColor('Đỏ')}>
           {" "}
         </div>
-        <div style={{ backgroundColor: "#4F9E91" }} className="item-color">
+        <div style={{ backgroundColor: "#4F9E91" }} className="item-color" onClick={() => handleColor('Xanh Lá')}>
           {" "}
         </div>
       </div>
 
       <div className="select-size">
         <div className="size-product">Size</div>
-        <div className="item-size">39</div>
-        <div className="item-size">40</div>
-        <div className="item-size">41</div>
-        <div className="item-size">41</div>
+        <div className="item-size" onClick={() => handleSize(39)}>39</div>
+        <div className="item-size" onClick={() => handleSize(40)}>40</div>
+        <div className="item-size" onClick={() => handleSize(41)}>41</div>
+        <div className="item-size" onClick={() => handleSize(42)}>42</div>
       </div>
 
       <div className="select-quantity__product">
@@ -70,7 +95,7 @@ const InfoProduct = ({ product }) => {
         <button className="btn-quantity" onClick={() => handleAdd()}>
           +
         </button>
-        <button className="btn-buy">Mua hàng</button>
+        <button className="btn-buy" onClick={() => addToCart()}>Mua hàng</button>
       </div>
 
       <div className="describe-product">

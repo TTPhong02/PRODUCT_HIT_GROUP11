@@ -15,17 +15,17 @@ const Header = () => {
                 </Link>
             </li>
             <li className='header_menu-nav'>
-                <Link to={'/'}>
+                <Link to={'/products'}>
                     Sản Phẩm 
                     <i class="fa-solid fa-angle-down"></i>
                 </Link>
                 <ul className='header_menu-nav_down'>
-                    <li><Link to={'/'}>Boots</Link></li>
-                    <li><Link to={'/'}>Cao Gót</Link></li>
-                    <li><Link to={'/'}>Giày Da</Link></li>
-                    <li><Link to={'/'}>Giày Thể Thao</Link></li>
-                    <li><Link to={'/'}>Sneaker</Link></li>
-                    <li><Link to={'/'}>Giày Bệt</Link></li>
+                    <li><Link to={'/products'}>Boots</Link></li>
+                    <li><Link to={'/products'}>Cao Gót</Link></li>
+                    <li><Link to={'/products'}>Giày Da</Link></li>
+                    <li><Link to={'/products'}>Giày Thể Thao</Link></li>
+                    <li><Link to={'/products'}>Sneaker</Link></li>
+                    <li><Link to={'/products'}>Giày Bệt</Link></li>
                 </ul>
             </li>
             <li className='header_menu-nav'>
@@ -35,7 +35,7 @@ const Header = () => {
                 <Link to={'/'}>Tin Tức</Link>
             </li>
             <li className='header_menu-nav'>
-                <Link to={'/'}>Liên Hệ</Link>
+                <Link to={'/contact'}>Liên Hệ</Link>
             </li>
         </ul>
         <div className="col-span-2 header_logo">

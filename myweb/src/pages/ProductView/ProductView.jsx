@@ -27,7 +27,7 @@ const ProductView = () => {
       id: 2,
       src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
+      price: 500.000,
     },
 
     {
@@ -35,21 +35,21 @@ const ProductView = () => {
       sale: "50",
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
+      price: 500.000,
     },
 
     {
       id: 4,
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
+      price: 500.000,
     },
 
     {
       id: 5,
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
+      price: 500.000,
     },
   ];
 
@@ -65,6 +65,7 @@ const ProductView = () => {
       console.log(err);
     }
   };
+  
 
   useEffect(() => {
     fetchProduct();
