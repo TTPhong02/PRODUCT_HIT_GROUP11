@@ -6,7 +6,7 @@ import productData from '../../assets/fakedata/product';
 import { ProductInCart } from '../../components/ProductInCart/Index';
 import { ProducInMainCart } from '../../components/ProductInCart/ProducInMainCart';
 import './CartMain.scss';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { Voucher } from '../../components/Voucher/Voucher';
 import voucherData from '../../assets/fakedata/voucher';
 export const CartMain = () => {
@@ -18,12 +18,24 @@ export const CartMain = () => {
 
     const [ totalPrice, setTotalPrice ] = useState(0) 
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         setCartProducts(productData.getCartItemsInfo(cartItems))
 
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
 
     }, [cartItems])
+
+    const check =()=>{
+        if(cartItems.length > 0){
+            navigate('/payment')
+        }else 
+        {
+            alert('Bạn chưa có sản phẩm nào trong giỏ hàng !')
+            navigate('./')
+        }
+    }
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">
@@ -38,12 +50,17 @@ export const CartMain = () => {
                 <h2 className='col-span-2 mr-1'>Tổng</h2>
             </div>
             {
-                cartProducts.map( (item,index) =>(
-                    <ProducInMainCart 
-                    item={item}
-                    key = {index}
-                    />
-                ))
+                cartItems.length> 0?(
+
+                    cartProducts.map( (item,index) =>(
+                        <ProducInMainCart 
+                        item={item}
+                        key = {index}
+                        />
+                    ))
+                ):(
+                    <h2 className='text-2xl text-center p-16'>Chưa có sản phẩm nào !</h2>
+                )
                 
             }
             <Link to={'/'}>
@@ -81,12 +98,12 @@ export const CartMain = () => {
                     <Voucher/>
                 </div>
             </div>
-            <Link to={'/payment'} className='cartmain_bill_pay'>
-                <button className='cartmain_bill_pay_btn'>
+            <div className='cartmain_bill_pay'>
+                <button className='cartmain_bill_pay_btn'  onClick={()=> check()}>
                     TIẾN HÀNH THANH TOÁN
                 </button>
                 
-            </Link>
+            </div>
         </div>
     </div>
   )
