@@ -25,6 +25,7 @@ const Routers = () => {
       <Route path="/myvoucher" element={<Voucher />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
+
       <Route path="/promotion" element={<Promotion />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/paysuccess" element={<PayDone />} />
