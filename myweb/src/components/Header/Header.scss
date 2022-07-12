@@ -77,7 +77,15 @@
             padding: 5px 20px;
             font-size: 25px;
             position: relative;
-            
+            &_sumcart{
+                position: absolute;
+                background-color: red;
+                border-radius: 50%;
+                font-size: 1rem;
+                padding: 1px 5px;
+                color: #fff;
+                left: 55%;
+            }
             &_hoversearch{
                 z-index: 1000;
                 display: none;

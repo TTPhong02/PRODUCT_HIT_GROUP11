@@ -11,11 +11,12 @@ export const CartProduct  = () => {
   const cartItems = useSelector(state => state.cartItems.value)
   const [productInCart,setProductInCart] = useState([])
   const [ totalPrice, setTotalPrice ] = useState(0) 
+  
   // const [check,setCheck] = useState(false)
   useEffect(()=>{
     setProductInCart(productData.getCartItemsInfo(cartItems))
     setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
-  })
+  },[cartItems])
   // const test = () =>{
   //   if(productInCart.length > 0 )
   //     setCheck(true)
@@ -30,17 +31,16 @@ export const CartProduct  = () => {
         </div>
         <div className="cart_product">
           {
-            // !check ?(
-
+            cartItems.length > 0 ?(
               productInCart.map( (item,index) =>(
                 <ProductInCart
                 item={item}
                 key={index}
                 />
               ))
-            // ):(
-            //   <h2>Chưa có sản phẩm nào !</h2>
-            // ) 
+            ):(
+              <h2 className='text-2xl text-center'>Chưa có sản phẩm nào !</h2>
+            ) 
           }
         </div>
         <div className="cart_price">

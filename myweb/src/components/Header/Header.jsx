@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 import Search from '../search/Search'
 import { UserDown } from '../UserDown/UserDown';
 import { CartProduct } from '../Cart/CartProduct';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const Header = () => {
+    const [quantity,setQuantity] = useState('')
+    const productInCart = useSelector(state => state.cartItems.value)
+    useEffect(()=>{
+        setQuantity(productInCart.length)
+    },[productInCart])
   return (
     <div className=' header grid grid-cols-12 items-center justify-between mx-auto '>
         <ul className=' header_menu col-span-6  '>
@@ -17,7 +25,7 @@ const Header = () => {
             <li className='header_menu-nav'>
                 <Link to={'/products'}>
                     Sản Phẩm 
-                    <i class="fa-solid fa-angle-down"></i>
+                    <i className="fa-solid fa-angle-down"></i>
                 </Link>
                 <ul className='header_menu-nav_down'>
                     <li><Link to={'/products'}>Boots</Link></li>
@@ -32,7 +40,7 @@ const Header = () => {
                 <Link to={'/'}>Khuyến Mãi</Link>
             </li>
             <li className='header_menu-nav'>
-                <Link to={'/'}>Tin Tức</Link>
+                <Link to={'/news'}>Tin Tức</Link>
             </li>
             <li className='header_menu-nav'>
                 <Link to={'/contact'}>Liên Hệ</Link>
@@ -48,14 +56,15 @@ const Header = () => {
         </div>
         <div className="col-span-9 header_option col-start-12">
             <div className="header_option-item border-r border-zinc-400">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
                 <div className="header_option-item_hoversearch">
                     <Search/>
                 </div>
             </div>
             <div className="header_option-item relative border-r border-zinc-400">  
                 <Link to={'/cart'}>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i className="fa-solid fa-cart-shopping"></i>
+                    { quantity === 0 ? '' : <span className='header_option-item_sumcart'>{quantity}</span> }
                     <div className="header_option-item_hovercart">
                         <CartProduct/>
                     </div>
@@ -63,7 +72,7 @@ const Header = () => {
             </div>
             
             <div className="header_option-item relative ">
-                <i class="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 <div className="header_option-item_down absolute">
                     <UserDown/>
                 </div>
@@ -71,7 +80,7 @@ const Header = () => {
         </div>
         <div className="col-span-3 header_list">
             <div className="header_list-icon">
-                <i class="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
             </div>
         </div>
     </div>

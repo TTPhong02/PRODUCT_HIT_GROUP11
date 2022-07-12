@@ -11,6 +11,7 @@ import Contact from "../pages/Contact/Contact";
 import Products from "../pages/Products/Products";
 import { Payment } from "../pages/Payment/Pay/Payment";
 import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
+import { NewFeed } from "../pages/NewFeed/NewFeed";
 
 const Routers = () => {
   return (
@@ -20,12 +21,14 @@ const Routers = () => {
       <Route path="/signIn" element={<SignInForm />} />
       <Route path="/signUp" element={<SignUpForm />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
-      <Route path="/cart" element={<CartMain />} />
+      <Route path="/cart" element={<CartMain />}>
+       
+      </Route>
+      <Route path="payment" element={<Payment/>}/>
       <Route path="/myvoucher" element={<Voucher />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
-      <Route path="/payment" element={<Payment/>}>
-      </Route>
+      <Route path="/news" element={<NewFeed/>}/>
       <Route path="/paysuccess" element={<PayDone/>}/>
       
     </Routes>

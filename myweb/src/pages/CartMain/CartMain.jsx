@@ -1,16 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-// import CartItem from '../../components/Cart/CartItem';
 import productData from '../../assets/fakedata/product';
-import { ProductInCart } from '../../components/ProductInCart/Index';
 import { ProducInMainCart } from '../../components/ProductInCart/ProducInMainCart';
 import './CartMain.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Voucher } from '../../components/Voucher/Voucher';
 import voucherData from '../../assets/fakedata/voucher';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
+    const navigate = useNavigate()
 
     const cartItems = useSelector(state => state.cartItems.value) 
 
@@ -24,6 +23,16 @@ export const CartMain = () => {
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
 
     }, [cartItems])
+    
+    const check =()=>{
+        if(cartItems.length > 0){
+            navigate('/payment')
+        }else 
+        {
+            alert('Bạn chưa có sản phẩm nào trong giỏ hàng !')
+            navigate('./')
+        }
+    }
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">
@@ -38,12 +47,17 @@ export const CartMain = () => {
                 <h2 className='col-span-2 mr-1'>Tổng</h2>
             </div>
             {
-                cartProducts.map( (item,index) =>(
-                    <ProducInMainCart 
-                    item={item}
-                    key = {index}
-                    />
-                ))
+                cartItems.length> 0?(
+
+                    cartProducts.map( (item,index) =>(
+                        <ProducInMainCart 
+                        item={item}
+                        key = {index}
+                        />
+                    ))
+                ):(
+                    <h2 className='text-2xl text-center p-16'>Chưa có sản phẩm nào !</h2>
+                )
                 
             }
             <Link to={'/'}>
@@ -75,18 +89,19 @@ export const CartMain = () => {
                 </div>
             </div>
             <div className="cartmain_bill_voucher">
-                <i class="fa-solid fa-ticket "></i>
+                <i className="fa-solid fa-ticket "></i>
                 Voucher Ưu Đãi
                 <div className="cartmain_bill_voucher_item">
                     <Voucher/>
                 </div>
             </div>
-            <Link to={'/payment'} className='cartmain_bill_pay'>
-                <button className='cartmain_bill_pay_btn'>
+            <div className='cartmain_bill_pay'>
+                <button className='cartmain_bill_pay_btn' onClick={()=> check()}>
                     TIẾN HÀNH THANH TOÁN
                 </button>
                 
-            </Link>
+            </div>
+            
         </div>
     </div>
   )

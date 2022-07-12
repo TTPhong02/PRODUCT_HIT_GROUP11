@@ -14,7 +14,7 @@ export const PayDone = () => {
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
         setPriceVoucher((Number(totalPrice)*5/100))
         setTotalPriceAfterVoucher(Number(totalPrice)- Number(priceVoucher))
-    })
+    },[cartItems])
   return (
     <div className='done'>
         <div className="done_title">

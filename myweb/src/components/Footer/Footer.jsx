@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import "./Footer.scss"
-import Home from '../../pages/Home/Home'
 const Footertest = () => {
     const [sent,setSent] = useState(false)
     const [text,setText] = useState("")
@@ -25,15 +24,15 @@ const Footertest = () => {
             <p className='flex'>Công ty cổ phần HIT Sport là một công ty cổ dông thuộc sở hữu của HIT Club với vai trò là nhà cung cấp các phụ kiện thời trang thể thao đến với khách hàng khắp mọi miền tổ quốc </p>
             <div className="footer_content-contact ">
                 <div className="mb-3">
-                    <i class="fa-solid fa-location-dot mr-7 "></i>
+                    <i className="fa-solid fa-location-dot mr-7 "></i>
                     <span>Địa Chỉ: </span>
                 </div>
                 <div className=" mb-3">
-                    <i class="fa-solid fa-phone mr-6  "></i>
+                    <i className="fa-solid fa-phone mr-6  "></i>
                     <span>Điện Thoại:</span>
                 </div>
                 <div className="mb-3">
-                    <i class="fa-solid fa-envelope mr-6 "></i>
+                    <i className="fa-solid fa-envelope mr-6 "></i>
                     <span>Email: </span>
                 </div>
             </div>

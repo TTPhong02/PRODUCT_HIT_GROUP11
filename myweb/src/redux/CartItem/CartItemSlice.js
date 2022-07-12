@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 // const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 const initialState = {
-    value: [
+    value: []
         // {
         //     id:1,
         //     src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
@@ -34,7 +34,7 @@ const initialState = {
         //     quantity : 1,
         //     slug: 'giay-03'
         // }
-    ]
+    
 }
 // console.log(initialState.value.length)
 export const cartItemSlice = createSlice({
