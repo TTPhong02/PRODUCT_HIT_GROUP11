@@ -12,7 +12,7 @@ import Products from "../pages/Products/Products";
 import Promotion from "../pages/Promotion/Promotion";
 import { Payment } from "../pages/Payment/Pay/Payment";
 import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
-
+import { NewFeed } from "../pages/NewFeed/NewFeed";
 const Routers = () => {
   return (
     <Routes>
@@ -28,6 +28,7 @@ const Routers = () => {
 
       <Route path="/promotion" element={<Promotion />} />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/news" element={<NewFeed/>}/>
       <Route path="/paysuccess" element={<PayDone />} />
     </Routes>
   );
