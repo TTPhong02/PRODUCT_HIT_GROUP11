@@ -1,5 +1,6 @@
 :root {
   --priamry-key: #EB4335;
+  --white-color: #fff;
 }
 .product-reviews {
 
@@ -58,6 +59,13 @@
         color: #AA0606;
         background-color: #fff;
         border: 2px solid var(--priamry-key);
+        cursor: pointer;
+      }
+
+      .active {
+        color: var(--white-color);
+        border: 2px solid var(--priamry-key);
+        background-color: var(--priamry-key);
       }
     }
   }

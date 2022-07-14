@@ -15,19 +15,27 @@ const InfoProduct = ({ product }) => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const addToCart = () => {
-    dispatch(
-      addItem({
-        id: product.id,
-        slug: product.slug,
-        color: color,
-        size: size,
-        quantity: quantity,
-        price: product.priceCurrent,
-        src: product.images[0].imageUrl,
-        name: product.title,
-      })
-    );
-    alert("Đã thêm vào giỏ hàng!");
+    if (color === "" && size === "") {
+      alert("Vui lòng màu và size");
+    } else if (color === "") {
+      alert("Vui lòng chọn màu");
+    } else if (size === "") {
+      alert("Vui lòng chọn size");
+    } else {
+      dispatch(
+        addItem({
+          id: product.id,
+          slug: product.slug,
+          color: color,
+          size: size,
+          quantity: quantity,
+          price: product.priceCurrent,
+          src: product.images[0].imageUrl,
+          name: product.title,
+        })
+      );
+      alert("Đã thêm vào giỏ hàng!");
+    }
   };
   const handleMinus = () => {
     if (quantity > 1) {
@@ -131,7 +139,12 @@ const InfoProduct = ({ product }) => {
         <button className="btn-quantity" onClick={() => handleMinus()}>
           -
         </button>
-        <input className="quantity-product__buy" type="text" value={quantity} />
+        <input
+          className="quantity-product__buy"
+          type="text"
+          value={quantity}
+          readOnly
+        />
         <button className="btn-quantity" onClick={() => handleAdd()}>
           +
         </button>
