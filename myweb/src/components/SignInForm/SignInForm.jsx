@@ -55,19 +55,22 @@ const SignInForm = () => {
     },
     validate,
     onSubmit: async (values) => {
-      const resData = await axios.post(
-        "https://hitsneaker-demo.herokuapp.com/auth/login",
-        {
-          password: values.password,
-          username: values.userName,
-        }
-      );
+      try {
+        const resData = await axios.post(
+          "https://hitsneaker-demo.herokuapp.com/auth/login",
+          {
+            password: values.password,
+            username: values.userName,
+          }
+        );
 
-      if (resData.request.status === 200) {
-        console.log("Đăng nhập thành công");
-        navigate("/");
-        localStorage.setItem("accessToken", resData.data.token);
-        localStorage.setItem("isLogin", true);
+        if (resData.request.status === 200) {
+          navigate("/");
+          localStorage.setItem("accessToken", resData.data.jwt);
+          localStorage.setItem("isLogin", true);
+        }
+      } catch (err) {
+        alert("Đăng nhập không thành công!");
       }
     },
   });

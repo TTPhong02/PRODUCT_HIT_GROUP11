@@ -1,42 +1,10 @@
 import React, { useState, useRef } from "react";
 import "./viewImagesProduct.scss";
 import "animate.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const ViewImagesProduct = ({ product }) => {
-  console.log(product);
-  const listImage = [
-    {
-      id: 1,
-      urlImg:
-        "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/953f8c77-48ab-4583-b040-c04a3a93ab32/air-jordan-1-ko-chicago-release-date.jpg",
-    },
-    {
-      id: 2,
-      urlImg:
-        "https://fsport247.com/wp-content/uploads/2021/04/giay-nike-jordan-1-og-chicago-replica.jpg",
-    },
-    {
-      id: 3,
-      urlImg:
-        "https://bizweb.dktcdn.net/100/376/706/products/chicago-uhite.jpg?v=1615721788827",
-    },
-    {
-      id: 4,
-      urlImg:
-        "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/953f8c77-48ab-4583-b040-c04a3a93ab32/air-jordan-1-ko-chicago-release-date.jpg",
-    },
-    {
-      id: 5,
-      urlImg:
-        "https://dqshop.vn/wp-content/uploads/2021/10/giay-nike-air-jordan-1-mid-chicago-white-toe-sieu-cap-dep-chat.jpg",
-    },
-    {
-      id: 6,
-      urlImg:
-        "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/953f8c77-48ab-4583-b040-c04a3a93ab32/air-jordan-1-ko-chicago-release-date.jpg",
-    },
-  ];
-
   const [i, setI] = useState(0);
   const [clicked, setClicked] = useState(0);
 
@@ -44,6 +12,33 @@ const ViewImagesProduct = ({ product }) => {
     setI(index);
     setClicked(index);
   };
+
+  let length = product.images.length;
+
+  const handlePrev = () => {
+    if (i === 0) {
+      let num = length - 1;
+      setI(num);
+      setClicked(num);
+    } else {
+      setI(i - 1);
+      setClicked(i - 1);
+    }
+  };
+
+  const handleNext = () => {
+    let length = product.images.length;
+    if (i === length - 1) {
+      let num = 0;
+      setI(num);
+      setClicked(num);
+    } else {
+      setI(i + 1);
+      setClicked(i + 1);
+    }
+  };
+
+  console.log(i);
 
   return (
     <div>
@@ -60,8 +55,14 @@ const ViewImagesProduct = ({ product }) => {
           ))}
         </div>
         <div className="view-image-big">
+          <div className="btn-prev__image" onClick={handlePrev}>
+            <FontAwesomeIcon icon={faAngleLeft} />
+          </div>
           <div className="item-img__big">
             <img src={product.images[i].imageUrl} alt="" />
+          </div>
+          <div className="btn-next__image">
+            <FontAwesomeIcon icon={faAngleRight} onClick={handleNext} />
           </div>
         </div>
       </div>

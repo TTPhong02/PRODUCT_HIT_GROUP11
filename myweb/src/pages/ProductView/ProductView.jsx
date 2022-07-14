@@ -27,7 +27,7 @@ const ProductView = () => {
       id: 2,
       src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: 500.000,
+      price: "500.000",
     },
 
     {
@@ -35,26 +35,26 @@ const ProductView = () => {
       sale: "50",
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: 500.000,
+      price: "500.000",
     },
 
     {
       id: 4,
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: 500.000,
+      price: "500.000",
     },
 
     {
       id: 5,
       src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: 500.000,
+      price: "500.000",
     },
   ];
 
   const [products, setProducts] = useState([]);
-
+  const [pageCurrent, setPageCurrent] = useState("moreInfo");
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
@@ -65,7 +65,6 @@ const ProductView = () => {
       console.log(err);
     }
   };
-  
 
   useEffect(() => {
     fetchProduct();
@@ -76,21 +75,32 @@ const ProductView = () => {
   const getProductBySlug = (slug) => products.find((e) => e.slug === slug);
   const product = getProductBySlug(param.slug);
 
-  // console.log(product);
-
   return (
     <div className="contain-page">
       {product ? (
         <>
           <div className="info-product">
             <ViewImagesProduct product={product} />
-            {/* <ViewImagesProduct product={product} /> */}
             <InfoProduct product={product} />
           </div>
           <div className="more-info">
             <div className="nav-more">
-              <p className="addition-info active">Thông tin bổ sung</p>
-              <p className="reviews-product">Đánh giá (123)</p>
+              <p
+                className={`addition-info ${
+                  pageCurrent === "moreInfo" ? "active" : ""
+                }`}
+                onClick={() => setPageCurrent("moreInfo")}
+              >
+                Thông tin bổ sung
+              </p>
+              <p
+                className={`reviews-product ${
+                  pageCurrent === "review" ? "active" : ""
+                }`}
+                onClick={() => setPageCurrent("review")}
+              >
+                Đánh giá (123)
+              </p>
             </div>
             <ProductReviews />
             {/* <AdditionalInformation /> */}
@@ -129,7 +139,7 @@ const ProductView = () => {
           </div>
         </>
       ) : (
-        <h1>Loading...</h1>
+        <h1 className="loading">Loading...</h1>
       )}
 
       <Brands />
