@@ -7,7 +7,7 @@ const Promotion = () => {
     {
       id: 1,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp1",
@@ -15,7 +15,7 @@ const Promotion = () => {
 
     {
       id: 2,
-      src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp2",
@@ -24,7 +24,7 @@ const Promotion = () => {
     {
       id: 3,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp3",
@@ -32,7 +32,7 @@ const Promotion = () => {
 
     {
       id: 4,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp4",
@@ -40,7 +40,7 @@ const Promotion = () => {
 
     {
       id: 5,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp5",
@@ -48,7 +48,7 @@ const Promotion = () => {
 
     {
       id: 6,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -56,7 +56,7 @@ const Promotion = () => {
 
     {
       id: 7,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -64,7 +64,7 @@ const Promotion = () => {
 
     {
       id: 8,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -72,7 +72,7 @@ const Promotion = () => {
 
     {
       id: 9,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -80,7 +80,7 @@ const Promotion = () => {
 
     {
       id: 10,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -88,7 +88,7 @@ const Promotion = () => {
 
     {
       id: 11,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -96,7 +96,7 @@ const Promotion = () => {
 
     {
       id: 12,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",

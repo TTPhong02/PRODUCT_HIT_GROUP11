@@ -7,7 +7,7 @@ const ProductsNew = () => {
     {
       id: 1,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp1",
@@ -15,7 +15,7 @@ const ProductsNew = () => {
 
     {
       id: 2,
-      src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp2",
@@ -24,7 +24,7 @@ const ProductsNew = () => {
     {
       id: 3,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp3",
@@ -32,7 +32,7 @@ const ProductsNew = () => {
 
     {
       id: 4,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp4",
@@ -40,7 +40,7 @@ const ProductsNew = () => {
 
     {
       id: 5,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp5",
@@ -48,7 +48,7 @@ const ProductsNew = () => {
 
     {
       id: 5,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",

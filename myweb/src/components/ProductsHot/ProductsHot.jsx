@@ -23,7 +23,6 @@ const ProductsHot = () => {
     fetchProduct();
   }, []);
 
-  console.log(products);
   return (
     <div className="container-content">
       <h1 className="title-content"># Sản phẩm bán chạy</h1>
