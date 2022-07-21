@@ -18,14 +18,14 @@ const ProductView = () => {
     {
       id: 1,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://sneakerhs.com/wp-content/uploads/2019/10/giay-Puma-Basket-Platform-Metallic-puma-mui-bong-rep-11-gia-re-ha-noi.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
     },
 
     {
       id: 2,
-      src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
+      src: "https://24htivi.net/wp-content/uploads/2020/12/giay-sneakers-kinh-dien-converse-4-mau.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
     },
@@ -33,21 +33,21 @@ const ProductView = () => {
     {
       id: 3,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://sneakerhs.com/wp-content/uploads/2019/10/giay-Puma-Basket-Platform-Metallic-puma-mui-bong-rep-11-gia-re-ha-noi.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
     },
 
     {
       id: 4,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://sneakerhs.com/wp-content/uploads/2019/10/giay-Puma-Basket-Platform-Metallic-puma-mui-bong-rep-11-gia-re-ha-noi.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
     },
 
     {
       id: 5,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://sneakerhs.com/wp-content/uploads/2019/10/giay-Puma-Basket-Platform-Metallic-puma-mui-bong-rep-11-gia-re-ha-noi.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
     },

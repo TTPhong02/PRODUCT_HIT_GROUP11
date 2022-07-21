@@ -6,7 +6,7 @@ const News = () => {
   const listNews = [
     {
       id: 1,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.pngg",
+      src: "https://giaygiare.vn/upload/images/giai-ma-cac-thuat-ngu-thuong-dung-trong-cong-dong-giay-sneaker-2.jpg",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -14,7 +14,7 @@ const News = () => {
     },
     {
       id: 2,
-      src: "https://vcdn1-dulich.vnecdn.net/2020/11/12/Trang-An-4-1605172551.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=4ULwimiHp4CYfeY21RKxCQ",
+      src: "https://onoff.vn/blog/wp-content/uploads/2018/11/gi%C3%A0y-c%C3%B3-thi%E1%BA%BFt-k%E1%BA%BF-h%C3%ACnh-kh%E1%BB%91i.jpg",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -22,7 +22,7 @@ const News = () => {
     },
     {
       id: 3,
-      src: "https://btnmt.1cdn.vn/2021/08/26/a1-1-.jpg",
+      src: "https://image-us.24h.com.vn/upload/2-2021/images/2021-04-19/9-1618807030-341-width960height580.jpg",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -30,7 +30,7 @@ const News = () => {
     },
     {
       id: 4,
-      src: "https://photo-cms-baophapluat.zadn.vn/w800/Uploaded/2022/zsgkqzektazs/2022_01_18/du-lich-trang-an-ninh-binh-4257.jpg",
+      src: "https://bizweb.dktcdn.net/100/020/315/themes/756968/assets/banner_2.png?1645521760170",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -38,7 +38,7 @@ const News = () => {
     },
     {
       id: 5,
-      src: "https://cungphuot.info/wp-content/uploads/2016/07/kinh-nghiem-du-lich-trang-an.jpg",
+      src: "https://mcdn.coolmate.me/image/September2021/giay-sneaker_28.jpg",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -46,7 +46,7 @@ const News = () => {
     },
     {
       id: 6,
-      src: "https://skycentral.vn/wp-content/uploads/2021/05/vai-tro-cua-thien-nhien-1.png",
+      src: "https://static2.yan.vn/YanNews/2167221/201803/8-thuong-hieu-street-style-co-tam-anh-huong-nhat-voi-gioi-tre-4dfa804d.jpg",
       title: 'Giới trẻ Việt rầm rộ môt giày "rách" mới lạ',
       content:
         "Bước sang thế kỷ XXI, kết thúc những năm tháng chiến đấu đầy đau thương, Việt Nam ta chính thức bước sang một kỷ nguyên mới, kỷ nguyên của độc lập dân tộc và đổi mới đất nước. Nếu khi xưa toàn dân một lòng kháng chiến, hôm nay nhân dân ta tại cùng chung tay dựng đất nước phát triển theo định hướng công nghiệp hóa hiện đại hóa đất nước. Hồ Chủ tịch đã căn dặn giới trẻ Việt Nam",
@@ -66,7 +66,11 @@ const News = () => {
         <>
           <div className="col-span-1 md:col-span-1 sm:col-span-1">
             <Link to="/:new" className="item-news">
-              <img src={listNews[lengthNew - 1].src} alt="" />
+              <img
+                className="img-left"
+                src={listNews[lengthNew - 1].src}
+                alt=""
+              />
               <p className="title-news">{listNews[lengthNew - 1].title}</p>
               <p className="date-post">{listNews[lengthNew - 1].date}</p>
               <p className="content-news">{listNews[lengthNew - 1].content}</p>

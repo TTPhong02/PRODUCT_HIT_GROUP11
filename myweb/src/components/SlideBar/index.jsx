@@ -65,7 +65,7 @@ const SlideBar = () => {
         <div>
           <img
             className="img-demo"
-            src="https://scontent.fpnh22-3.fna.fbcdn.net/v/t1.15752-9/280285403_3214987072077351_1165742808335137932_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=KZVg7xeoClYAX-Wh1j1&tn=0fynKENuznZXyMe_&_nc_ht=scontent.fpnh22-3.fna&oh=03_AVJK9hVgx-XZu8u4HvttZNqleE1PMZtnAO0-c7ckleheeg&oe=62B3CB7A"
+            src="https://gangsworld.com/wp-content/uploads/2021/04/untitled-1_optimized-20.jpg"
             alt=""
           />
         </div>
