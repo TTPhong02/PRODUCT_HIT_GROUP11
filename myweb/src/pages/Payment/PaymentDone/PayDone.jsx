@@ -7,16 +7,20 @@ import numberWithCommas from '../../../utils/numberWithCommas'
 
 export const PayDone = () => {
     const cartItems = useSelector(state=> state.cartItems.value)
-    const[productInCart,setProductInCart] = useState([])
-    const [ totalPrice, setTotalPrice ] = useState(0) 
+    const [productInCart,setProductInCart] = useState([])
+    const [totalPrice, setTotalPrice ] = useState(0) 
     const [totalPriceAfterVoucher,setTotalPriceAfterVoucher]= useState(0)
     const [priceVoucher,setPriceVoucher]= useState(0)
+    const date = new Date();
     useEffect(()=>{
         setProductInCart(productData.getCartItemsInfo(cartItems))
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+    },[cartItems])
+    useEffect(()=>{
         setPriceVoucher((Number(totalPrice)*5/100))
         setTotalPriceAfterVoucher(Number(totalPrice) - Number(priceVoucher))
-    },[cartItems])
+    })
+
   return ( 
     <div className='done'>
         <div className="done_title">
@@ -66,7 +70,7 @@ export const PayDone = () => {
                         </div>
                         <div className="done_content_main_bill_list_date">
                             <h2>Ngày: </h2>
-                            <p>12 tháng 6 năm 2022</p>
+                            <p>{date.getDate() + " Tháng " + Number(date.getMonth()+1) + " Năm "+ date.getFullYear()}</p>
                         </div>
                         <div className="done_content_main_bill_list_price">
                             <h2>Tổng cộng :  </h2>

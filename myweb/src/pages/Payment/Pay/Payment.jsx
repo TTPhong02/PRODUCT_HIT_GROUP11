@@ -4,7 +4,7 @@ import { ProductInCart } from '../../../components/ProductInCart/Index'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import productData from '../../../assets/fakedata/product'
 import numberWithCommas from '../../../utils/numberWithCommas.js'
 
@@ -15,13 +15,80 @@ export const Payment = () => {
     const [totalPriceAfterVoucher,setTotalPriceAfterVoucher]= useState(0)
     const [priceVoucher,setPriceVoucher]= useState(0)
     const [typePay,setTypePay]= useState('')
+    const [name,setName] = useState('')
+    const [phone,setPhone] = useState('')
+    const [email,setEmail]= useState('')
+    const [address,setAddress]= useState('')
+    const navigate = useNavigate()
+    const handleName =(name)=>{
+        setName(name);
+    }
+
+    const handlePhone =(phone)=>{
+        setPhone(phone);
+    }
+
+    const handleEmail =(email)=>{
+        setEmail(email);
+    }
+
+    const handleAddress =(address)=>{
+        setAddress(address);
+    }
+
+    const handleConfirm = () =>{
+        if(name === "" && phone ==="" && email==="" && address ===""){
+            alert("Vui lòng nhập thông tin thanh toán")
+        }
+        else if(name === "" && phone ==="" && email===""){
+            alert("Vui lòng nhập tên, Số điện thoại, Email")
+        }
+        else if( phone ==="" && email==="" && address ===""){
+            alert("Vui lòng nhập Số điện thoại, Email, Địa chỉ")
+        }
+        else if( name === "" && email==="" && address ===""){
+            alert("Vui lòng nhập tên, Email, Địa chỉ")
+        }
+        else if( name === "" && phone==="" && address ===""){
+            alert("Vui lòng nhập tên, Số điện thoại, Địa chỉ")
+        }
+        else if(name === "" && phone ===""){
+            alert("Vui lòng nhập tên, sSố điện thoại")
+        }
+        else if( phone ==="" && email===""){
+            alert("Vui lòng nhập Số điện thoại, Email")
+        }
+        else if( address ==="" && email===""){
+            alert("Vui lòng nhập Email, Địa chỉ")
+        }
+        else if (name===""){
+            alert("Vui lòng nhập tên")
+        }
+        else if (phone===""){
+            alert("Vui lòng nhập Số điện thoại")
+        }
+        else if (email===""){
+            alert("Vui lòng nhập Email")
+        }
+        else if (address===""){
+            alert("Vui lòng nhập Địa chỉ")
+        }
+        else if(typePay==""){
+            alert("Vui lòng chọn kiểu thanh toán")
+        }
+        else{
+            navigate('/paysuccess')
+        }
+    }
     useEffect(()=>{
         setProductInCart(productData.getCartItemsInfo(cartItems))
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+    },[cartItems])
+    useEffect(()=>{
         setPriceVoucher((Number(totalPrice)*5/100))
         setTotalPriceAfterVoucher(Number(totalPrice)- Number(priceVoucher))
     })
-
+    
     return(
         <div className='pay'>
             <div className="pay_title">
@@ -35,19 +102,19 @@ export const Payment = () => {
                     <div className="pay_content_infor_form">
                         <div className="pay_content_infor_form_name">
                             <p>Họ tên </p>
-                            <input type="text" className='p-3 border-2 w-full rounded-lg'  />
+                            <input type="text" className='p-3 border-2 w-full rounded-lg' onChange={(e) => handleName(e.target.value) }  />
                         </div>
                         <div className="pay_content_infor_form_phone">
                             <p>Số điện thoại</p>
-                            <input type="text" className='p-3 border-2 w-full rounded-lg' />
+                            <input type="text" className='p-3 border-2 w-full rounded-lg' onChange={(e)=>handlePhone(e.target.value)} />
                         </div>
                         <div className="pay_content_infor_form_email">
                             <p>Địa chỉ Email</p>
-                            <input type="text" className='p-3 border-2 w-full rounded-lg' />
+                            <input type="text" className='p-3 border-2 w-full rounded-lg' onChange={(e)=>handleEmail(e.target.value)} />
                         </div>
                         <div className="pay_content_infor_form_address">
                             <p>Địa chỉ nhận hàng</p>
-                            <input type="text" className='p-3 border-2 w-full rounded-lg' />
+                            <input type="text" className='p-3 border-2 w-full rounded-lg' onChange={(e)=>handleAddress(e.target.value)}/>
                         </div>
                     </div>
                     <div className="pay_content_infor_bonus">
@@ -93,7 +160,7 @@ export const Payment = () => {
                                 <input type='radio' id='bank' value={'bank'} name='pay' onClick={(e)=>setTypePay(e.target.value)} />
                                 <label htmlFor="bank">Chuyển khoản ngân hàng</label>
                                 <p className='border-b border-gray-400 py-2 text-xl mb-5'>Thực hiện thanh toán vào ngay tài khoản của chúng tôi. Vui lòng sử dụng mã đơn hàng của bạn trong phần nội dung thanh toán. Đơn hàng sẽ được giao sau khi tiền đã chuyển</p>
-                                <input type="radio" id='money' name='pay'/>
+                                <input type="radio" id='money' name='pay' value={'money'} onClick={(e)=>setTypePay(e.target.value)}/>
                                 <label htmlFor="money">Thanh toán khi nhận hàng</label>
                             </form>
                         </div>
@@ -102,9 +169,7 @@ export const Payment = () => {
                         
                     </div>
                     <div className="pay_content_cart_buttonpay">
-                        <Link to={'/paysuccess'}>
-                            <button>Đặt Hàng</button>
-                        </Link>
+                        <button onClick={()=>handleConfirm()}>Đặt Hàng</button>
                         <p>Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng, hỗ trợ trai nghiệm của bạn trên toàn bộ trang web này và cho các mục đích khác được mô tả trong chính sách riêng của chúng tôi</p>
                     </div>
                 </div>
