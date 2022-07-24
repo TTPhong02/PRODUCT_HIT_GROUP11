@@ -1,6 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { useEffect,useState } from "react"
+import axios from "axios"
 
 // const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
+// const [cart,setCart] = useState([])
+
+// const fetchCart = async () =>{
+//     try {
+//       const res = await axios.get(
+//         'https://test-sp-hit.herokuapp.com/api/v1/detail-bills'
+//       );
+//       setCart(res.data);
+//     }catch(err){
+//       console.log(err);
+//     }
+// }
+// useEffect(()=>{
+//     fetchCart()
+// },[]);
 
 const initialState = {
     value: []
