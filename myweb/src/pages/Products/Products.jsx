@@ -8,7 +8,7 @@ const Products = () => {
     {
       id: 1,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://dqshop.vn/wp-content/uploads/2020/04/giay-sneaker-mlb-korea-boston-red-sox-nam-nu-rep-11-dep-chat-1.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp1",
@@ -16,7 +16,7 @@ const Products = () => {
 
     {
       id: 2,
-      src: "https://www.mpe.com.vn/Data/Sites/1/News/105/150223eye330swacker1jpgcroporiginal-original-1507629292709.jpg",
+      src: "https://ordixi.com/wp-content/uploads/2022/05/0b840a43.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp2",
@@ -25,7 +25,7 @@ const Products = () => {
     {
       id: 3,
       sale: "50",
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "http://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-855388558-1532526063.jpg?crop=1xw:1xh;center,top&resize=1200:*",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp3",
@@ -33,7 +33,7 @@ const Products = () => {
 
     {
       id: 4,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://saigonsneaker.com/wp-content/uploads/2018/09/sneaker-la-gi.jpeg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp4",
@@ -41,7 +41,7 @@ const Products = () => {
 
     {
       id: 5,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://images.unsplash.com/photo-1603787081207-362bcef7c144?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c25lYWtlcnxlbnwwfHwwfHw%3D&w=1000&q=80",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp5",
@@ -49,7 +49,7 @@ const Products = () => {
 
     {
       id: 6,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://ordixi.com/wp-content/uploads/2022/05/8095a455.jpeg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -57,7 +57,7 @@ const Products = () => {
 
     {
       id: 7,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://foot.vn/wp-content/uploads/2020/09/giay-sneaker-nike-classic-cortez-nu-mau-trang-2.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -65,7 +65,7 @@ const Products = () => {
 
     {
       id: 8,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://lzd-img-global.slatic.net/g/p/75cb9a9f07f4bede875c8541fddb3b85.jpg_360x360q75.jpg_.webp",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -73,7 +73,7 @@ const Products = () => {
 
     {
       id: 9,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://saigonsneaker.com/wp-content/uploads/2021/10/NVTC-SS0428327-SS0428349SS0428355-5-scaled-1-350x350.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -81,7 +81,7 @@ const Products = () => {
 
     {
       id: 10,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://giaygiare.vn/upload/sanpham/thumbs/nike-air-jordan-1-low-green-toe.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -89,7 +89,7 @@ const Products = () => {
 
     {
       id: 11,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://fado.vn/blog/wp-content/uploads/2020/05/giay-sneaker-den-nam-tot-nhat-6.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
@@ -97,7 +97,7 @@ const Products = () => {
 
     {
       id: 12,
-      src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
+      src: "https://chondeal247.com/wp-content/uploads/2021/10/giay-sneaker-nam-chinh-hang-10.jpg",
       name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
       price: "500.000",
       slug: "sp6",
