@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import productData from '../../../assets/fakedata/product'
+import numberWithCommas from '../../../utils/numberWithCommas.js'
 
 export const Payment = () => {
     const cartItems = useSelector(state=> state.cartItems.value)
@@ -78,11 +79,11 @@ export const Payment = () => {
                         </div> 
                         <div className="pay_content_cart_product_pricevoucher">
                             <p>Ưu đãi</p>
-                            <p className='text-red-500'>-{priceVoucher} VND</p>
+                            <p className='text-red-500'>-{numberWithCommas(priceVoucher)} VND</p>
                         </div>
                         <div className="pay_content_cart_product_priceafter">
                             <p>Tổng</p>
-                            <p className='text-red-500'>{totalPriceAfterVoucher} VND</p>
+                            <p className='text-red-500'>{numberWithCommas(totalPriceAfterVoucher)} VND</p>
                         </div>
                     </div>
                     <div className="pay_content_cart_typepay">

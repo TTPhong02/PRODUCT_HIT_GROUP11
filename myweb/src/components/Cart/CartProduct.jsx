@@ -7,10 +7,23 @@ import './Cart.scss'
 import productData from '../../assets/fakedata/product';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import numberWithCommas from '../../utils/numberWithCommas'
+
 export const CartProduct  = () => {
   const cartItems = useSelector(state => state.cartItems.value)
   const [productInCart,setProductInCart] = useState([])
   const [ totalPrice, setTotalPrice ] = useState(0) 
+  const navigate = useNavigate()
+  const check =()=>{
+    if(cartItems.length > 0){
+        navigate('/payment')
+    }else 
+    {
+        alert('Bạn chưa có sản phẩm nào trong giỏ hàng !')
+        navigate('./')
+    }
+}
 
   useEffect(()=>{
     setProductInCart(productData.getCartItemsInfo(cartItems))
@@ -36,8 +49,9 @@ export const CartProduct  = () => {
             )
           }
         </div>
-        <div className="cart_price">
-          <h2 className='my-5'>Tạm Tính : {totalPrice} VND</h2>
+        <div className="cart_price flex justify-center items-center">
+          <h1 className='my-6 px-2'>Tạm Tính :</h1>
+          <p className='text-red-600'>{numberWithCommas(totalPrice)} VND</p>
         </div>
         <div className="cart_button">
           <Link to={'/cart'}>
@@ -45,7 +59,7 @@ export const CartProduct  = () => {
               XEM GIỎ HÀNG
             </button>
           </Link>
-            <button className='cart_button-bill'>THANH TOÁN</button>
+            <button className='cart_button-bill' onClick={()=>check()}>THANH TOÁN</button>
         </div>
     </div>
   )

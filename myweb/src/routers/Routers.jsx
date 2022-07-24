@@ -12,7 +12,7 @@ import Products from "../pages/Products/Products";
 import Promotion from "../pages/Promotion/Promotion";
 import { Payment } from "../pages/Payment/Pay/Payment";
 import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
-import { NewFeed } from "../pages/NewFeed/NewFeed";
+import { NewFeed } from "../pages/NewFeed/NewFeeds/NewFeeds";
 const Routers = () => {
   return (
     <Routes>

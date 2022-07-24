@@ -3,38 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 // const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 const initialState = {
-    value: [
-        // {
-        //     id:1,
-        //     src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        //     name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        //     price: 500000,
-        //     color: "Xanh",
-        //     size : "41",
-        //     quantity : 1,
-        //     slug: 'giay-01'
-        // },
-        // {
-        //     id:2,
-        //     src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        //     name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        //     price: 200000,
-        //     color: "Đỏ",
-        //     size : "40",
-        //     quantity : 1,
-        //     slug: 'giay-02'
-        // },
-        // {
-        //     id:3,
-        //     src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        //     name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        //     price: 250000,
-        //     color: "Vàng",
-        //     size : "44",
-        //     quantity : 1,
-        //     slug: 'giay-03'
-        // }
-    ]
+    value: []
 }
 // console.log(initialState.value.length)
 export const cartItemSlice = createSlice({

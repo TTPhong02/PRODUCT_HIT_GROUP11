@@ -3,6 +3,8 @@ import React, { useEffect,useState  } from 'react'
 import productData from '../../../assets/fakedata/product'
 import { ProductInCart } from '../../../components/ProductInCart/Index'
 import { useSelector } from 'react-redux'
+import numberWithCommas from '../../../utils/numberWithCommas'
+
 export const PayDone = () => {
     const cartItems = useSelector(state=> state.cartItems.value)
     const[productInCart,setProductInCart] = useState([])
@@ -15,7 +17,7 @@ export const PayDone = () => {
         setPriceVoucher((Number(totalPrice)*5/100))
         setTotalPriceAfterVoucher(Number(totalPrice) - Number(priceVoucher))
     },[cartItems])
-  return (
+  return ( 
     <div className='done'>
         <div className="done_title">
             <h1>THÔNG TIN ĐƠN HÀNG</h1>
@@ -35,14 +37,14 @@ export const PayDone = () => {
                             productInCart.map((item,index)=>(
                                 <ProductInCart 
                                 item={item}
-                                index={index}
+                                key={index}
                                 />
                             ))
                         }
                     </div>
                     <div className="done_content_main_product_priceadd">
                         <h3>Tổng số phụ: </h3>
-                        <p>{priceVoucher}</p>
+                        <p>{numberWithCommas(priceVoucher)} VND</p>
                     </div>
                     <div className="done_content_main_product_typepay">
                         <h3>Phương thức thanh toán: </h3>
@@ -50,7 +52,7 @@ export const PayDone = () => {
                     </div>
                     <div className="done_content_main_product_sumprice">
                         <h3>Tổng thanh toán: </h3>
-                        <p>{totalPriceAfterVoucher}</p>
+                        <p>{numberWithCommas(totalPriceAfterVoucher)} VND</p>
                     </div>
                 </div>
                 <div className="done_content_main_bill col-span-6">
@@ -68,7 +70,7 @@ export const PayDone = () => {
                         </div>
                         <div className="done_content_main_bill_list_price">
                             <h2>Tổng cộng :  </h2>
-                            <p>{totalPriceAfterVoucher}</p>
+                            <p>{numberWithCommas(totalPriceAfterVoucher)} VND</p>
                         </div>
                         <div className="done_content_main_bill_list_typepay">
                             <h2>Phương thức thanh toán:  </h2>
