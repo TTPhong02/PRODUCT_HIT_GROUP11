@@ -9,6 +9,7 @@ import './CartMain.scss';
 import { Link,useNavigate } from 'react-router-dom';
 import { Voucher } from '../../components/Voucher/Voucher';
 import voucherData from '../../assets/fakedata/voucher';
+import numberWithCommas from '../../utils/numberWithCommas'
 export const CartMain = () => {
     // const product = productData.getAllProducts()
 
@@ -80,11 +81,11 @@ export const CartMain = () => {
             <div className="cartmain_bill_infor">
                 <div className="cartmain_bill_infor_temp ">
                     <h3>Tạm Tính</h3>
-                    <p>{totalPrice} VND</p>
+                    <p>{numberWithCommas(totalPrice)} VND</p>
                 </div>
                 <div className="cartmain_bill_infor_sum">
                     <h3>Tổng</h3>
-                    <p>{totalPrice} VND</p>
+                    <p>{numberWithCommas(totalPrice)} VND</p>
                 </div>
                 <div className="cartmain_bill_infor_sale">
                     <h3>Ưu Đãi</h3>

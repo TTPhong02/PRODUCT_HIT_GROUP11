@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { removeItem, updateItem } from '../../redux/CartItem/CartItemSlice'
 import './ProductInMainCart.scss'
+import numberWithCommas from '../../utils/numberWithCommas'
+
 export const ProducInMainCart = (props) => {
     const dispatch = useDispatch()
 
@@ -42,7 +44,7 @@ export const ProducInMainCart = (props) => {
             </div>
         </div>
         <div className="productmain_price col-span-2">
-            <p>{item.price} VND</p>
+            <p>{numberWithCommas(item.price)} VND</p>
         </div>
         <div className="productmain_quantity col-span-2">
             <button onClick={() => updateQuantity('-')} className='px-2 py-1 mr-1 bg-slate-400'>-</button>
@@ -50,7 +52,7 @@ export const ProducInMainCart = (props) => {
             <button onClick={() => updateQuantity('+')}  className='px-1 py-1 ml-1 bg-slate-400'>+</button>
         </div>
         <div className="productmain_sumprice col-span-2">
-            <p>{item.price} VND</p>
+            <p>{numberWithCommas(item.price)} VND</p>
         </div>
     </div>
   )

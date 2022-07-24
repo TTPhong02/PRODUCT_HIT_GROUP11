@@ -37,7 +37,7 @@ const Header = () => {
                 </ul>
             </li>
             <li className='header_menu-nav'>
-                <Link to={'/'}>Khuyến Mãi</Link>
+                <Link to={'/promotion'}>Khuyến Mãi</Link>
             </li>
             <li className='header_menu-nav'>
                 <Link to={'/news'}>Tin Tức</Link>
@@ -49,8 +49,7 @@ const Header = () => {
         <div className="col-span-2 header_logo">
             <div className="header_logo-image">
                 <Link to={'/'}>
-                
-                <img src="https://hithaui.com/static/images/logoHIT.png" alt="anh" />
+                    <img src={require('../../assets/image/logo.png')} alt="anh" />
                 </Link>
             </div>
         </div>
