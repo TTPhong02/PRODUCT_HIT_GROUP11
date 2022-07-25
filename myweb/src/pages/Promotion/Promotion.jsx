@@ -113,7 +113,7 @@ const Promotion = () => {
         </div>
         <div className="main-content">
           <div className="nav-left">
-            <p className="products-promotional">Sản phẩm khuyến mãi</p>
+            <p className="products-promotional active">Sản phẩm khuyến mãi</p>
             <p className="voucher-block">Voucher giảm giá</p>
           </div>
           <div className="list-product-filtered grid grid-cols-4 gap-y-30px gap-30">

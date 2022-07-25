@@ -37,10 +37,11 @@
       text-align: center;
 
       .products-promotional {
-        margin: 14px 0;
         text-transform: uppercase;
+        margin-top: 11px;
         font-weight: 700;
         font-size: 16px;
+        padding: 27px 0;
         color: #ED1D24;
         cursor: pointer;
       }
@@ -49,10 +50,14 @@
         text-transform: uppercase;
         font-weight: 700;
         font-size: 16px;
-        color: #fff;
-        background-color: #ED1D24;
+        color: #ED1D24;
         padding: 27px 0;
         cursor: pointer;
+      }
+
+      .active {
+        color: #fff;
+        background-color: #ED1D24;
       }
     }
 
