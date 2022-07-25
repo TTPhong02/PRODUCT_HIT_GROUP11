@@ -80,7 +80,8 @@ const SignUpForm = () => {
       try {
         if (accept) {
           const resData = await axios.post(
-            "https://hitsneaker-demo.herokuapp.com/api/v1/users/register",
+            // "https://hitsneaker-demo.herokuapp.com/api/v1/users/register",
+            "https://test-sp-hit.herokuapp.com/auth/signup",
             {
               username: values.username,
               email: values.email,

@@ -57,7 +57,7 @@ const SignInForm = () => {
     onSubmit: async (values) => {
       try {
         const resData = await axios.post(
-          "https://hitsneaker-demo.herokuapp.com/auth/login",
+          "https://test-sp-hit.herokuapp.com/auth/login",
           {
             password: values.password,
             username: values.userName,
