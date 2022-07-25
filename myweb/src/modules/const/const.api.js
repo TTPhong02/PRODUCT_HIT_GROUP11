@@ -1,1 +1,1 @@
-export const API = 'https://hit-sneaker.herokuapp.com/api/v1/';
+export const API = 'https://hitsneaker-demo.herokuapp.com/';

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LoginFacebookReact from "react-facebook-login";
 import { Link, useNavigate } from "react-router-dom";
+import { API } from "../../modules/const/const.api";
 
 // login email
 const validate = (values) => {
@@ -56,13 +57,10 @@ const SignInForm = () => {
     validate,
     onSubmit: async (values) => {
       try {
-        const resData = await axios.post(
-          "https://hitsneaker-demo.herokuapp.com/auth/login",
-          {
-            password: values.password,
-            username: values.userName,
-          }
-        );
+        const resData = await axios.post(`${API}auth/login`, {
+          password: values.password,
+          username: values.userName,
+        });
 
         if (resData.request.status === 200) {
           navigate("/");
