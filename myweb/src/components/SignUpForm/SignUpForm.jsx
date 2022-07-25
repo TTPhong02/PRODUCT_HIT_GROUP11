@@ -3,6 +3,7 @@ import "./signUpForm.scss";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../../modules/const/const.api";
 
 const validate = (values) => {
   const errors = {};
@@ -79,18 +80,15 @@ const SignUpForm = () => {
     onSubmit: async (values) => {
       try {
         if (accept) {
-          const resData = await axios.post(
-            "https://hitsneaker-demo.herokuapp.com/api/v1/users/register",
-            {
-              username: values.username,
-              email: values.email,
-              phone: values.phone,
-              firstName: values.gender,
-              lastName: values.lastName,
-              gender: values.gender,
-              password: values.password,
-            }
-          );
+          const resData = await axios.post(`${API}/api/v1/users/register`, {
+            username: values.username,
+            email: values.email,
+            phone: values.phone,
+            firstName: values.gender,
+            lastName: values.lastName,
+            gender: values.gender,
+            password: values.password,
+          });
 
           if (resData.request.status === 200) {
             alert("Đăng ký thành công");
@@ -102,7 +100,6 @@ const SignUpForm = () => {
         alert("Đăng ký không thành công");
         console.log(err);
       }
-      // console.log(values);
     },
   });
 
