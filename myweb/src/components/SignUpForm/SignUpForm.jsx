@@ -80,18 +80,23 @@ const SignUpForm = () => {
     onSubmit: async (values) => {
       try {
         if (accept) {
-          const resData = await axios.post(`${API}/api/v1/users/register`, {
-            username: values.username,
-            email: values.email,
-            phone: values.phone,
-            firstName: values.gender,
-            lastName: values.lastName,
-            gender: values.gender,
-            password: values.password,
-          });
+          const resData = await axios.post(
+            `${API}auth/signup`,
+
+            {
+              username: values.username,
+              email: values.email,
+              phone: values.phone,
+              firstName: values.gender,
+              lastName: values.lastName,
+              gender: values.gender,
+              password: values.password,
+            }
+          );
 
           if (resData.request.status === 200) {
             alert("Đăng ký thành công");
+            navigate("/signIn");
           }
         } else {
           alert("Bạn chưa đồng ý với các điều khoản của chúng tôi");
