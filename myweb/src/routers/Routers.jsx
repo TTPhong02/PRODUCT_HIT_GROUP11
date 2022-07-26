@@ -13,6 +13,8 @@ import Promotion from "../pages/Promotion/Promotion";
 import { Payment } from "../pages/Payment/Pay/Payment";
 import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
 import { NewFeed } from "../pages/NewFeed/NewFeeds/NewFeeds";
+import ProductManagement from "../pages/Admin/ProductManagement/ProductManagement";
+import AccountManagement from "../pages/Admin/AccountManagement/AccountManagement";
 const Routers = () => {
   return (
     <Routes>
@@ -25,11 +27,12 @@ const Routers = () => {
       <Route path="/myvoucher" element={<Voucher />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/products" element={<Products />} />
-
       <Route path="/promotion" element={<Promotion />} />
       <Route path="/payment" element={<Payment />} />
-      <Route path="/news" element={<NewFeed/>}/>
+      <Route path="/news" element={<NewFeed />} />
       <Route path="/paysuccess" element={<PayDone />} />
+      <Route path="/admin/account" element={<ProductManagement />} />
+      <Route path="/admin/product" element={<AccountManagement />} />
     </Routes>
   );
 };

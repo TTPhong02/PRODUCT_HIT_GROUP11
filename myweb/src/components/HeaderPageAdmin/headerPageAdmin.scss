@@ -1,0 +1,41 @@
+.header__page-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  width: 100%;
+  height: 100px;
+  background-color: #ED1D24;
+  box-shadow: 0px 4px 4px #FFFFFF;
+  color: #FFFFFF;
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .icon-bars {
+      font-size: 32px;
+    }
+
+    p {
+      padding-left: 17px;
+      font-size: 24px;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 24px;
+      padding-right: 17px;
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}
