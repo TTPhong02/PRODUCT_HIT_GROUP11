@@ -8,10 +8,10 @@ const Product = (props) => {
   const { src, name, price, sale, slug } = props;
   // let params = useParams();
   // const product = getProductBySlug(params.slug);
-  const money = price.toLocaleString("it-IT", {
-    style: "currency",
-    currency: "vnd",
-  });
+  // const money = price.toLocaleString("it-IT", {
+  //   style: "currency",
+  //   currency: "vnd",
+  // });
 
   return (
     <Link
