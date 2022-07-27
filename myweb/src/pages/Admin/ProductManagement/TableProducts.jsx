@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./tableProducts.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const TableProducts = () => {
   const [products, setProducts] = useState([]);
@@ -61,6 +63,35 @@ const TableProducts = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="footer-page">
+        <button>Thêm mới</button>
+        <ul className="move-page">
+          <FontAwesomeIcon icon={faAngleLeft} />
+          <li>
+            <a href="">1</a>
+          </li>
+          <li>
+            <a href="">2</a>
+          </li>
+          <li>
+            <a href="">3</a>
+          </li>
+          <li>
+            <a href="">4</a>
+          </li>
+          <li>
+            <a href="">5</a>
+          </li>
+          <li>
+            <a href="">6</a>
+          </li>
+          <li>
+            <a href="">...</a>
+          </li>
+          <FontAwesomeIcon icon={faAngleRight} />
+        </ul>
+      </div>
     </div>
   );
 };

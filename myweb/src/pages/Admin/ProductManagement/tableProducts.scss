@@ -1,6 +1,6 @@
 .table-products {
   font-size: 18px;
-  margin: 7px 7px;
+  margin: 5px 7px;
   background-color: #d9d9d9;
   flex-grow: 1;
 
@@ -23,5 +23,20 @@
     padding: 5px 20px;
     margin: 10px 0;
     border-radius: 5px;
+  }
+
+  .footer-page {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 10px;
+
+    .move-page {
+      display: flex;
+      align-items: center;
+
+      li {
+        padding: 0 10px;
+      }
+    }
   }
 }
