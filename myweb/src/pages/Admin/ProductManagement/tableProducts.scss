@@ -1,0 +1,42 @@
+.table-products {
+  font-size: 18px;
+  margin: 5px 7px;
+  background-color: #d9d9d9;
+  flex-grow: 1;
+
+  table {
+    width: 100%;
+  }
+  table, tr, th, td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: center;
+    padding: 10px 10px;
+  }
+
+  button {
+    background-color: #ED1D24;
+    color: #fff;
+    padding: 5px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+
+  .footer-page {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 10px;
+
+    .move-page {
+      display: flex;
+      align-items: center;
+
+      li {
+        padding: 0 10px;
+      }
+    }
+  }
+}
