@@ -9,12 +9,7 @@ const AccountManagement = () => {
       <HeaderPageAdmin />
       <div className="main-section">
         <NavigationAdmin active={active} />
-        <div
-          style={{ margin: "auto", fontSize: "30px" }}
-          className="content-admin"
-        >
-          Thêm sửa xóa sản tài khoản
-        </div>
+        <div className="content-admin">Thêm sửa xóa sản tài khoản</div>
       </div>
     </div>
   );
