@@ -7,6 +7,7 @@ import date from '../../../utils/date';
 import './NewFeeds.scss'
 
 export const NewFeed = () => {
+    
     const [feeds,setFeeds] = useState([])
     const fetchFeed = async () =>{
       try {
@@ -24,7 +25,7 @@ export const NewFeed = () => {
     },[]);
 
     const NewsList = feeds.data
-
+    console.log(NewsList);
   return (
     <div className='newfeed'>
         <div className="newfeed_head">
@@ -34,10 +35,10 @@ export const NewFeed = () => {
         <div className="newfeed_main grid grid-cols-12">
             <div className="newfeed_main_feed col-span-9">
                 {
-                  NewsList ?(
+                  NewsList ? (
                     NewsList.map((item,index) => {
                       return(
-                          <Link key={index} to={`/news/:abc`}>
+                          <Link key={index} to={`/news/${item.slug}`}>
                               <div className='feeds grid grid-cols-12'>
                                   <div className="feeds_image col-span-4">
                                       <img src={item.images[1].imageUrl} alt="" />
@@ -73,7 +74,7 @@ export const NewFeed = () => {
                         </div>
                     </div>
                     {
-                      NewsList?(
+                      NewsList? (
                         NewsList.map((item,index)=>{
                           return(
                             <Link key={index} to={'/'}>

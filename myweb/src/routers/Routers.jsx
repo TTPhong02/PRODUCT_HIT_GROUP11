@@ -15,6 +15,7 @@ import { PayDone } from "../pages/Payment/PaymentDone/PayDone";
 import { NewFeed } from "../pages/NewFeed/NewFeeds/NewFeeds";
 import ProductManagement from "../pages/Admin/ProductManagement/ProductManagement";
 import AccountManagement from "../pages/Admin/AccountManagement/AccountManagement";
+import InforFeeds from "../pages/NewFeed/InforFeeds/InforFeeds";
 const Routers = () => {
   return (
     <Routes>
@@ -30,6 +31,7 @@ const Routers = () => {
       <Route path="/promotion" element={<Promotion />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/news" element={<NewFeed />} />
+      <Route path="/news/:slug" element={<InforFeeds />} />
       <Route path="/paysuccess" element={<PayDone />} />
       <Route path="/admin/account" element={<ProductManagement />} />
       <Route path="/admin/product" element={<AccountManagement />} />
