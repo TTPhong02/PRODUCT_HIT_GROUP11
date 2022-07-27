@@ -1,7 +1,6 @@
 import React from "react";
 import "./navigationAdmin.scss";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const NavigationAdmin = () => {
   const listMenu = [
@@ -29,17 +28,22 @@ const NavigationAdmin = () => {
       title: "Voucher khuyến mãi",
     },
   ];
-  const [active, setActive] = useState(1);
+  let active = {
+    color: "#fff",
+    backgroundColor: "#ED1D24",
+    display: "block",
+  };
   return (
     <div className="nav-admin">
       <ul className="list-menu">
         {listMenu.map((item) => (
-          <li
-            key={item.id}
-            className={`item-menu ${active === item.id && "active"}`}
-            onClick={() => setActive(item.id)}
-          >
-            <Link to={item.link}>{item.title}</Link>
+          <li key={item.id} className={`item-menu`}>
+            <NavLink
+              to={item.link}
+              style={({ isActive }) => (isActive ? active : undefined)}
+            >
+              {item.title}
+            </NavLink>
           </li>
         ))}
       </ul>
