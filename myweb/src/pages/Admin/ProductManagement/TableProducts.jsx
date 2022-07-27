@@ -19,7 +19,15 @@ const TableProducts = () => {
   useEffect(() => {
     fetchProduct();
   }, []);
-  products.map((item) => console.log(item.id));
+
+  const handleChangeProduct = () => {
+    alert("Bạn muốn thay đổi thông tin sản phẩm");
+  };
+
+  const handleDeleteProduct = () => {
+    alert("Bạn đã xóa thành công");
+  };
+
   return (
     <div className="table-products">
       <table>
@@ -46,8 +54,8 @@ const TableProducts = () => {
               <td>Trắng, xanh, đen, đỏ</td>
               <td>{item.amountSell}</td>
               <td>
-                <button>Sửa</button>
-                <button>Xóa</button>
+                <button onClick={handleChangeProduct}>Sửa</button>
+                <button onClick={handleDeleteProduct}>Xóa</button>
               </td>
             </tr>
           ))}
