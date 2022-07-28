@@ -16,6 +16,9 @@ import { NewFeed } from "../pages/NewFeed/NewFeeds/NewFeeds";
 import ProductManagement from "../pages/Admin/ProductManagement/ProductManagement";
 import AccountManagement from "../pages/Admin/AccountManagement/AccountManagement";
 import InforFeeds from "../pages/NewFeed/InforFeeds/InforFeeds";
+import EventManagement from "../pages/Admin/EventManagement/EventManagement"
+import VoucherManagement from "../pages/Admin/VoucherManagement/VoucherManagement"
+
 const Routers = () => {
   return (
     <Routes>
@@ -35,6 +38,8 @@ const Routers = () => {
       <Route path="/paysuccess" element={<PayDone />} />
       <Route path="/admin/account" element={<AccountManagement />} />
       <Route path="/admin/product" element={<ProductManagement />} />
+      <Route path="/admin/event" element={<EventManagement/> } />
+      <Route path="/admin/voucher" element={<VoucherManagement/>}/>
     </Routes>
   );
 };
