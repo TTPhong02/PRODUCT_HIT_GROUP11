@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./tableProducts.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TableProducts = () => {
   const [products, setProducts] = useState([]);
@@ -26,12 +30,53 @@ const TableProducts = () => {
     alert("Bạn muốn thay đổi thông tin sản phẩm");
   };
 
-  const handleDeleteProduct = () => {
-    alert("Bạn đã xóa thành công");
+  const handleDeleteProduct = (id) => {
+    const handle = axios.delete(
+      `https://hit-sneaker.herokuapp.com/api/v1/products/${id}`
+    );
+
+    if (handle.request.status === 200) {
+      alert("Xóa thành công");
+    }
+  };
+
+  const [display, setDisplay] = useState("none");
+  const addItem = () => {
+    setDisplay("block");
   };
 
   return (
     <div className="table-products">
+      <div style={{ display: display }} className="box-add">
+        <div className="closed" onClick={() => setDisplay("none")}>
+          <FontAwesomeIcon className="icon-closed" icon={faXmark} />
+        </div>
+        <form action="">
+          <label htmlFor="">Nhập tên sản phẩm</label>
+          <input className="input-value" type="text" />
+          <br></br>
+          <br></br>
+          <label htmlFor="">Nhập tên sản phẩm</label>
+          <input className="input-value" type="text" />
+          <br></br>
+          <br></br>
+          <label htmlFor="">Nhập tên sản phẩm</label>
+          <input className="input-value" type="text" />
+          <br></br>
+          <br></br>
+          <label htmlFor="">Nhập tên sản phẩm</label>
+          <input className="input-value" type="text" />
+          <br></br>
+          <br></br>
+          <label htmlFor="">Nhập tên sản phẩm</label>
+          <input className="input-value" type="text" />
+          <br></br>
+          <div className="box-btn">
+            <input className="btn-box" type="button" value="Thêm" />
+            <input className="btn-box" type="reset" value="Reset" />
+          </div>
+        </form>
+      </div>
       <table>
         <thead>
           <tr>
@@ -57,7 +102,9 @@ const TableProducts = () => {
               <td>{item.amountSell}</td>
               <td>
                 <button onClick={handleChangeProduct}>Sửa</button>
-                <button onClick={handleDeleteProduct}>Xóa</button>
+                <button onClick={(e) => handleDeleteProduct(e, item.id)}>
+                  Xóa
+                </button>
               </td>
             </tr>
           ))}
@@ -65,7 +112,7 @@ const TableProducts = () => {
       </table>
 
       <div className="footer-page">
-        <button>Thêm mới</button>
+        <button onClick={addItem}>Thêm mới</button>
         <ul className="move-page">
           <FontAwesomeIcon icon={faAngleLeft} />
           <li>
