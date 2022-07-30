@@ -5,6 +5,7 @@
   flex-grow: 1;
 
   table {
+    position: relative;
     width: 100%;
   }
   table, tr, th, td {
@@ -36,6 +37,48 @@
 
       li {
         padding: 0 10px;
+      }
+    }
+  }
+
+  .box-add {
+    position: absolute;
+    z-index: 3;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 2px 2px 7px 2px;
+    border-radius: 5px;
+    padding: 20px;
+
+    .closed {
+      text-align: right;
+
+      .icon-closed {
+        font-size: 16px;
+        border: 1px solid #000;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+
+    .input-value {
+      border: 1px solid #333;
+      margin-left: 20px;
+      border-radius: 3px;
+    }
+
+    .box-btn {
+      text-align: center;
+
+      .btn-box {
+        background-color: #ED1D24;
+        padding: 5px 10px;
+        color: #fff;
+        border-radius: 5px;
+        margin: 50px 50px;
       }
     }
   }

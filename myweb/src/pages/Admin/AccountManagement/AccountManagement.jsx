@@ -2,6 +2,7 @@ import React from "react";
 import "./accountManagement.scss";
 import HeaderPageAdmin from "../../../components/HeaderPageAdmin/HeaderPageAdmin";
 import NavigationAdmin from "../../../components/NavigationAdmin/NavigationAdmin";
+import TableAccount from "./TableAccount";
 const AccountManagement = () => {
   const active = "/admin/account";
   return (
@@ -9,7 +10,7 @@ const AccountManagement = () => {
       <HeaderPageAdmin />
       <div className="main-section">
         <NavigationAdmin active={active} />
-        <div className="content-admin">Thêm sửa xóa sản tài khoản</div>
+        <TableAccount />
       </div>
     </div>
   );
