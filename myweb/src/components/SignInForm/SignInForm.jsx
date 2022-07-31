@@ -58,7 +58,7 @@ const SignInForm = () => {
     onSubmit: async (values) => {
       try {
         const resData = await axios.post(
-          `${API}auth/login`,
+          `https://test-sp-hit.herokuapp.com/auth/login`,
 
           {
             password: values.password,
@@ -68,7 +68,7 @@ const SignInForm = () => {
 
         if (resData.request.status === 200) {
           navigate("/");
-          localStorage.setItem("accessToken", resData.data.jwt);
+          localStorage.setItem("accessToken", resData.data.data.jwt);
           localStorage.setItem("isLogin", true);
         }
       } catch (err) {
