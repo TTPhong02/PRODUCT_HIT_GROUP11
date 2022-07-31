@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-// import CartItem from '../../components/Cart/CartItem';
 import productData from '../../assets/fakedata/product';
 import { ProductInCart } from '../../components/ProductInCart/Index';
 import { ProducInMainCart } from '../../components/ProductInCart/ProducInMainCart';
@@ -10,16 +9,32 @@ import { Link,useNavigate } from 'react-router-dom';
 import { Voucher } from '../../components/Voucher/Voucher';
 import voucherData from '../../assets/fakedata/voucher';
 import numberWithCommas from '../../utils/numberWithCommas'
+import axios from 'axios';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
 
     const cartItems = useSelector(state => state.cartItems.value) 
 
+    const voucherItems = useSelector(state => state.voucherItems.value)
+
     const [ cartProducts, setCartProducts ] = useState([])
 
     const [ totalPrice, setTotalPrice ] = useState(0) 
 
+    const [vouchers,setVouchers] = useState([])
+
     const navigate = useNavigate()
+
+    const fetchProductMainCart = async() =>{
+        try{
+            const res = await axios.get(
+                `https://test-sp-hit.herokuapp.com/api/v1/carts`
+            )
+            setCartProducts(res.data)
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     useEffect(() => {
         setCartProducts(productData.getCartItemsInfo(cartItems))
@@ -27,6 +42,11 @@ export const CartMain = () => {
         setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
 
     }, [cartItems])
+
+
+    useEffect(() =>{
+        setVouchers(voucherData.getAllVoucher(voucherItems))
+    },[voucherItems])
 
     const check =()=>{
         if(cartItems.length > 0){
@@ -37,6 +57,7 @@ export const CartMain = () => {
             navigate('./')
         }
     }
+
   return (
     <div className="cartmain grid grid-cols-12">
         <div className="cartmain_title col-span-12">

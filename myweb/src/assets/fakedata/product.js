@@ -1,45 +1,5 @@
-const product = [
-    {
-        id:1,
-        src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        price: "500.000",
-        color: "Đỏ",
-        size : "41",
-        // quantity : '1',
-        slug: 'giay-01'
-    },
-    {
-        id:2,
-        src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        name: "Giày Thể Thao Nữ Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        price: "400.000",
-        color: "Đen",
-        size : "42",
-        // quantity : '2',
-        slug: 'giay-02'
-    },
-    {
-        id:3,
-        src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        name: "Giày Thể Thao Nữ Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        price: "100.000",
-        color: "Xám",
-        size : "43",
-        // quantity : '1',
-        slug: 'giay-03'
-    },
-    {
-        id:4,
-        src: "https://congtyvanhanhtoanha.com/wp-content/uploads/2018/09/slide2-cong-ty-van-hanh-toa-nha-ha-noi-2.jpg",
-        name: "Giày Thể Thao Nữ Bitis DSM074933XAM (Xám) - Giày chính hãng",
-        price: "150.000",
-        color: "Xám",
-        size : "44",
-        // quantity : '1',
-        slug: 'giay-04'
-    }
-]
+const product = []
+
 const getAllProducts = () => product
  
 const getProductBySlug = (slug) => product.find(e => e.slug === slug)
@@ -71,4 +31,5 @@ const productData = {
     getProductBySlug,
     getCartItemsInfo
 }
+
 export default productData

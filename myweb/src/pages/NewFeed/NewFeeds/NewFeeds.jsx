@@ -52,7 +52,7 @@ export const NewFeed = () => {
                           </Link>
                       )
                     })
-                  ): (
+                  ) : (
                     <h1> Loading....</h1>
                   )
                     

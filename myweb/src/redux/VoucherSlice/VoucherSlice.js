@@ -4,7 +4,7 @@ const initialState ={
     value:null
 }
 const voucherSlice = createSlice({
-    name: 'voucherSlice',
+    name: 'voucherItems',
     initialState,
     reducers:{
       removeItem:(state,action)=>{
