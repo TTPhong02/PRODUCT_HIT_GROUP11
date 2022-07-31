@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useFormik, Field } from "formik";
 import "./tableProducts.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -45,36 +46,204 @@ const TableProducts = () => {
     setDisplay("block");
   };
 
+  const formik = useFormik({
+    initialValues: {
+      amountSell: 0,
+      brand: "",
+      gender: "",
+      idCategory: 0,
+      img: null,
+      isSale: "false",
+      longDescription: "",
+      priceCurrent: 0,
+      priceOld: 0,
+      shortDescription: "",
+      title: "",
+      type: "",
+    },
+    onSubmit: async (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      try {
+        const res = await axios.post(
+          `https://test-sp-hit.herokuapp.com/api/v1/products/create/${values.idCategory}`,
+          {
+            // idCategory: values.idCategory,
+            amountSell: values.amountSell,
+            brand: values.brand,
+            gender: values.gender,
+            isSale: values.isSale,
+            longDescription: values.longDescription,
+            priceCurrent: values.priceCurrent,
+            priceOld: values.priceOld,
+            shortDescription: values.shortDescription,
+            title: values.title,
+            type: values.title,
+            img: values.img,
+          }
+        );
+
+        if (res.request.status === 200) {
+          alert("Thêm sản phẩm thành công!");
+        }
+      } catch {
+        alert("Kiểm tra lại id1");
+      }
+    },
+  });
+
   return (
     <div className="table-products">
       <div style={{ display: display }} className="box-add">
         <div className="closed" onClick={() => setDisplay("none")}>
           <FontAwesomeIcon className="icon-closed" icon={faXmark} />
         </div>
-        <form action="">
-          <label htmlFor="">Nhập tên sản phẩm</label>
-          <input className="input-value" type="text" />
-          <br></br>
-          <br></br>
-          <label htmlFor="">Nhập tên sản phẩm</label>
-          <input className="input-value" type="text" />
-          <br></br>
-          <br></br>
-          <label htmlFor="">Nhập tên sản phẩm</label>
-          <input className="input-value" type="text" />
-          <br></br>
-          <br></br>
-          <label htmlFor="">Nhập tên sản phẩm</label>
-          <input className="input-value" type="text" />
-          <br></br>
-          <br></br>
-          <label htmlFor="">Nhập tên sản phẩm</label>
-          <input className="input-value" type="text" />
-          <br></br>
-          <div className="box-btn">
-            <input className="btn-box" type="button" value="Thêm" />
-            <input className="btn-box" type="reset" value="Reset" />
+        <form onSubmit={formik.handleSubmit}>
+          <div className="box-input">
+            <label htmlFor="amount-sell">Số lượng bán</label>
+            <input
+              id="amount-sell"
+              name="amountSell"
+              type="number"
+              onChange={formik.handleChange}
+              value={formik.values.amountSell}
+            />
           </div>
+
+          <div className="box-input">
+            <label htmlFor="brand">Nhãn hiệu</label>
+            <input
+              id="brand"
+              name="brand"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.brand}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="gender">Giới tính</label>
+            <input
+              id="gender"
+              name="gender"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.gender}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="id-category">id sản phẩm</label>
+            <input
+              id="id-category"
+              name="idCategory"
+              type="number"
+              onChange={formik.handleChange}
+              value={formik.values.idCategory}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="img">Ảnh sản phẩm</label>
+            <input
+              id="img"
+              name="img"
+              type="file"
+              onChange={formik.handleChange}
+              value={formik.values.img}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="is-sale">Giảm giá</label>
+            <label>
+              <input
+                id="is-sale"
+                name="isSale"
+                type="radio"
+                onClick={formik.handleChange}
+                value={formik.values.isSale}
+              />
+              True
+            </label>
+            <label>
+              <input
+                id="is-sale"
+                name="isSale"
+                type="radio"
+                onClick={formik.handleChange}
+                value={formik.values.isSale}
+              />
+              Fasle
+            </label>
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="email">Mô tả đầy đủ</label>
+            <input
+              id="long-description"
+              name="longDescription"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.longDescription}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="price-current">Giá hiện tại</label>
+            <input
+              id="price-current"
+              name="priceCurrent"
+              type="number"
+              onChange={formik.handleChange}
+              value={formik.values.priceCurrent}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="email">Giá cũ</label>
+            <input
+              id="price-old"
+              name="priceOld"
+              type="number"
+              onChange={formik.handleChange}
+              value={formik.values.priceOld}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="short-description">Mô tả ngắn</label>
+            <input
+              id="short-description"
+              name="shortDescription"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.shortDescription}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="title">Tên sản phẩm</label>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.title}
+            />
+          </div>
+
+          <div className="box-input">
+            <label htmlFor="type">Kiểu</label>
+            <input
+              id="type"
+              name="type"
+              type="text"
+              onChange={formik.handleChange}
+              value={formik.values.type}
+            />
+          </div>
+
+          <button type="submit">Thêm</button>
         </form>
       </div>
       <table>

@@ -22,7 +22,7 @@
     background-color: #ED1D24;
     color: #fff;
     padding: 5px 20px;
-    margin: 10px 0;
+    margin: 10px 20px;
     border-radius: 5px;
   }
 
@@ -44,7 +44,7 @@
   .box-add {
     position: absolute;
     z-index: 3;
-    top: 200px;
+    top: 100px;
     width: 600px;
     left: 50%;
     transform: translateX(-50%);
@@ -66,10 +66,21 @@
       }
     }
 
-    .input-value {
-      border: 1px solid #333;
-      margin-left: 20px;
-      border-radius: 3px;
+    .box-input {
+      margin: 20px 0;
+
+      label {
+        display: inline-block;
+        width: 30%;
+      }
+  
+      input {
+        width: 60%;
+        border: 1px solid #333;
+        margin-left: 20px;
+        border-radius: 3px;
+        padding: 2px 5px;
+      }
     }
 
     .box-btn {
