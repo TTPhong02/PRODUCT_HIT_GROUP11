@@ -14,6 +14,7 @@ const ProductsHot = () => {
         `https://hit-sneaker.herokuapp.com/api/v1/products`
       );
       setProducts(res.data);
+      // console.log(res);
     } catch (err) {
       console.log(err);
     }

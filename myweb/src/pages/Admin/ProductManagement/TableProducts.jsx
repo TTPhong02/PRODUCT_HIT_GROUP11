@@ -81,7 +81,7 @@ const TableProducts = () => {
         <thead>
           <tr>
             <th>Mã sản phẩm</th>
-            <th>Tên Voucher</th>
+            <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Mô tả</th>
             <th>Size</th>
