@@ -1,17 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { loginStart,loginSuccess } from "./authSlice";
 
-export const dataUser = async (user,dispatch) =>{
-    const check = (username, listUsername) =>{
-        
+const dataUser = createSlice({
+    name : "user",
+    initialState: {
+        users:{
+            allUser : null,
+        }
+    }, 
+    reducers :{
+        getUserSuccess : (state,action)=>{
+            state.users.allUser = action.payload
+        }
     }
-    try {
-        const data = await axios.get(`https://test-sp-hit.herokuapp.com/api/v1/users`)
+})
 
-        const res = localStorage.get('username')
+export const {
+    getUserSuccess,
+} = dataUser.actions;
 
-
-    } catch (error) {
-        console.log(error);
-    }
-}
+export default dataUser.reducer

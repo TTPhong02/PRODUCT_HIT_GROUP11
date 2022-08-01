@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import numberWithCommas from '../../utils/numberWithCommas'
 
 export const CartProduct  = () => {
-  const cartItems = useSelector(state => state.cartItems.value)
+  const cartItems = useSelector(state => state.cartItems.carts.cart)
   const [productInCart,setProductInCart] = useState([])
   const [ totalPrice, setTotalPrice ] = useState(0) 
   const navigate = useNavigate()

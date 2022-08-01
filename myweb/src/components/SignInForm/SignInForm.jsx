@@ -8,6 +8,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LoginFacebookReact from "react-facebook-login";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../modules/const/const.api";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../redux/UserSlice/authSlice";
 
 // login email
 const validate = (values) => {
@@ -47,6 +49,7 @@ const responseFacebook = (response) => {
 // };
 
 const SignInForm = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -59,13 +62,12 @@ const SignInForm = () => {
       try {
         const resData = await axios.post(
           `https://test-sp-hit.herokuapp.com/auth/login`,
-
           {
             password: values.password,
             username: values.userName,
           }
         );
-
+        dispatch(loginSuccess(resData.data))
         if (resData.request.status === 200) {
           navigate("/");
           localStorage.setItem("accessToken", resData.data.data.jwt);
@@ -82,6 +84,7 @@ const SignInForm = () => {
   const appId = "3169321679997369";
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS ! Current user: ", res.profileObj);
+
   };
   const onFailure = (res) => {
     console.log("LOGIN FAILED! res: ", res);

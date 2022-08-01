@@ -10,10 +10,12 @@ import { Voucher } from '../../components/Voucher/Voucher';
 import voucherData from '../../assets/fakedata/voucher';
 import numberWithCommas from '../../utils/numberWithCommas'
 import axios from 'axios';
+import { getCartFromUSer } from '../../redux/apiRequest/apiRequest';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
+    const user = useSelector(state => state.auth.login.data?.roleList?.id)
 
-    const cartItems = useSelector(state => state.cartItems.value) 
+    const cartItems = useSelector(state => state.cartItems.carts.cart) 
 
     const voucherItems = useSelector(state => state.voucherItems.value)
 
@@ -47,6 +49,10 @@ export const CartMain = () => {
     useEffect(() =>{
         setVouchers(voucherData.getAllVoucher(voucherItems))
     },[voucherItems])
+
+    useEffect(()=>{
+        getCartFromUSer(user)
+    },[])
 
     const check =()=>{
         if(cartItems.length > 0){
