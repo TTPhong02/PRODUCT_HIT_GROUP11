@@ -9,11 +9,17 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 const Header = () => {
+    const user = useSelector(state => state.auth.login.currentUser)
+    console.log(user);
+
     const [quantity,setQuantity] = useState('')
-    const productInCart = useSelector(state => state.cartItems.value)
+
+    const productInCart = useSelector(state => state.cartItems.carts.cart)
+
     useEffect(()=>{
         setQuantity(productInCart.length)
     },[productInCart])
+
   return (
     <div className=' header grid grid-cols-12 items-center justify-between mx-auto '>
         <ul className=' header_menu col-span-6  '>
@@ -70,8 +76,8 @@ const Header = () => {
                 </Link>
             </div>
             
-            <div className="header_option-item relative ">
-                <i className="fa-solid fa-user"></i>
+            <div className="header_option-item relative flex">
+                    {user === null ? <i className="fa-solid fa-user"></i> : <span className='text-2xl text-red-500 font-semibold'>Hi, {user.data.username}</span>}
                 <div className="header_option-item_down absolute">
                     <UserDown/>
                 </div>

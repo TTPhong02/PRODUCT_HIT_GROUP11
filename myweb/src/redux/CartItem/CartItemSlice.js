@@ -1,65 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { useEffect,useState } from "react"
 import axios from "axios"
+import { getCartFromUSer } from "../apiRequest/apiRequest"
 
-// const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
-// const [cart,setCart] = useState([])
 
-// const fetchCart = async () =>{
-//     try {
-//       const res = await axios.get(
-//         'https://test-sp-hit.herokuapp.com/api/v1/detail-bills'
-//       );
-//       setCart(res.data);
-//     }catch(err){
-//       console.log(err);
-//     }
+// const initialState = {
+//     value: []
 // }
-// useEffect(()=>{
-//     fetchCart()
-// },[]);
-
-const initialState = {
-    value: []
-}
-// console.log(initialState.value.length)
 export const cartItemSlice = createSlice({
     name: 'cartItems',
-    initialState,
+    initialState:{
+        carts:{
+            cart: []
+        }
+    },
     reducers: {
         addItem: (state, action) => {
             const newItem = action.payload
 
-            const duplicate = findItem(state.value, newItem)
+            const duplicate = findItem(state.carts.cart, newItem)
 
             if(duplicate.length > 0) {
-                state.value = delItem(state.value, newItem)
+                state.carts.cart = delItem(state.carts.cart, newItem)
 
-                state.value = [...state.value, {
+                state.carts.cart = [...state.carts.cart, {
                     ...newItem,
                     id: duplicate[0].id,
                     quantity: newItem.quantity + duplicate[0].quantity
                 }]
             } else {
-                state.value = [...state.value, {
+                state.carts.cart = [...state.carts.cart, {
                     ...newItem,
-                    id: state.value.length > 0 ? state.value[state.value.length - 1].id + 1 : 1
+                    id: state.carts.cart.length > 0 ? state.carts.cart[state.carts.cart.length - 1].id + 1 : 1
                 }]
             }
         },
         updateItem: (state, action) => {
             const itemUpdate = action.payload
 
-            const item = findItem(state.value, itemUpdate)
+            const item = findItem(state.carts.cart, itemUpdate)
 
             if(item.length > 0) {
-                state.value = delItem(state.value, itemUpdate)
+                state.carts.cart = delItem(state.carts.cart, itemUpdate)
 
-                state.value = [...state.value, {
+                state.carts.cart = [...state.carts.cart, {
                     ...itemUpdate,
                     id: item[0].id
                 }]
-                state.value = sortItems(state.value)
+                state.carts.cart = sortItems(state.carts.cart)
 
 
             } 
@@ -68,9 +56,13 @@ export const cartItemSlice = createSlice({
         removeItem: (state, action) => {
             const removeItem = action.payload
 
-            state.value = delItem(state.value, removeItem)
+            state.carts.cart = delItem(state.carts.cart, removeItem)
 
-            state.value = sortItems(state.value)
+            state.carts.cart = sortItems(state.carts.cart)
+        },
+
+        getCartUserSuccess : (state,action)=>{
+            state.carts.cart = action.payload
         }
     }
 })
@@ -81,6 +73,6 @@ const delItem = (arr, item) => arr.filter(e => e.slug !== item.slug || e.color !
 
 const sortItems = arr => arr.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))
 
-export const { addItem, updateItem, removeItem } = cartItemSlice.actions
+export const { addItem, updateItem, removeItem, getCartUserSuccess } = cartItemSlice.actions
 
 export default cartItemSlice.reducer

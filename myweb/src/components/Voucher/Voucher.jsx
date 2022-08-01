@@ -4,22 +4,28 @@ import { useEffect } from 'react'
 import voucher from '../../assets/fakedata/voucher.js'
 import './Voucher.scss'
 import date from '../../utils/date.js'
+import { useSelector } from 'react-redux'
+import { getVoucherFromUSer } from '../../redux/apiRequest/apiRequest.js'
 export const Voucher = () => {
-    const [vouchers,setVouchers] = useState([])
+    const user = useSelector(state => state.auth.login.data?.roleList?.id)
 
-    const fetchVoucher = async()=>{
-        try{
-            const res = await axios.get(
-                `https://test-sp-hit.herokuapp.com/api/v1/vouchers`
-            );
-            setVouchers(res.data)
-        }catch(err){
-            console.log(err);
-        }
-    }
+    const vouchers = useSelector(state => state.voucherItems.vouchers.voucher)
+    console.log(vouchers);
+
+
+    // const fetchVoucher = async()=>{
+    //     try{
+    //         const res = await axios.get(
+    //             `https://test-sp-hit.herokuapp.com/api/v1/vouchers`
+    //         );
+    //         setVouchers(res.data)
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
 
     useEffect( () => {
-        fetchVoucher()
+        getVoucherFromUSer(user)
     },[])
     // const vouchers = voucher.getAllVoucher()
   return (

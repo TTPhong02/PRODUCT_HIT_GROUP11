@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState ={
-    value:null
-}
+
 const voucherSlice = createSlice({
     name: 'voucherItems',
-    initialState,
+    initialState:{
+      vouchers:{
+        voucher: []
+      }
+    },
     reducers:{
       removeItem:(state,action)=>{
         const removeItem = action.payload
@@ -13,7 +15,10 @@ const voucherSlice = createSlice({
         state.value = delItem(state.value,removeItem)
 
         state.value = sortItems(state.value)
-      }  
+      },
+      getVoucherFromUser: (state,action)=>{
+        state.voucherItems.vouchers.voucher = action.payload
+      }
     }
 })
 
