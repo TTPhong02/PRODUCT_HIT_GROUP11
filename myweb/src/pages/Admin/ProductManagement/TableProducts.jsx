@@ -86,7 +86,7 @@ const TableProducts = () => {
           alert("Thêm sản phẩm thành công!");
         }
       } catch {
-        alert("Kiểm tra lại id1");
+        alert("Kiểm tra lại id");
       }
     },
   });
