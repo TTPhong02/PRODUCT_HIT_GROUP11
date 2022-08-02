@@ -46,6 +46,12 @@ const TableProducts = () => {
     setDisplay("block");
   };
 
+  const [imageUpload, setImageUpload] = useState([]);
+
+  const handleImage = (e) => {
+    setImageUpload([e.target.files]);
+  };
+
   const formik = useFormik({
     initialValues: {
       amountSell: 0,
@@ -62,7 +68,7 @@ const TableProducts = () => {
       type: "",
     },
     onSubmit: async (values) => {
-      // alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 2));
       try {
         const res = await axios.post(
           `https://test-sp-hit.herokuapp.com/api/v1/products/create/${values.idCategory}`,
@@ -78,7 +84,7 @@ const TableProducts = () => {
             shortDescription: values.shortDescription,
             title: values.title,
             type: values.title,
-            img: values.img,
+            img: imageUpload,
           }
         );
 
@@ -132,7 +138,7 @@ const TableProducts = () => {
           </div>
 
           <div className="box-input">
-            <label htmlFor="id-category">id sản phẩm</label>
+            <label htmlFor="id-category">ID sản phẩm</label>
             <input
               id="id-category"
               name="idCategory"
@@ -142,13 +148,28 @@ const TableProducts = () => {
             />
           </div>
 
+          {/* Cũ */}
+          {/* <div className="box-input">
+            <label htmlFor="img">Ảnh sản phẩm</label>
+            <input
+              id="img"
+              name="img"
+              type="file"
+              multiple
+              onChange={formik.handleChange}
+              value={formik.values.img}
+            />
+          </div> */}
+
+          {/* New */}
           <div className="box-input">
             <label htmlFor="img">Ảnh sản phẩm</label>
             <input
               id="img"
               name="img"
               type="file"
-              onChange={formik.handleChange}
+              multiple
+              onChange={handleImage}
               value={formik.values.img}
             />
           </div>
