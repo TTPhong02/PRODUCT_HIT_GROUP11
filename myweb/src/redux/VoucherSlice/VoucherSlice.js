@@ -9,6 +9,7 @@ const voucherSlice = createSlice({
       }
     },
     reducers:{
+
       removeItem:(state,action)=>{
         const removeItem = action.payload
 
@@ -16,8 +17,9 @@ const voucherSlice = createSlice({
 
         state.value = sortItems(state.value)
       },
-      getVoucherFromUser: (state,action)=>{
-        state.voucherItems.vouchers.voucher = action.payload
+
+      getVoucherSuccess: (state,action)=>{
+        state.vouchers.voucher = action.payload
       }
     }
 })
@@ -28,6 +30,6 @@ const delItem = (arr, item) => arr.filter(e => e.id !== item.id )
 
 const sortItems = arr => arr.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))
 
-export const {removeItem} = voucherSlice.actions
+export const {removeItem,getVoucherSuccess} = voucherSlice.actions
 
 export default voucherSlice.reducer

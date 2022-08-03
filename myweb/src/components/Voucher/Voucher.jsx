@@ -4,15 +4,28 @@ import { useEffect } from 'react'
 import voucher from '../../assets/fakedata/voucher.js'
 import './Voucher.scss'
 import date from '../../utils/date.js'
-import { useSelector } from 'react-redux'
-import { getVoucherFromUSer } from '../../redux/apiRequest/apiRequest.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllVoucher } from '../../redux/apiRequest/apiRequest.js'
+import voucherData from '../../assets/fakedata/voucher.js'
 export const Voucher = () => {
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        getAllVoucher(dispatch)
+    },[])
+
     const user = useSelector(state => state.auth.login.data?.roleList?.id)
 
-    const vouchers = useSelector(state => state.voucherItems.vouchers.voucher)
-    console.log(vouchers);
+    const voucherItems = useSelector(state => state.voucherItems.vouchers.voucher.data)
 
+    console.log(voucherItems);
+    
+    // const [voucherList, setVoucherList] = useState([])
+    // console.log(voucherList);
 
+    // useEffect(()=>{
+    //     setVoucherList(voucherData.getVoucherItemsInfo(voucherItems))
+    // },[voucherItems])
     // const fetchVoucher = async()=>{
     //     try{
     //         const res = await axios.get(
@@ -23,11 +36,6 @@ export const Voucher = () => {
     //         console.log(err);
     //     }
     // }
-
-    useEffect( () => {
-        getVoucherFromUSer(user)
-    },[])
-    // const vouchers = voucher.getAllVoucher()
   return (
     <div className="voucher">
         <div className="voucher_title">
@@ -35,10 +43,11 @@ export const Voucher = () => {
         </div>
         <div className="voucher_item">
             {
-                vouchers.map((item)=>(
+                voucherItems ?
+                voucherItems.map((item)=>(
                     <li className='grid grid-cols-5 py-4'>
                         <div className="voucher_item_image col-span-1">
-                            <img src={item.src} alt={item.description} />
+                            <img src={item.urlImage} alt={item.description} />
                         </div>
                         <div className="voucher_item_infor col-span-3">
                             <p className='voucher_item_infor_name'>{item.description}</p>
@@ -50,6 +59,10 @@ export const Voucher = () => {
                         
                     </li>
                 ))
+                :(
+                    <h1>Loading...</h1>
+                )
+                
             }
         </div>
         

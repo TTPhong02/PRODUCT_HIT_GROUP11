@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import productData from '../../assets/fakedata/product';
 import { ProductInCart } from '../../components/ProductInCart/Index';
@@ -13,6 +13,8 @@ import axios from 'axios';
 import { getCartFromUSer } from '../../redux/apiRequest/apiRequest';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
+    const dispatch = useDispatch()
+
     const user = useSelector(state => state.auth.login.data?.roleList?.id)
 
     const cartItems = useSelector(state => state.cartItems.carts.cart) 
@@ -27,16 +29,16 @@ export const CartMain = () => {
 
     const navigate = useNavigate()
 
-    const fetchProductMainCart = async() =>{
-        try{
-            const res = await axios.get(
-                `https://test-sp-hit.herokuapp.com/api/v1/carts`
-            )
-            setCartProducts(res.data)
-        }catch(err){
-            console.log(err);
-        }
-    }
+    // const fetchProductMainCart = async() =>{
+    //     try{
+    //         const res = await axios.get(
+    //             `https://test-sp-hit.herokuapp.com/api/v1/carts`
+    //         )
+    //         setCartProducts(res.data)
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
 
     useEffect(() => {
         setCartProducts(productData.getCartItemsInfo(cartItems))
@@ -50,9 +52,9 @@ export const CartMain = () => {
         setVouchers(voucherData.getAllVoucher(voucherItems))
     },[voucherItems])
 
-    useEffect(()=>{
-        getCartFromUSer(user)
-    },[])
+    // useEffect(()=>{
+    //     getCartFromUSer(dispatch)
+    // },[])
 
     const check =()=>{
         if(cartItems.length > 0){

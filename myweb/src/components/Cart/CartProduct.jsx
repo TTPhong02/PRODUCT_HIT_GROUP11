@@ -12,9 +12,19 @@ import numberWithCommas from '../../utils/numberWithCommas'
 
 export const CartProduct  = () => {
   const cartItems = useSelector(state => state.cartItems.carts.cart)
+
+  const cartItemss = useSelector(state => state.cartItems.carts?.cart)
+
+  const inforCart = cartItemss.product
+
+  console.log(inforCart);
+
   const [productInCart,setProductInCart] = useState([])
+
   const [ totalPrice, setTotalPrice ] = useState(0) 
+
   const navigate = useNavigate()
+
   const check =()=>{
     if(cartItems.length > 0){
         navigate('/payment')
@@ -27,8 +37,8 @@ export const CartProduct  = () => {
 
   useEffect(()=>{
     setProductInCart(productData.getCartItemsInfo(cartItems))
-    setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
-  },[cartItems])
+    setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0) )
+  },[cartItems]);
 
   return (
     <div className="cart">

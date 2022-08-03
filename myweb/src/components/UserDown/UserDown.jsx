@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./UserDown.scss";
 export const UserDown = () => {
+  const logOut = () =>{
+    localStorage.removeItem("accessToken")
+    alert("Bạn đã đăng xuất !! ")
+}
   return (
     <ul className="down">
 
@@ -18,7 +22,7 @@ export const UserDown = () => {
         <Link to={"/signIn"}>Đăng Nhập</Link>
       </li>
       <li className="down_signout">
-        <Link to={"/"}>Đăng xuất</Link>
+        <Link to={"/"} onClick={()=> logOut()}>Đăng xuất</Link>
       </li>
     </ul>
   );
