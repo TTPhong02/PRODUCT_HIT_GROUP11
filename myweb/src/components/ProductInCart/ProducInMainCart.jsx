@@ -52,7 +52,7 @@ export const ProducInMainCart = (props) => {
             <button onClick={() => updateQuantity('+')}  className='px-1 py-1 ml-1 bg-slate-400'>+</button>
         </div>
         <div className="productmain_sumprice col-span-2">
-            <p>{numberWithCommas(item.price)} VND</p>
+            <p>{ numberWithCommas(Number(item.price)*Number(quantity))} VND</p>
         </div>
     </div>
   )

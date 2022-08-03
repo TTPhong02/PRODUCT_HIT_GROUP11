@@ -6,15 +6,17 @@ import Search from '../search/Search'
 import { UserDown } from '../UserDown/UserDown';
 import { CartProduct } from '../Cart/CartProduct';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 const Header = () => {
-    const user = useSelector(state => state.auth.login.currentUser)
-    console.log(user);
+
+    const dataUsers = JSON.parse(localStorage.getItem("account"))
 
     const [quantity,setQuantity] = useState('')
 
     const productInCart = useSelector(state => state.cartItems.carts.cart)
+
 
     useEffect(()=>{
         setQuantity(productInCart.length)
@@ -77,7 +79,7 @@ const Header = () => {
             </div>
             
             <div className="header_option-item relative flex">
-                    {user === null ? <i className="fa-solid fa-user"></i> : <span className='text-2xl text-red-500 font-semibold'>Hi, {user.data.username}</span>}
+                    {dataUsers === null ? <i className="fa-solid fa-user"></i> : <span className='text-2xl text-red-500 font-semibold'>Hi, {dataUsers.username}</span>}
                 <div className="header_option-item_down absolute">
                     <UserDown/>
                 </div>

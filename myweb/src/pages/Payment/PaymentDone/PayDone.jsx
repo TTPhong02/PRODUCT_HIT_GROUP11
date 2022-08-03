@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import numberWithCommas from '../../../utils/numberWithCommas'
 
 export const PayDone = () => {
-    const cartItems = useSelector(state=> state.cartItems.value)
+    const cartItems = useSelector(state=> state.cartItems.carts.cart)
     const [productInCart,setProductInCart] = useState([])
     const [totalPrice, setTotalPrice ] = useState(0) 
     const [totalPriceAfterVoucher,setTotalPriceAfterVoucher]= useState(0)

@@ -8,8 +8,11 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LoginFacebookReact from "react-facebook-login";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../modules/const/const.api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../redux/UserSlice/authSlice";
+import { getAllUser } from "../../redux/apiRequest/apiRequest";
+import { useEffect } from "react";
+import { getAllVoucher } from "../../redux/apiRequest/apiRequest";
 
 // login email
 const validate = (values) => {
@@ -84,7 +87,6 @@ const SignInForm = () => {
   const appId = "3169321679997369";
   const onSuccess = (res) => {
     console.log("LOGIN SUCCESS ! Current user: ", res.profileObj);
-
   };
   const onFailure = (res) => {
     console.log("LOGIN FAILED! res: ", res);

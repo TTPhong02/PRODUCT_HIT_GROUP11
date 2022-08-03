@@ -7,8 +7,16 @@ import ProductsHot from "../../components/ProductsHot/ProductsHot";
 import ProductsNew from "../../components/ProductsNew/ProductsNew";
 import News from "../../components/News/News";
 import Brands from "../../components/Brands/Brands";
+import { useEffect } from "react";
+import { getAllUser, getCartFromUSer } from "../../redux/apiRequest/apiRequest";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    getAllUser(dispatch)
+    getCartFromUSer(dispatch)
+  })
   return (
     <div className="container ">
       <SliderBar />
