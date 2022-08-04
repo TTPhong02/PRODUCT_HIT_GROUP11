@@ -55,6 +55,10 @@ const SignInForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
+  const refeshPage = () =>{
+    window.location.reload()
+  }
+
   const formik = useFormik({
     initialValues: {
       userName: "",

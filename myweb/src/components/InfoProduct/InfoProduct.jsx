@@ -28,10 +28,10 @@ const InfoProduct = ({ product }) => {
           slug: product.slug,
           color: color,
           size: size,
-          quantity: quantity,
-          price: product.priceCurrent,
-          src: product.images[0].imageUrl,
-          name: product.title,
+          amount: quantity,
+          priceOld: product.priceCurrent,
+          imageUrl: product.images[0].imageUrl,
+          title: product.title,
         })
       );
       alert("Đã thêm vào giỏ hàng!");

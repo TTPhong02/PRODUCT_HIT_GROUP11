@@ -25,7 +25,6 @@ export const getAllUser = async (dispatch)=>{
         const res = await axios.get( `https://test-sp-hit.herokuapp.com/api/v1/users/token?token=${localStorage.getItem("accessToken")}`,{
         });
         dispatch(getUserSuccess(res.data))
-        // localStorage.removeItem("account")
         localStorage.setItem("account",JSON.stringify(res.data))
     }catch(err){
         console.log(err);
