@@ -49,7 +49,7 @@ const TableProducts = () => {
   const [imageUpload, setImageUpload] = useState([]);
 
   const handleImage = (e) => {
-    setImageUpload([e.target.files]);
+    setImageUpload([e.target.files[0]]);
   };
 
   const formik = useFormik({
