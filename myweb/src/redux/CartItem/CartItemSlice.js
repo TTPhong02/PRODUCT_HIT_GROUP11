@@ -28,13 +28,13 @@ export const cartItemSlice = createSlice({
                     id: duplicate[0].id,
                     quantity: newItem.quantity + duplicate[0].quantity
                 }]
-                axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+                // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
             } else {
                 state.carts.cart = [...state.carts.cart, {
                     ...newItem,
                     id: state.carts.cart.length > 0 ? state.carts.cart[state.carts.cart.length - 1].id + 1 : 1
                 }]
-                axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+                // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
             }
         },
         updateItem: (state, action) => {
@@ -51,7 +51,7 @@ export const cartItemSlice = createSlice({
                 }]
                 state.carts.cart = sortItems(state.carts.cart)
             } 
-            axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+            // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
         },
         removeItem: (state, action) => {
             const removeItem = action.payload

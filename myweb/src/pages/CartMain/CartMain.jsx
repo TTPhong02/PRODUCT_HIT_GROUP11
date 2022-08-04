@@ -41,10 +41,8 @@ export const CartMain = () => {
     // }
 
     useEffect(() => {
-        setCartProducts(productData.getCartItemsInfo(cartItems))
-
-        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
-
+        setCartProducts(cartItems)
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.price))), 0))
     }, [cartItems])
 
 
@@ -81,7 +79,6 @@ export const CartMain = () => {
             </div>
             {
                 cartItems.length> 0?(
-
                     cartProducts.map( (item,index) =>(
                         <ProducInMainCart 
                         item={item}

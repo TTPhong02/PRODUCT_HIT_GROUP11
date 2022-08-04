@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(()=>{
     getAllUser(dispatch)
     getCartFromUSer(dispatch)
-  })
+  },[])
   return (
     <div className="container ">
       <SliderBar />

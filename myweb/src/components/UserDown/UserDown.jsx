@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./UserDown.scss";
 export const UserDown = () => {
   const logOut = () =>{
     localStorage.removeItem("accessToken")
+    localStorage.removeItem("account")
     alert("Bạn đã đăng xuất !! ")
-}
+  }
   return (
     <ul className="down">
 
