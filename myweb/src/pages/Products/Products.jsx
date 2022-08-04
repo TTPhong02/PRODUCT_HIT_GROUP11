@@ -1,108 +1,96 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./products.scss";
 import Brands from "../../components/Brands/Brands";
 import Product from "../../components/Product";
 
 const Products = () => {
-  const productsHot = [
+  const listCheckCategory = [
     {
       id: 1,
-      sale: "50",
-      src: "https://dqshop.vn/wp-content/uploads/2020/04/giay-sneaker-mlb-korea-boston-red-sox-nam-nu-rep-11-dep-chat-1.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp1",
+      name: "Boots",
+      value: "Boots",
     },
 
     {
       id: 2,
-      src: "https://ordixi.com/wp-content/uploads/2022/05/0b840a43.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp2",
+      name: "Cao gót",
+      value: "Cao gót",
     },
 
     {
       id: 3,
-      sale: "50",
-      src: "http://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-855388558-1532526063.jpg?crop=1xw:1xh;center,top&resize=1200:*",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp3",
+      name: "Giày da",
+      value: "Giày da",
     },
 
     {
       id: 4,
-      src: "https://saigonsneaker.com/wp-content/uploads/2018/09/sneaker-la-gi.jpeg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp4",
+      name: "Giày thể thao",
+      value: "Giày thể thao",
     },
 
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1603787081207-362bcef7c144?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c25lYWtlcnxlbnwwfHwwfHw%3D&w=1000&q=80",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp5",
+      name: "Sneaker",
+      value: "Sneaker",
     },
 
     {
       id: 6,
-      src: "https://ordixi.com/wp-content/uploads/2022/05/8095a455.jpeg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 7,
-      src: "https://foot.vn/wp-content/uploads/2020/09/giay-sneaker-nike-classic-cortez-nu-mau-trang-2.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 8,
-      src: "https://lzd-img-global.slatic.net/g/p/75cb9a9f07f4bede875c8541fddb3b85.jpg_360x360q75.jpg_.webp",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 9,
-      src: "https://saigonsneaker.com/wp-content/uploads/2021/10/NVTC-SS0428327-SS0428349SS0428355-5-scaled-1-350x350.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 10,
-      src: "https://giaygiare.vn/upload/sanpham/thumbs/nike-air-jordan-1-low-green-toe.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 11,
-      src: "https://fado.vn/blog/wp-content/uploads/2020/05/giay-sneaker-den-nam-tot-nhat-6.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 12,
-      src: "https://chondeal247.com/wp-content/uploads/2021/10/giay-sneaker-nam-chinh-hang-10.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
+      name: "Giày bệt",
+      value: "Giày bệt",
     },
   ];
+  const [products, setProducts] = useState([]);
+  const [sort, setSort] = useState("new");
+  const fetchProduct = async (value) => {
+    try {
+      const res = await axios.get(
+        `https://test-sp-hit.herokuapp.com/api/v1/products/sort?by=${value}`
+      );
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Sắp xếp theo yêu cầu
+  const handleSort = (e) => {
+    setSort(e.target.value);
+  };
+
+  useEffect(() => {
+    fetchProduct(sort);
+  }, [sort]);
+
+  // Lọc theo yêu cầu
+  let url = new URL(
+    "https://test-sp-hit.herokuapp.com/api/v1/products/filters?brand=&color=&size=0&type="
+  );
+
+  const handleSortCategory = (e) => {
+    if (e.target.checked) {
+      url.searchParams.append("brand", e.target.value);
+      console.log(url);
+    } else {
+      url.searchParams.set("brand", "");
+      console.log(url);
+    }
+  };
+
+  const productSortType = async () => {
+    try {
+      const res = await axios.get(url);
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    productSortType();
+  }, [url]);
 
   return (
     <div>
@@ -112,13 +100,13 @@ const Products = () => {
             <p className="link-prev">Trang chủ /</p>
             <p className="link-current"> Cửa hàng</p>
           </div>
-          <select className="filter-product">
-            <option value="" selected>
+          <select className="filter-product" onChange={handleSort}>
+            <option value="new" selected>
               Mới nhất
             </option>
-            <option value="">Hot nhất</option>
-            <option value="">Giá: Thấp &rarr; Cao</option>
-            <option value="">Giá: Cao &rarr; Thấp</option>
+            <option value="hot">Hot nhất</option>
+            <option value="price-asc">Giá: Thấp &rarr; Cao</option>
+            <option value="price-des">Giá: Cao &rarr; Thấp</option>
           </select>
         </div>
 
@@ -136,32 +124,22 @@ const Products = () => {
             </select>
 
             <div className="title-sort">Danh mục sản phẩm</div>
-            <ul className="sort-by-brand">
-              <li>
-                <input type="checkbox" name="" id="" />
-                Boots
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                Cao gót
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                Giày da
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                Giày thể thao
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                Sneaker
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                Giày bệt
-              </li>
-            </ul>
+            <form action="" onClick={handleSortCategory}>
+              <ul className="sort-by-brand">
+                {listCheckCategory.map((item) => (
+                  <li key={item.id}>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      value={item.value}
+                      onClick={handleSortCategory}
+                    />
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            </form>
             <div className="title-sort">Size</div>
             <div className="sort-by-size">
               <div className="item-size">
@@ -242,13 +220,13 @@ const Products = () => {
           </div>
 
           <div className="list-product-filtered grid grid-cols-3 row-y-20px">
-            {productsHot.map((item) => (
+            {products.map((item) => (
               <Product
                 key={item.id.toString()}
-                src={item.src}
-                name={item.name}
-                price={item.price}
-                sale={item.sale}
+                src={item.images[0].imageUrl}
+                name={item.title}
+                price={item.priceCurrent}
+                sale={item.isSale}
                 slug={item.slug}
               />
             ))}

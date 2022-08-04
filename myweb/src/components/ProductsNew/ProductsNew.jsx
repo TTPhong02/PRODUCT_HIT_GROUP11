@@ -1,59 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Product from "../Product";
 import "./productsNew.scss";
 
 const ProductsNew = () => {
-  const productsHot = [
-    {
-      id: 1,
-      sale: "50",
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp1",
-    },
+  const [productsNew, setProductsNew] = useState([]);
 
-    {
-      id: 2,
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp2",
-    },
+  const fetchProduct = async () => {
+    try {
+      const res = await axios.get(
+        `https://test-sp-hit.herokuapp.com/api/v1/products/news`
+      );
+      setProductsNew(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    {
-      id: 3,
-      sale: "50",
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp3",
-    },
-
-    {
-      id: 4,
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp4",
-    },
-
-    {
-      id: 5,
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp5",
-    },
-
-    {
-      id: 5,
-      src: "https://media.vneconomy.vn/w800/images/upload/2021/12/14/nike.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-  ];
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
   return (
     <div className="container-content">
@@ -62,13 +28,13 @@ const ProductsNew = () => {
         Những sản phẩm mới được shop mang về phục vụ các tín đồ
       </p>
       <div className="products-list grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2">
-        {productsHot.map((item) => (
+        {productsNew.map((item) => (
           <Product
             key={item.id.toString()}
-            src={item.src}
-            name={item.name}
-            price={item.price}
-            sale={item.sale}
+            src={item.images[0].imageUrl}
+            name={item.title}
+            price={item.priceCurrent}
+            sale={item.isSale}
             slug={item.slug}
           />
         ))}

@@ -58,7 +58,7 @@ const ProductView = () => {
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
-        `https://test-sp-hit.herokuapp.com/api/v1/products/sell-best`
+        `https://test-sp-hit.herokuapp.com/api/v1/products`
       );
       setProducts(res.data);
     } catch (err) {
