@@ -10,16 +10,27 @@ import numberWithCommas from '../../../utils/numberWithCommas.js'
 
 export const Payment = () => {
     const cartItems = useSelector(state=> state.cartItems.carts.cart)
+
     const[productInCart,setProductInCart] = useState([])
+
     const [ totalPrice, setTotalPrice ] = useState(0) 
+
     const [totalPriceAfterVoucher,setTotalPriceAfterVoucher]= useState(0)
+
     const [priceVoucher,setPriceVoucher]= useState(0)
+
     const [typePay,setTypePay]= useState('')
+
     const [name,setName] = useState('')
+
     const [phone,setPhone] = useState('')
+
     const [email,setEmail]= useState('')
+
     const [address,setAddress]= useState('')
+
     const navigate = useNavigate()
+
     const handleName =(name)=>{
         setName(name);
     }
@@ -81,8 +92,8 @@ export const Payment = () => {
         }
     }
     useEffect(()=>{
-        setProductInCart(productData.getCartItemsInfo(cartItems))
-        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
+        setProductInCart(cartItems)
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.product.priceOld))), 0))
     },[cartItems])
     useEffect(()=>{
         setPriceVoucher((Number(totalPrice)*5/100))

@@ -11,13 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import numberWithCommas from '../../utils/numberWithCommas'
 
 export const CartProduct  = () => {
-  const cartItems = useSelector(state => state.cartItems.carts.cart)
-
-  const cartItemss = useSelector(state => state.cartItems.carts?.cart)
-
-  const inforCart = cartItemss.product
-
-  console.log(inforCart);
+  const cartItems = useSelector(state => state.cartItems.carts.cart) 
 
   const [productInCart,setProductInCart] = useState([])
 
@@ -36,8 +30,8 @@ export const CartProduct  = () => {
 }
 
   useEffect(()=>{
-    setProductInCart(productData.getCartItemsInfo(cartItems))
-    setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0) )
+    setProductInCart(cartItems)
+    setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.product.priceOld))), 0) )
   },[cartItems]);
 
   return (
