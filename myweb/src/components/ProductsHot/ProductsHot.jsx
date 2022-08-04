@@ -6,15 +6,14 @@ import Product from "../Product";
 import "./productsHot.scss";
 
 const ProductsHot = () => {
-  const [products, setProducts] = useState([]);
+  const [productsHot, setProductsHot] = useState([]);
 
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
         `https://test-sp-hit.herokuapp.com/api/v1/products/sell-best`
       );
-      setProducts(res.data);
-      // console.log(res);
+      setProductsHot(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -29,8 +28,8 @@ const ProductsHot = () => {
       <h1 className="title-content"># Sản phẩm bán chạy</h1>
       <p className="desc-title">Top những sản phẩm được mưa nhiều nhất</p>
       <div className="products-list grid lg:grid-rows-2 lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-2">
-        {products ? (
-          products.map((item) => (
+        {productsHot ? (
+          productsHot.map((item) => (
             <Product
               key={item.id.toString()}
               src={item.images[0].imageUrl}
