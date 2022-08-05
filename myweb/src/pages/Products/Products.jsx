@@ -42,6 +42,22 @@ const Products = () => {
       value: "Giày bệt",
     },
   ];
+
+  const listSize = [
+    { id: 1, size: 38 },
+    { id: 2, size: 39 },
+    { id: 3, size: 40 },
+    { id: 4, size: 41 },
+    { id: 5, size: 42 },
+    { id: 6, size: 43 },
+  ];
+
+  const listBrand = [
+    { id: 1, brand: "Nike", value: "nike" },
+    { id: 2, brand: "Adidas", value: "adidas" },
+    { id: 3, brand: "Puma", value: "puma" },
+    { id: 4, brand: "Jordan", value: "jordan" },
+  ];
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("new");
   const fetchProduct = async (value) => {
@@ -69,28 +85,44 @@ const Products = () => {
     "https://test-sp-hit.herokuapp.com/api/v1/products/filters?brand=&color=&size=0&type="
   );
 
-  const handleSortCategory = (e) => {
-    if (e.target.checked) {
-      url.searchParams.append("brand", e.target.value);
-      console.log(url);
-    } else {
-      url.searchParams.set("brand", "");
-      console.log(url);
-    }
-  };
-
-  const productSortType = async () => {
+  const productSort = async () => {
     try {
-      const res = await axios.get(url);
+      const res = await axios.post(url);
       setProducts(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    productSortType();
-  }, [url]);
+  const handleSortCategory = (e) => {
+    if (e.target.checked) {
+      url.searchParams.append("type", e.target.value);
+      productSort();
+    } else {
+      url.searchParams.set("type", "");
+      fetchProduct(sort);
+    }
+  };
+
+  const handleSize = (e) => {
+    if (e.target.checked) {
+      url.searchParams.append("size", e.target.value);
+      productSort();
+    } else {
+      url.searchParams.set("size", "");
+      fetchProduct(sort);
+    }
+  };
+
+  const handleBrand = (e) => {
+    if (e.target.checked) {
+      url.searchParams.append("brand", e.target.value);
+      productSort();
+    } else {
+      url.searchParams.set("brand", "");
+      fetchProduct(sort);
+    }
+  };
 
   return (
     <div>
@@ -142,30 +174,19 @@ const Products = () => {
             </form>
             <div className="title-sort">Size</div>
             <div className="sort-by-size">
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                38
-              </div>
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                39
-              </div>
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                40
-              </div>
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                41
-              </div>
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                42
-              </div>
-              <div className="item-size">
-                <input type="checkbox" name="" id="" />
-                43
-              </div>
+              {listSize.map((item) => (
+                <div className="item-size">
+                  <input
+                    key={item.id}
+                    type="checkbox"
+                    name=""
+                    id=""
+                    value={item.size}
+                    onClick={handleSize}
+                  />
+                  {item.size}
+                </div>
+              ))}
             </div>
             <div className="title-sort">Màu sắc</div>
             <div className="sort-by-color">
@@ -200,36 +221,41 @@ const Products = () => {
             </div>
             <div className="title-sort">Thương hiệu</div>
             <ul className="sort-by-brand">
-              <li className="item-brand-filter">
-                <input type="checkbox" name="" id="" />
-                Nike
-              </li>
-              <li className="item-brand-filter">
-                <input type="checkbox" name="" id="" />
-                Adidas
-              </li>
-              <li className="item-brand-filter">
-                <input type="checkbox" name="" id="" />
-                Puma
-              </li>
-              <li className="item-brand-filter">
-                <input type="checkbox" name="" id="" />
-                Jordan
-              </li>
+              {listBrand.map((item) => (
+                <li key={item.id} className="item-brand-filter">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    value={item.value}
+                    onClick={handleBrand}
+                  />
+                  {item.brand}
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="list-product-filtered grid grid-cols-3 row-y-20px">
-            {products.map((item) => (
-              <Product
-                key={item.id.toString()}
-                src={item.images[0].imageUrl}
-                name={item.title}
-                price={item.priceCurrent}
-                sale={item.isSale}
-                slug={item.slug}
-              />
-            ))}
+            {products.length > 0 ? (
+              products.map((item) => (
+                <Product
+                  key={item.id.toString()}
+                  src={item.images[0].imageUrl}
+                  name={item.title}
+                  price={item.priceCurrent}
+                  sale={item.isSale}
+                  slug={item.slug}
+                />
+              ))
+            ) : (
+              <div className="img-empty col-span-3">
+                <img
+                  src="https://taphoa.cz/static/media/cart-empty-img.8b677cb3.png"
+                  alt=""
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

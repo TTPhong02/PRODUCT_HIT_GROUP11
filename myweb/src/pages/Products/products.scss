@@ -146,6 +146,15 @@
 
     .list-product-filtered {
       width: 70%;
+
+      .img-empty {
+        width: 100%;
+
+        img {
+          width: 70%;
+          margin: 100px auto;
+        }
+      }
     }
   }
 }
