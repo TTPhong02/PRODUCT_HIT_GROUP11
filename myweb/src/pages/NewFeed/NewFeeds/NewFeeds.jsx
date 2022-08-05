@@ -14,7 +14,7 @@ export const NewFeed = () => {
         const res = await axios.get(
           'https://test-sp-hit.herokuapp.com/api/v1/news'
         );
-        setFeeds(res.data);
+        setFeeds(res.data.data);
       }catch(err){
         console.log(err);
       }
@@ -24,8 +24,6 @@ export const NewFeed = () => {
       fetchFeed();
     },[]);
 
-    const NewsList = feeds.data
-    console.log(NewsList);
   return (
     <div className='newfeed'>
         <div className="newfeed_head">
@@ -35,8 +33,8 @@ export const NewFeed = () => {
         <div className="newfeed_main grid grid-cols-12">
             <div className="newfeed_main_feed col-span-9">
                 {
-                  NewsList ? (
-                    NewsList.map((item,index) => {
+                  feeds ? (
+                    feeds.map((item,index) => {
                       return(
                           <Link key={index} to={`/news/${item.slug}`}>
                               <div className='feeds grid grid-cols-12'>
@@ -74,10 +72,10 @@ export const NewFeed = () => {
                         </div>
                     </div>
                     {
-                      NewsList? (
-                        NewsList.map((item,index)=>{
+                      feeds? (
+                        feeds.map((item,index)=>{
                           return(
-                            <Link key={index} to={'/'}>
+                            <Link key={index} to={`/news/${item.slug}`}>
                               <p className='newfeed_main_right_bonus_title_infor'>
                               {item.title}
                               </p>
@@ -90,18 +88,6 @@ export const NewFeed = () => {
                       )
                     }
                     
-                    {/* <p className='newfeed_main_right_bonus_title_infor'>
-                        Giới trẻ Viêt rộ mốt đi dép cá rô phi
-                    </p>
-                    <p className='newfeed_main_right_bonus_title_infor'>
-                        Giới trẻ Viêt rộ mốt đi dép cá rô phi
-                    </p>
-                    <p className='newfeed_main_right_bonus_title_infor'>
-                        Giới trẻ Viêt rộ mốt đi dép cá rô phi
-                    </p>
-                    <p className='newfeed_main_right_bonus_title_infor'>
-                        Giới trẻ Viêt rộ mốt đi dép cá rô phi
-                    </p> */}
                     <div className="newfeed_main_right_bonus_title">
                         <h2>PHẢN HỒI GẦN ĐÂY</h2>
                         <div className="border-bottom">

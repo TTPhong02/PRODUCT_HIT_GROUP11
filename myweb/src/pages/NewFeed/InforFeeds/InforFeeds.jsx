@@ -7,69 +7,9 @@ import date from '../../../utils/date'
 import './InforFeeds.scss'
 
 const InforFeeds = () => {
-  const fake =[
-    {
-      id: 1,
-      createdDate: "2022-07-22T08:31:28.836+00:00",
-      updatedDate: "2022-07-22T08:31:28.836+00:00",
-      activeFlag: true,
-      deleteFlag: false,
-      title: "BE CLASSY CHÍNH THỨC RA MẮT THE FLEX COLLECTION",
-      description: "The Flex Collection là BST dòng Loafer đế da được Be Classy chính thức ra mắt vào ngày 02/07 vừa qua. Mang thiết kế và chất liệu khác biệt, The Flex Collection sẽ mang lại cho bạn một vẻ ngoài không thể rời mắt. ",
-      slug: "be-classy-chinh-thuc-ra-mat-the-flex-collection",
-      images : [
-        {
-          id: 1 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        },
-        {
-          id: 2 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        }
-      ]
-    },
-    {
-      id: 2,
-      createdDate: "2022-07-22T08:31:28.836+00:00",
-      updatedDate: "2022-07-22T08:31:28.836+00:00",
-      activeFlag: true,
-      deleteFlag: false,
-      title: "BE CLASSY CHÍNH THỨC RA MẮT THE FLEX COLLECTION",
-      description: "The Flex Collection là BST dòng Loafer đế da được Be Classy chính thức ra mắt vào ngày 02/07 vừa qua. Mang thiết kế và chất liệu khác biệt, The Flex Collection sẽ mang lại cho bạn một vẻ ngoài không thể rời mắt. ",
-      slug: "be-classy-chinh-thuc-ra-mat-the-flex-collection-1",
-      images : [
-        {
-          id: 1 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        },
-        {
-          id: 2 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        }
-      ]
-    },
-    {
-      id: 3,
-      createdDate: "2022-07-22T08:31:28.836+00:00",
-      updatedDate: "2022-07-22T08:31:28.836+00:00",
-      activeFlag: true,
-      deleteFlag: false,
-      title: "BE CLASSY CHÍNH THỨC RA MẮT THE FLEX COLLECTION",
-      description: "The Flex Collection là BST dòng Loafer đế da được Be Classy chính thức ra mắt vào ngày 02/07 vừa qua. Mang thiết kế và chất liệu khác biệt, The Flex Collection sẽ mang lại cho bạn một vẻ ngoài không thể rời mắt. ",
-      slug: "be-classy-chinh-thuc-ra-mat-the-flex-collection-2",
-      images : [
-        {
-          id: 1 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        },
-        {
-          id: 2 ,
-          imageUrl: "https://res.cloudinary.com/vitvn183/image/upload/v1658478687/gzisqemm2jty7lgu1cwu.jpg"
-        }
-      ]
-    }
-  ]
+  
   const [feed,setFeed] = useState([])
+
   const fetchFeed = async () =>{
     try {
       const res = await axios.get(
@@ -126,12 +66,17 @@ const InforFeeds = () => {
                         <div className="border-bottom"></div>
                     </div>
                     {
-                      feed?(
-                          <Link to={`/news/${feed.slug}`}>
-                            <p className='infor_right_bonus_title_main'>
-                            {feed.title}
-                            </p>
-                          </Link>
+                      feed? (
+                        feed.map((item,index)=>{
+                          return(
+                            <Link key={index} to={`/news/${item.slug}`}>
+                              <p className='newfeed_main_right_bonus_title_infor'>
+                              {item.title}
+                              </p>
+                            </Link>
+                          )
+                        })
+
                       ):(
                         <h1>Loading...</h1>
                       )
