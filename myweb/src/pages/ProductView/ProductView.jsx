@@ -12,6 +12,7 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import WriteReviews from "../../components/WriteReviews/WriteReviews";
 import Product from "../../components/Product/index";
 import { useParams } from "react-router-dom";
+import date from "../../utils/date";
 
 const ProductView = () => {
   const productsHot = [
@@ -56,7 +57,8 @@ const ProductView = () => {
   const [products, setProducts] = useState([]);
   const [pageCurrent, setPageCurrent] = useState("moreInfo");
   const [idProduct, setIdProduct] = useState("0");
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState("");
+
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
@@ -73,33 +75,29 @@ const ProductView = () => {
   }, []);
 
   let param = useParams();
-
   const getProductBySlug = (slug) => products.find((e) => e.slug === slug);
   const product = getProductBySlug(param.slug);
 
-  // useEffect(() => {
-  //   if (product) {
-  //     setIdProduct(product.id);
-  //   }
-  // }, [product.id]);
+  const fetchComment = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://test-sp-hit.herokuapp.com/api/v1/product-rates/${id}`
+      );
+      setComment(res.data.data.comment);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  // const fetchComment = async (id) => {
-  //   try {
-  //     const res = await axios.get(
-  //       `https://test-sp-hit.herokuapp.com/api/v1/comments/${id}`
-  //     );
-  //     setComment(res.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  useEffect(() => {
+    if (product) {
+      setIdProduct(product.id);
+      fetchComment(idProduct);
+    }
+  }, [product]);
 
-  // useEffect(() => {
-  //   if (product.id !== 0) {
-  //     fetchComment(idProduct);
-  //   }
-  // }, [product.id]);
-
+  // const user = localStorage.getItem("account");
+  // const idUser = JSON.parse(user).id;
   return (
     <div className="contain-page">
       {product ? (
@@ -131,23 +129,44 @@ const ProductView = () => {
             {/* <AdditionalInformation /> */}
           </div>
           <div className="user-review">
-            {comment && comment.map((item) => <UserReview />)}
-            <div className="btn-view__more">
-              <div className="btn-more btn-move">
-                <FontAwesomeIcon icon={faAngleLeft} />
+            {comment ? (
+              <>
+                <UserReview
+                  content={comment.content}
+                  avt={comment.user.avatar}
+                  firstName={comment.user.firstName}
+                  lastName={comment.user.lastName}
+                  date={date(comment.updatedDate)}
+                />
+                <div className="btn-view__more">
+                  <div className="btn-more btn-move">
+                    <FontAwesomeIcon icon={faAngleLeft} />
+                  </div>
+                  <div className="btn-more active">1</div>
+                  <div className="btn-more">2</div>
+                  <div className="btn-more">3</div>
+                  <div className="btn-more">4</div>
+                  <div className="btn-more">5</div>
+                  <div className="btn-more">...</div>
+                  <div className="btn-more btn-move">
+                    <FontAwesomeIcon icon={faAngleRight} />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="commnet-empty">
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/pdp/eac95a8ac896158642c2761a9e9cd52e.png"
+                  alt=""
+                />
+                <p>Chưa có nhận xét</p>
               </div>
-              <div className="btn-more active">1</div>
-              <div className="btn-more">2</div>
-              <div className="btn-more">3</div>
-              <div className="btn-more">4</div>
-              <div className="btn-more">5</div>
-              <div className="btn-more">...</div>
-              <div className="btn-more btn-move">
-                <FontAwesomeIcon icon={faAngleRight} />
-              </div>
-            </div>
+            )}
           </div>
-          <WriteReviews />
+          <WriteReviews
+            idProduct={idProduct}
+            // idUser={idUser}
+          />
           <p className="title-products">Sản phẩm tương tự</p>
 
           <div className="products-list grid lg:grid-cols-5 lg:grid-rows-1 md:grid-cols-2 sm:grid-cols-2">
