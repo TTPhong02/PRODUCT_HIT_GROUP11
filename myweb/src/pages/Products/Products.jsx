@@ -58,6 +58,16 @@ const Products = () => {
     { id: 3, brand: "Puma", value: "puma" },
     { id: 4, brand: "Jordan", value: "jordan" },
   ];
+
+  const listColor = [
+    { id: 1, name: "Đen", value: "black" },
+    { id: 2, name: "Đỏ", value: "red" },
+    { id: 3, name: "Cam", value: "orange" },
+    { id: 4, name: "Xám", value: "grey" },
+    { id: 5, name: "Trắng", value: "white" },
+    { id: 6, name: "Xanh", value: "blue" },
+    { id: 7, name: "Hồng", value: "pink" },
+  ];
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("new");
   const fetchProduct = async (value) => {
@@ -85,7 +95,8 @@ const Products = () => {
     "https://test-sp-hit.herokuapp.com/api/v1/products/filters?brand=&color=&size=0&type="
   );
 
-  const productSort = async () => {
+  const [urlNew, setUrlNew] = useState(url);
+  const productSort = async (url) => {
     try {
       const res = await axios.post(url);
       setProducts(res.data);
@@ -96,31 +107,65 @@ const Products = () => {
 
   const handleSortCategory = (e) => {
     if (e.target.checked) {
-      url.searchParams.append("type", e.target.value);
-      productSort();
+      urlNew.searchParams.append("type", e.target.value);
+      productSort(url);
+      setUrlNew(() => {
+        return urlNew;
+      });
     } else {
-      url.searchParams.set("type", "");
+      urlNew.searchParams.set("type", "");
       fetchProduct(sort);
+      setUrlNew(() => {
+        return urlNew;
+      });
     }
   };
 
   const handleSize = (e) => {
     if (e.target.checked) {
-      url.searchParams.append("size", e.target.value);
-      productSort();
+      urlNew.searchParams.append("size", e.target.value);
+      productSort(url);
+      setUrlNew(() => {
+        return urlNew;
+      });
     } else {
-      url.searchParams.set("size", "");
+      urlNew.searchParams.set("size", "");
       fetchProduct(sort);
+      setUrlNew(() => {
+        return urlNew;
+      });
     }
   };
 
   const handleBrand = (e) => {
     if (e.target.checked) {
-      url.searchParams.append("brand", e.target.value);
-      productSort();
+      urlNew.searchParams.append("brand", e.target.value);
+      productSort(urlNew);
+      setUrlNew(() => {
+        return urlNew;
+      });
     } else {
-      url.searchParams.set("brand", "");
+      urlNew.searchParams.set("brand", "");
       fetchProduct(sort);
+      setUrlNew(() => {
+        return urlNew;
+      });
+    }
+  };
+
+  const handleColor = (e) => {
+    if (e.target.checked) {
+      urlNew.searchParams.append("color", e.target.value);
+      productSort(urlNew);
+      setUrlNew(() => {
+        return urlNew;
+      });
+    } else {
+      url.searchParams.set("color", "");
+      fetchProduct(sort);
+      setUrlNew(() => {
+        return urlNew;
+      });
     }
   };
 
@@ -133,7 +178,10 @@ const Products = () => {
             <p className="link-current"> Cửa hàng</p>
           </div>
           <select className="filter-product" onChange={handleSort}>
-            <option value="new" selected>
+            <option
+              value="new"
+              defaultValue={{ label: "Mới nhất", value: "new" }}
+            >
               Mới nhất
             </option>
             <option value="hot">Hot nhất</option>
@@ -145,7 +193,7 @@ const Products = () => {
         <div className="filter-products">
           <div className="option-filter">
             <select className="sort-by-price">
-              <option value="" selected>
+              <option value="" defaultValue={{ label: "Giá", value: "" }}>
                 Giá
               </option>
               <option value="">Dưới 1.000.000</option>
@@ -190,34 +238,18 @@ const Products = () => {
             </div>
             <div className="title-sort">Màu sắc</div>
             <div className="sort-by-color">
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Đen
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Trắng
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Đỏ
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Xanh
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Cam
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Hồng
-              </div>
-              <div className="item-color">
-                <input type="checkbox" name="" id="" />
-                Xám
-              </div>
+              {listColor.map((item) => (
+                <div key={item.id} className="item-color">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    value={item.value}
+                    onClick={handleColor}
+                  />
+                  {item.name}
+                </div>
+              ))}
             </div>
             <div className="title-sort">Thương hiệu</div>
             <ul className="sort-by-brand">

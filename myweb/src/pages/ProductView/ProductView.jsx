@@ -55,6 +55,8 @@ const ProductView = () => {
 
   const [products, setProducts] = useState([]);
   const [pageCurrent, setPageCurrent] = useState("moreInfo");
+  const [idProduct, setIdProduct] = useState("0");
+  const [comment, setComment] = useState([]);
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
@@ -74,6 +76,29 @@ const ProductView = () => {
 
   const getProductBySlug = (slug) => products.find((e) => e.slug === slug);
   const product = getProductBySlug(param.slug);
+
+  // useEffect(() => {
+  //   if (product) {
+  //     setIdProduct(product.id);
+  //   }
+  // }, [product.id]);
+
+  // const fetchComment = async (id) => {
+  //   try {
+  //     const res = await axios.get(
+  //       `https://test-sp-hit.herokuapp.com/api/v1/comments/${id}`
+  //     );
+  //     setComment(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (product.id !== 0) {
+  //     fetchComment(idProduct);
+  //   }
+  // }, [product.id]);
 
   return (
     <div className="contain-page">
@@ -106,8 +131,7 @@ const ProductView = () => {
             {/* <AdditionalInformation /> */}
           </div>
           <div className="user-review">
-            <UserReview />
-            <UserReview />
+            {comment && comment.map((item) => <UserReview />)}
             <div className="btn-view__more">
               <div className="btn-more btn-move">
                 <FontAwesomeIcon icon={faAngleLeft} />

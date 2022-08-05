@@ -33,8 +33,7 @@ const Product = (props) => {
 Product.propTypes = {
   src: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  sale: PropTypes.string,
+  price: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
 };
 

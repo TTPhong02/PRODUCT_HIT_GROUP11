@@ -41,7 +41,7 @@ const Brands = () => {
       </p>
       <div className="brand grid grid-cols-6 mt-20">
         {brandsFamous.map((item) => (
-          <div className="item-brand">
+          <div key={item.id} className="item-brand">
             <img
               key={item.id}
               className="img-brand col-span-1"
