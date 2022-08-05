@@ -38,8 +38,6 @@ const ViewImagesProduct = ({ product }) => {
     }
   };
 
-  console.log(i);
-
   return (
     <div>
       <div className="view-list__image">
