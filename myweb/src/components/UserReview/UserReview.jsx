@@ -2,16 +2,23 @@ import React from "react";
 import "./userReview.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-const UserReview = () => {
+const UserReview = ({ content, avt, firstName, lastName, date }) => {
   return (
     <div className="item-comment">
       <div className="user">
-        <img
-          src="https://kenh14cdn.com/203336854389633024/2021/7/29/myvanh2054286994949691217410844763204888409440211n-1627523268551486434209.jpg"
-          alt=""
-          className="avt-user"
-        />
-        <div className="name-user">Tuan Anh</div>
+        {avt ? (
+          <img src={avt} alt="" className="avt-user" />
+        ) : (
+          <img
+            style={{ border: "1px solid #333" }}
+            src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+            alt=""
+            className="avt-user"
+          />
+        )}
+        <div className="name-user">
+          {firstName} {lastName}
+        </div>
       </div>
       <div className="user-status">
         <div className="list-star">
@@ -21,45 +28,25 @@ const UserReview = () => {
           <FontAwesomeIcon className="icon-star" icon={faStar} />
           <FontAwesomeIcon className="icon-star" icon={faStar} />
         </div>
-        <div className="time-review">1 tháng 6, 2022</div>
+        <div className="time-review">{date}</div>
       </div>
-      <p className="content-comment">
-        Shop đóng gói rất cẩn thuận và chu đáo, giao hàng nhanh, shipper thân
-        thiện
-      </p>
+      <p className="content-comment">{content}</p>
       <div className="list-image__comment">
-        <div
+        <img
           className="item-image__comment"
-          style={{
-            backgroundImage: `url(
-              "https://www.bmw.vn/content/dam/bmw/common/all-models/7-series/sedan/2019/inspire/bmw-7series-sedan-inspire-taphold-01-slide-01-desktop.jpg"
-            )`,
-          }}
-        ></div>
-        <div
+          src="https://cf.shopee.vn/file/40f934f1120dd7c4d3fd0f5bc17ff6d4"
+          alt=""
+        />
+        <img
           className="item-image__comment"
-          style={{
-            backgroundImage: `url(
-              "https://www.bmw.vn/content/dam/bmw/common/all-models/7-series/sedan/2019/inspire/bmw-7series-sedan-inspire-taphold-01-slide-01-desktop.jpg"
-            )`,
-          }}
-        ></div>
-        <div
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuqIGFrijwKfoUetsC5KMjCdQtTlB4Pyvv1g&usqp=CAU"
+          alt=""
+        />
+        <img
           className="item-image__comment"
-          style={{
-            backgroundImage: `url(
-              "https://www.bmw.vn/content/dam/bmw/common/all-models/7-series/sedan/2019/inspire/bmw-7series-sedan-inspire-taphold-01-slide-01-desktop.jpg"
-            )`,
-          }}
-        ></div>
-        <div
-          className="item-image__comment"
-          style={{
-            backgroundImage: `url(
-              "https://www.bmw.vn/content/dam/bmw/common/all-models/7-series/sedan/2019/inspire/bmw-7series-sedan-inspire-taphold-01-slide-01-desktop.jpg"
-            )`,
-          }}
-        ></div>
+          src="https://cf.shopee.vn/file/87a28d98abf48f493c3f667a8c926b7a"
+          alt=""
+        />
       </div>
 
       <div className="user-like">
