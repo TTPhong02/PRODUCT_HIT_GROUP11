@@ -1,9 +1,19 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./UserDown.scss";
 export const UserDown = () => {
 
   const user = localStorage.getItem("accessToken")
+  const dataUser = JSON.parse(localStorage.getItem("account"))
+  console.log(dataUser);
+
+  const navigate = useNavigate()
+
+  // const check =()=>{
+  //   if(user?.roles[0].name == "ROLE_ADMIN" ||user?.roles[0].name == "ROLE_MANAGER" ){
+      
+  //   }
+  // }
 
   const logOut = () =>{
     localStorage.removeItem("accessToken")
@@ -14,6 +24,18 @@ export const UserDown = () => {
   }
   return (
     <ul className="down">
+      {
+        dataUser?.roles[0].name == "ROLE_ADMIN" || dataUser?.roles[0].name == "ROLE_MANAGER" ?(
+          <li className="down_admin">
+            <Link to={"/admin/product"}>
+              Trang quản trị 
+            </Link>
+          </li>
+        ):(
+          // navigate("/")
+          ""
+        )
+      }
       <li className="down_cart">
         <Link to={"/cart"}>Giỏ hàng của tôi</Link>
       </li>

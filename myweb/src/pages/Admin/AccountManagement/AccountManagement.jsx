@@ -4,7 +4,7 @@ import HeaderPageAdmin from "../../../components/HeaderPageAdmin/HeaderPageAdmin
 import NavigationAdmin from "../../../components/NavigationAdmin/NavigationAdmin";
 import TableAccount from "./TableAccount";
 const AccountManagement = () => {
-  const active = "/admin/account";
+  const active = "/admin";
   return (
     <div className="container-admin">
       <HeaderPageAdmin />

@@ -19,6 +19,7 @@ import InforFeeds from "../pages/NewFeed/InforFeeds/InforFeeds";
 import EventManagement from "../pages/Admin/EventManagement/EventManagement";
 import VoucherManagement from "../pages/Admin/VoucherManagement/VoucherManagement";
 import ListVoucher from "../pages/ListVourcher/ListVoucher";
+import Profile from "../pages/Profie/Profile";
 
 const Routers = () => {
   return (
@@ -42,6 +43,7 @@ const Routers = () => {
       <Route path="/admin/event" element={<EventManagement />} />
       <Route path="/admin/voucher" element={<VoucherManagement />} />
       <Route path="/listVoucher" element={<ListVoucher />} />
+      <Route path="/profile" element={<Profile/>}/>
     </Routes>
   );
 };

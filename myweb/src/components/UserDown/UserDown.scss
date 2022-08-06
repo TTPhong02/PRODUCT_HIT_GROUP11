@@ -5,6 +5,11 @@
     li:hover {
         color: red;
     }
+    &_admin{
+        font-size: 2rem;
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
     &_manage{
         font-size: 2rem;
         padding: 5px 10px;
