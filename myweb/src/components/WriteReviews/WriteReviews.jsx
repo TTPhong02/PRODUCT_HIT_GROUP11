@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./writeReviews.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarR } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
-import { useRef } from "react";
 
 const WriteReviews = ({ idProduct, idUser }) => {
   const [comment, setComment] = useState("");
