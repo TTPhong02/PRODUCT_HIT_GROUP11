@@ -87,9 +87,13 @@ export const Payment = () => {
         else if(typePay==""){
             alert("Vui lòng chọn kiểu thanh toán")
         }
+        else if(typePay=="bank"){
+            alert("Hệ thống chưa hỗ trợ hình thức thanh toán này !")
+        }
         else{
             navigate('/paysuccess')
         }
+
     }
     useEffect(()=>{
         setProductInCart(cartItems)

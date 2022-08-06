@@ -1,6 +1,5 @@
 .search{
     position: relative;
-    
     &_form{
         display: flex;
         position:absolute;
@@ -16,5 +15,13 @@
             font-size: 2rem;
             padding: 11px 5px;
         }
+    }
+    &_content{
+        position: absolute;
+        overflow: auto;
+        top: 45px;
+        right: 0px;
+        width: 500px;
+        max-height: 400px;
     }
 }

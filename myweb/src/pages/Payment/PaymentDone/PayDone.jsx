@@ -73,7 +73,7 @@ export const PayDone = () => {
                     <div className="done_content_main_bill_list">
                         <div className="done_content_main_bill_list_id">
                            <h2>Mã đơn hàng: </h2> 
-                           <p>1234</p>
+                           <p>{'HIT' + Math.floor(Math.random() * 1001)}</p>
                         </div>
                         <div className="done_content_main_bill_list_date">
                             <h2>Ngày: </h2>
