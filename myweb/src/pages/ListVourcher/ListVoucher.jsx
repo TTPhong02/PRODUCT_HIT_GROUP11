@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./promotion.scss";
+import "./listVourcher.scss";
 import axios from "axios";
 import Product from "../../components/Product";
 import { NavLink } from "react-router-dom";
+import date from "../../utils/date";
 
-const Promotion = () => {
+const ListVoucher = () => {
   const listMenu = [
     {
       id: 1,
@@ -23,14 +24,14 @@ const Promotion = () => {
     backgroundColor: "#ED1D24",
     display: "block",
   };
-  const [products, setProducts] = useState([]);
+  const [voucher, setVoucher] = useState([]);
 
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
-        `https://test-sp-hit.herokuapp.com/api/v1/products`
+        `https://test-sp-hit.herokuapp.com/api/v1/vouchers`
       );
-      setProducts(res.data);
+      setVoucher(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -61,26 +62,34 @@ const Promotion = () => {
               </li>
             ))}
           </ul>
-          <div className="list-product-filtered grid grid-cols-4 gap-y-30px gap-30">
-            {products ? (
-              products.map((item) => (
-                <Product
-                  key={item.id.toString()}
-                  src={item.images[0].imageUrl}
-                  name={item.title}
-                  price={item.priceCurrent}
-                  sale={item.isSale}
-                  slug={item.slug}
-                />
+          <ul className="list-product-filtered grid grid-cols-2 gap-y-30px gap-30">
+            {voucher ? (
+              voucher.map((item) => (
+                <li className="grid grid-cols-5 py-4 col-span-1">
+                  <div className="voucher_item_image col-span-1">
+                    <img src={item.urlImage} alt={item.description} />
+                  </div>
+                  <div className="voucher_item_infor col-span-3">
+                    <p className="voucher_item_infor_name">
+                      {item.description}
+                    </p>
+                    <p className="voucher_item_infor_date">
+                      HSD: {date(item.expirationTime)}
+                    </p>
+                  </div>
+                  <div className="voucher_item_btn col-span-1 ">
+                    <button>Nhận</button>
+                  </div>
+                </li>
               ))
             ) : (
-              <h1 className="loading">Loading...</h1>
+              <h2>Loading...</h2>
             )}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
   );
 };
 
-export default Promotion;
+export default ListVoucher;

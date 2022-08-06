@@ -6,12 +6,6 @@ import numberWithCommas from "../../utils/numberWithCommas";
 
 const Product = (props) => {
   const { src, name, price, sale, slug } = props;
-  // let params = useParams();
-  // const product = getProductBySlug(params.slug);
-  // const money = price.toLocaleString("it-IT", {
-  //   style: "currency",
-  //   currency: "vnd",
-  // });
 
   return (
     <Link
@@ -21,7 +15,7 @@ const Product = (props) => {
       <img className="img-product" src={src} alt="" />
       {sale && (
         <div className="discount-product">
-          <div className="sale">Giảm {sale}%</div>
+          <div className="sale">Giảm 25%</div>
         </div>
       )}
       <p className="name-product">{name}</p>
