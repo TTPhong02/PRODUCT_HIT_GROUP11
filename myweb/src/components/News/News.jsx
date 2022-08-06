@@ -27,7 +27,7 @@ const News = () => {
       <p className="desc-title">
         Nơi cập nhật những xu hướng thời trang mới nhất hiện nay
       </p>
-      <div className="news-list grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-20">
+      {/* <div className="news-list grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-20">
         <>
           <div className="col-span-1 md:col-span-1 sm:col-span-1">
             {
@@ -77,7 +77,7 @@ const News = () => {
             }
           </div>
         </>
-      </div>
+      </div> */}
     </div>
   );
 };

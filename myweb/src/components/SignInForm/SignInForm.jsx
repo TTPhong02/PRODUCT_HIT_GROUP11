@@ -71,13 +71,10 @@ const SignInForm = () => {
           }
         );
         dispatch(loginSuccess(resData.data));
-        const user = JSON.parse(localStorage.getItem("account"));
+        // const user = JSON.parse(localStorage.getItem("account"));
+
         if (resData.request.status === 200) {
-          if (user.roles[0].name === "ROLE_USER") {
-            navigate("/");
-          } else if (user.roles[0].name === "ROLE_ADMIN") {
-            navigate("/admin/product");
-          }
+          navigate("/");
           localStorage.setItem("accessToken", resData.data.data.jwt);
           localStorage.setItem("isLogin", true);
         }
