@@ -10,6 +10,7 @@ import numberWithCommas from "../../utils/numberWithCommas";
 import axios from "axios";
 
 const InfoProduct = ({ product }) => {
+  const idUser = JSON.parse(localStorage.getItem("account")).id
 
   const category = "sneaker";
 
@@ -22,6 +23,17 @@ const InfoProduct = ({ product }) => {
   const [size, setSize] = useState("");
 
   const [productFinds,setProductFinds] = useState() 
+
+  const productFind = async() => {
+    try {
+      const res = await axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${idUser}/name/${product.title}/amount/${quantity}/size/${size}/color/${color}`)
+      console.log(res);
+      // setProductFinds(res.data) 
+    } catch (error) {
+      // console.log(error);
+    }
+  } 
+
   const addToCart = () => {
     if (color === "" && size === "") {
       alert("Vui lòng màu và size");
@@ -36,10 +48,10 @@ const InfoProduct = ({ product }) => {
           // amount: quantity,
           // color: color,
           // size: size,
-          // priceOld: product.priceCurrent,
-          // imageUrl: product.images[0].imageUrl,
-          // title: product.title,
-          // slug: product.slug,
+          // // priceOld: product.priceCurrent,
+          // // imageUrl: product.images[0].imageUrl,
+          // // title: product.title,
+          // // slug: product.slug,
           productFinds
         })
       );
@@ -47,14 +59,8 @@ const InfoProduct = ({ product }) => {
     }
   };
 
-  const productFind = async() => {
-    try {
-      const res = await axios.post("")
-      setProductFinds(res.data) 
-    } catch (error) {
-      console.log(error);
-    }
-  } 
+
+
   const handleMinus = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -64,12 +70,18 @@ const InfoProduct = ({ product }) => {
   const handleAdd = () => {
     setQuantity(quantity + 1);
   };
+
   const handleColor = (color) => {
     setColor(color);
   };
+
   const handleSize = (size) => {
     setSize(size);
   };
+
+  const handleCheck = ()=>{
+    productFind()
+  }
   return (
     <div className="details-product">
       <div className="address-name__category">
@@ -80,8 +92,7 @@ const InfoProduct = ({ product }) => {
       <h1 className="name-product">{product.title}</h1>
 
       <p className="price-product">
-        {numberWithCommas(product.priceCurrent)}
-        <span className="monetary-unit">đ</span>
+        {numberWithCommas(product.priceCurrent)} VND
       </p>
 
       <div className="rank-product">
@@ -168,6 +179,9 @@ const InfoProduct = ({ product }) => {
         </button>
         <button className="btn-buy" onClick={() => addToCart()}>
           Mua hàng
+        </button>
+        <button className="btn-buy" onClick={() => handleCheck()}>
+          Check
         </button>
       </div>
 

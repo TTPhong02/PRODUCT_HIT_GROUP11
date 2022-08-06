@@ -6,8 +6,14 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import "./TableEvent.scss"
 import date from '../../../utils/date';
+import { useDispatch } from 'react-redux';
+import { deleteEvent } from '../../../redux/apiRequest/apiRequest';
 const TableEvent = () => {
+
+  const dispatch = useDispatch()
+
   const [events,setEvents]  = useState([])
+
   const fetchVouchers = async () =>{
     try{
       const res = await axios.get(
@@ -26,7 +32,8 @@ const TableEvent = () => {
   const handleChangeEvent = () =>{
     alert("Bạn muốn thay đổi thông tin voucher")
   }
-  const handleDeleteEvent = () =>{
+  const handleDeleteEvent = (id) =>{
+    dispatch(deleteEvent(id,dispatch))
     alert("delete voucher !")
   }
 
@@ -51,7 +58,7 @@ const TableEvent = () => {
               <td>{item.description}</td>
               <td>
                 <button onClick={handleChangeEvent}>Sửa</button>
-                <button onClick={handleDeleteEvent}>Xóa</button>
+                <button onClick={()=> handleDeleteEvent(item.id)}>Xóa</button>
               </td>
             </tr>
           ))}
