@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./userReview.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-const UserReview = ({ content, avt, firstName, lastName, date }) => {
+import { faStar as faStarR } from "@fortawesome/free-regular-svg-icons";
+import { useEffect } from "react";
+const UserReview = ({ content, avt, firstName, lastName, date, star }) => {
+  const [rateStar, setRateStar] = useState(0);
+
+  useEffect(() => {
+    if (star == "ONE_STAR") {
+      setRateStar(1);
+    } else if (star == "TWO_STAR") {
+      setRateStar(2);
+    } else if (star == "THREE_STAR") {
+      setRateStar(3);
+    } else if (star == "FOUR_STAR") {
+      setRateStar(4);
+    } else if (star == "FIVE_STAR") {
+      setRateStar(5);
+    }
+  }, [rateStar]);
+
+  // console.log(rateStar);
+
   return (
     <div className="item-comment">
       <div className="user">
@@ -22,11 +42,15 @@ const UserReview = ({ content, avt, firstName, lastName, date }) => {
       </div>
       <div className="user-status">
         <div className="list-star">
-          <FontAwesomeIcon className="icon-star" icon={faStar} />
-          <FontAwesomeIcon className="icon-star" icon={faStar} />
-          <FontAwesomeIcon className="icon-star" icon={faStar} />
-          <FontAwesomeIcon className="icon-star" icon={faStar} />
-          <FontAwesomeIcon className="icon-star" icon={faStar} />
+          {[...Array(5)].map((_, index) => (
+            <span key={index}>
+              {rateStar > index ? (
+                <FontAwesomeIcon className="star-rating" icon={faStar} />
+              ) : (
+                <FontAwesomeIcon className="star-rating" icon={faStarR} />
+              )}
+            </span>
+          ))}
         </div>
         <div className="time-review">{date}</div>
       </div>
