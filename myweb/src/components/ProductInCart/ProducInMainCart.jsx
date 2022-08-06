@@ -14,15 +14,15 @@ export const ProducInMainCart = (props) => {
 
     useEffect(() => {
         setItem(props.item)
-        setQuantity(props.item.amount)
+        setQuantity(props.item.quantity)
     }, [props.item])
 
     const updateQuantity = (option) =>{
         if(option === '+'){
-            dispatch(updateItem({...item, amount: quantity+1}))
+            dispatch(updateItem({...item, quantity: quantity+1}))
         }
         if(option ==='-'){
-            dispatch(updateItem({...item , amount:quantity-1 === 0 ? 1 : quantity -1 }))
+            dispatch(updateItem({...item , quantity:quantity-1 === 0 ? 1 : quantity -1 }))
         }
     }
     const deleteItem = () => {
@@ -35,16 +35,16 @@ export const ProducInMainCart = (props) => {
                 <i className="fa-solid fa-trash-can"></i>
             </div>
             <div className="productmain_infor_image">
-                <img src={item.product.images[0].imageUrl} alt={item.name} />
+                <img src={item.src} alt={item.name} />
             </div>
             <div className="productmain_infor_about">
-                <h3>{item.product.title}</h3>
-                <p>Màu: {item.product.color}</p>
-                <p>Size: {item.product.size}</p>
+                <h3>{item.name}</h3>
+                <p>Màu: {item.color}</p>
+                <p>Size: {item.size}</p>
             </div>
         </div>
         <div className="productmain_price col-span-2">
-            <p>{numberWithCommas(item.product.priceOld)} VND</p>
+            <p>{numberWithCommas(item.price)} VND</p>
         </div>
         <div className="productmain_quantity col-span-2">
             <button onClick={() => updateQuantity('-')} className='px-2 py-1 mr-1 bg-slate-400'>-</button>
@@ -52,7 +52,7 @@ export const ProducInMainCart = (props) => {
             <button onClick={() => updateQuantity('+')}  className='px-1 py-1 ml-1 bg-slate-400'>+</button>
         </div>
         <div className="productmain_sumprice col-span-2">
-            <p>{ numberWithCommas(Number(item.product.priceOld)*Number(item.amount))} VND</p>
+            <p>{ numberWithCommas(Number(item.price) * Number(item.quantity))} VND</p>
         </div>
     </div>
   )

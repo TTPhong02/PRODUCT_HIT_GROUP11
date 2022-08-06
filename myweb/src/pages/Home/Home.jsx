@@ -16,7 +16,6 @@ const Home = () => {
 
   useEffect(()=>{
     getAllUser(dispatch)
-    getCartFromUSer(dispatch)
   },[])
 
   return (

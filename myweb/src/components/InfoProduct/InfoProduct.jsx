@@ -10,7 +10,7 @@ import numberWithCommas from "../../utils/numberWithCommas";
 import axios from "axios";
 
 const InfoProduct = ({ product }) => {
-  const idUser = JSON.parse(localStorage.getItem("account")).id
+  // const idUser = JSON.parse(localStorage.getItem("account")).id
 
   const category = "sneaker";
 
@@ -22,17 +22,17 @@ const InfoProduct = ({ product }) => {
 
   const [size, setSize] = useState("");
 
-  const [productFinds,setProductFinds] = useState() 
+  // const [productFinds,setProductFinds] = useState() 
 
-  const productFind = async() => {
-    try {
-      const res = await axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${idUser}/name/${product.title}/amount/${quantity}/size/${size}/color/${color}`)
-      console.log(res);
-      // setProductFinds(res.data) 
-    } catch (error) {
-      // console.log(error);
-    }
-  } 
+  // const productFind = async() => {
+  //   try {
+  //     const res = await axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${idUser}/name/${product.title}/amount/${quantity}/size/${size}/color/${color}`)
+  //     console.log(res);
+  //     // setProductFinds(res.data) 
+  //   } catch (error) {
+  //     // console.log(error);
+  //   }
+  // } 
 
   const addToCart = () => {
     if (color === "" && size === "") {
@@ -44,15 +44,15 @@ const InfoProduct = ({ product }) => {
     } else {
       dispatch(
         addItem({
-          // // id: product.id,
-          // amount: quantity,
-          // color: color,
-          // size: size,
-          // // priceOld: product.priceCurrent,
-          // // imageUrl: product.images[0].imageUrl,
-          // // title: product.title,
-          // // slug: product.slug,
-          productFinds
+          id: product.id,
+          quantity: quantity,
+          color: color,
+          size: size,
+          price: product.priceCurrent,
+          src: product.images[0].imageUrl,
+          title: product.title,
+          slug: product.slug,
+  
         })
       );
       alert("Đã thêm vào giỏ hàng!");
@@ -79,9 +79,9 @@ const InfoProduct = ({ product }) => {
     setSize(size);
   };
 
-  const handleCheck = ()=>{
-    productFind()
-  }
+  // const handleCheck = ()=>{
+  //   productFind()
+  // }
   return (
     <div className="details-product">
       <div className="address-name__category">
@@ -180,9 +180,9 @@ const InfoProduct = ({ product }) => {
         <button className="btn-buy" onClick={() => addToCart()}>
           Mua hàng
         </button>
-        <button className="btn-buy" onClick={() => handleCheck()}>
+        {/* <button className="btn-buy" onClick={() => handleCheck()}>
           Check
-        </button>
+        </button> */}
       </div>
 
       <div className="describe-product">
