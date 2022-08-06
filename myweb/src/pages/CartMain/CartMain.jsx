@@ -14,7 +14,7 @@ import { getCartFromUSer } from '../../redux/apiRequest/apiRequest';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
 
-    const cartItems = useSelector(state => state.cartItems.carts.cart) 
+    const cartItems = useSelector(state => state.cartItems.value)  
 
     const voucherItems = useSelector(state => state.voucherItems.value)
 
@@ -26,7 +26,7 @@ export const CartMain = () => {
 
     const navigate = useNavigate()
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // const fetchProductMainCart = async() =>{
     //     try{
     //         const res = await axios.get(
@@ -39,18 +39,18 @@ export const CartMain = () => {
     // }
 
     useEffect(() => {
-        setCartProducts(cartItems)
-        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.product.priceOld))), 0))
+        setCartProducts(productData.getCartItemsInfo(cartItems))
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
     }, [cartItems])
-
+    console.log(cartProducts);
 
     useEffect(() =>{
         setVouchers(voucherData.getAllVoucher(voucherItems))
     },[voucherItems])
 
-    useEffect(()=>{
-        getCartFromUSer(dispatch)
-    },[])
+    // useEffect(()=>{
+    //     getCartFromUSer(dispatch)
+    // },[])
 
     const check =()=>{
         if(cartItems.length > 0){
