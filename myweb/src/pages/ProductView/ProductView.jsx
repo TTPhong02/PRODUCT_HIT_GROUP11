@@ -84,7 +84,6 @@ const ProductView = () => {
         `https://test-sp-hit.herokuapp.com/api/v1/products/rate/${id}`
       );
       setComments(res.data);
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
