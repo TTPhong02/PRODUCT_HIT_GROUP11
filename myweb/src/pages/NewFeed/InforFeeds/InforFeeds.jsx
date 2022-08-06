@@ -47,7 +47,7 @@ const InforFeeds = () => {
                   Post on {date(newFeeds.createdDate)}
                 </div>
                 <div className="infor_left_image">
-                  <img src={newFeeds.images[1].imageUrl} alt="" />
+                  <img src={newFeeds.images[0].imageUrl} alt="" />
                 </div>
                 <div className="infor_left_content">
                   <p>{newFeeds.description}</p>

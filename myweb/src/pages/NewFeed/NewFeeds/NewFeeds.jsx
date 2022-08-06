@@ -39,7 +39,7 @@ export const NewFeed = () => {
                           <Link key={index} to={`/news/${item.slug}`}>
                               <div className='feeds grid grid-cols-12'>
                                   <div className="feeds_image col-span-4">
-                                      <img src={item.images[1].imageUrl} alt="" />
+                                      <img src={item.images[0].imageUrl} alt="" />
                                   </div>
                                   <div className="feeds_infor col-span-8">
                                       <h1 className='feeds_infor_title'>{item.title}</h1>
