@@ -1,107 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./promotion.scss";
 import Product from "../../components/Product";
+import { NavLink } from "react-router-dom";
 
 const Promotion = () => {
-  const productsHot = [
+  const listMenu = [
     {
       id: 1,
-      sale: "50",
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp1",
+      link: "/promotion",
+      title: "Sản phẩm khuyến mãi",
     },
-
     {
       id: 2,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp2",
-    },
-
-    {
-      id: 3,
-      sale: "50",
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp3",
-    },
-
-    {
-      id: 4,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp4",
-    },
-
-    {
-      id: 5,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp5",
-    },
-
-    {
-      id: 6,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 7,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 8,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 9,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 10,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 11,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
-    },
-
-    {
-      id: 12,
-      src: "https://kenh14cdn.com/thumb_w/660/203336854389633024/2022/4/23/nike-dunk-low-16507284077231114726161.jpg",
-      name: "Giày Thể Thao Nam Bitis DSM074933XAM (Xám) - Giày chính hãng",
-      price: "500.000",
-      slug: "sp6",
+      link: "/promotion",
+      title: "Vourcher giảm giá",
     },
   ];
+
+  let active = {
+    color: "#fff",
+    backgroundColor: "#ED1D24",
+    display: "block",
+  };
+  const [products, setProducts] = useState([]);
+
+  const fetchProduct = async () => {
+    try {
+      const res = await axios.get(
+        `https://test-sp-hit.herokuapp.com/api/v1/products`
+      );
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, []);
   return (
     <div>
       <div className="container-promotion">
@@ -112,21 +49,33 @@ const Promotion = () => {
           </div>
         </div>
         <div className="main-content">
-          <div className="nav-left">
-            <p className="products-promotional active">Sản phẩm khuyến mãi</p>
-            <p className="voucher-block">Voucher giảm giá</p>
-          </div>
-          <div className="list-product-filtered grid grid-cols-4 gap-y-30px gap-30">
-            {productsHot.map((item) => (
-              <Product
-                key={item.id.toString()}
-                src={item.src}
-                name={item.name}
-                price={item.price}
-                sale={item.sale}
-                slug={item.slug}
-              />
+          <ul className="nav-left">
+            {listMenu.map((item) => (
+              <li key={item.id} className={`item-menu`}>
+                <NavLink
+                  to={item.link}
+                  style={({ isActive }) => (isActive ? active : undefined)}
+                >
+                  {item.title}
+                </NavLink>
+              </li>
             ))}
+          </ul>
+          <div className="list-product-filtered grid grid-cols-4 gap-y-30px gap-30">
+            {products ? (
+              products.map((item) => (
+                <Product
+                  key={item.id.toString()}
+                  src={item.images[0].imageUrl}
+                  name={item.title}
+                  price={item.priceCurrent}
+                  sale={item.isSale}
+                  slug={item.slug}
+                />
+              ))
+            ) : (
+              <h1 className="loading">Loading...</h1>
+            )}
           </div>
         </div>
       </div>
