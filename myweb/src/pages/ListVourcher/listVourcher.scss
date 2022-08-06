@@ -1,0 +1,80 @@
+
+.container-promotion {
+  margin: 70px auto 0;
+  width: 1440px;
+  max-width: 100%;
+
+  .nav-page {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #E5E5E5;
+    height: 90px;
+
+    .link-page {
+      display: flex;
+      font-size: 16px;
+      text-transform: uppercase;
+
+      .link-prev {
+        color: #666666;
+      }
+
+      .link-current {
+        color: #000000;
+        padding-left: 3px;
+      }
+    }
+  }
+
+  .main-content {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+
+    .nav-left {
+      width: 18%;
+      text-align: center;
+
+      .item-menu {
+        line-height: 85px;
+        font-size: 24px;
+        border-bottom: 3px solid #9B9B9A;
+  
+        .voucher:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .products-promotional {
+        text-transform: uppercase;
+        margin-top: 11px;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 27px 0;
+        color: #ED1D24;
+        cursor: pointer;
+      }
+
+      .voucher-block {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        color: #ED1D24;
+        padding: 27px 0;
+        cursor: pointer;
+      }
+
+      .active {
+        color: #fff;
+        background-color: #ED1D24;
+      }
+    }
+
+    .list-product-filtered {
+      width: 75%;
+
+      
+    }
+  }
+}
