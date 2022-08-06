@@ -26,6 +26,7 @@ export const CartMain = () => {
 
     const navigate = useNavigate()
 
+    const dispatch = useDispatch()
     // const fetchProductMainCart = async() =>{
     //     try{
     //         const res = await axios.get(
@@ -47,9 +48,9 @@ export const CartMain = () => {
         setVouchers(voucherData.getAllVoucher(voucherItems))
     },[voucherItems])
 
-    // useEffect(()=>{
-    //     getCartFromUSer(dispatch)
-    // },[])
+    useEffect(()=>{
+        getCartFromUSer(dispatch)
+    },[])
 
     const check =()=>{
         if(cartItems.length > 0){

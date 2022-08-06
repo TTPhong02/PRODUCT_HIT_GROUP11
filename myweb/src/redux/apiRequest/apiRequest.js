@@ -41,5 +41,13 @@ export const getAllVoucher = async (dispatch)=>{
     }
 }
 
+export const deleteVoucher = async(id,dispatch)=>{
+    axios.delete(`https://test-sp-hit.herokuapp.com/api/v1/vouchers/${id}`)
+}
+
+export const deleteEvent = async(id,dispatch)=>{
+    axios.delete(`https://test-sp-hit.herokuapp.com/api/v1/news/${id}`)
+}
+
 
 

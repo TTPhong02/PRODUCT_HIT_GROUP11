@@ -5,7 +5,7 @@ import voucher from '../../assets/fakedata/voucher.js'
 import './Voucher.scss'
 import date from '../../utils/date.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllVoucher } from '../../redux/apiRequest/apiRequest.js'
+import { deleteVoucher, getAllVoucher } from '../../redux/apiRequest/apiRequest.js'
 import voucherData from '../../assets/fakedata/voucher.js'
 export const Voucher = () => {
     const dispatch = useDispatch()
@@ -19,6 +19,10 @@ export const Voucher = () => {
     const voucherItems = useSelector(state => state.voucherItems.vouchers.voucher.data)
 
     console.log(voucherItems);
+
+    const handleUse = (id) =>{
+        dispatch(deleteVoucher(id,dispatch))
+    }
     
     // const [voucherList, setVoucherList] = useState([])
     // console.log(voucherList);
@@ -54,7 +58,7 @@ export const Voucher = () => {
                             <p className='voucher_item_infor_date'>HSD: {date(item.expirationTime)}</p>
                         </div>
                         <div className="voucher_item_btn col-span-1 ">
-                            <button>Dùng</button>
+                            <button onClick={()=>handleUse(item.id)}>Dùng</button>
                         </div>
                         
                     </li>
