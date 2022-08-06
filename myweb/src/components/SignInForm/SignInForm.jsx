@@ -20,10 +20,6 @@ const validate = (values) => {
 
   if (!values.userName) {
     errors.userName = "Vui lòng nhập tên người dùng hoặc địa chỉ email";
-    // } else if (
-    //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.userName)
-    // ) {
-    // errors.userName = "Email không hợp lệ!";
   } else if (values.userName.length < 8) {
     errors.userName = "Tên tài khoản ít nhất 8 ký tự!";
   }
@@ -52,12 +48,12 @@ const responseFacebook = (response) => {
 // };
 
 const SignInForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const refeshPage = () =>{
-    window.location.reload()
-  }
+  const refeshPage = () => {
+    window.location.reload();
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -74,9 +70,14 @@ const SignInForm = () => {
             username: values.userName,
           }
         );
-        dispatch(loginSuccess(resData.data))
+        dispatch(loginSuccess(resData.data));
+        const user = JSON.parse(localStorage.getItem("account"));
         if (resData.request.status === 200) {
-          navigate("/");
+          if (user.roles[0].name === "ROLE_USER") {
+            navigate("/");
+          } else if (user.roles[0].name === "ROLE_ADMIN") {
+            navigate("/admin/product");
+          }
           localStorage.setItem("accessToken", resData.data.data.jwt);
           localStorage.setItem("isLogin", true);
         }
