@@ -10,7 +10,9 @@ const Footertest = () => {
     const handleSend = async() =>{
         setSent(true)
         try {
-            await axios.post('https://product-hit.herokuapp.com/api/v1/emailNotifications/signUp',{text}
+            await axios.post('https://product-hit.herokuapp.com/api/v1/emailNotifications/signUp',{
+                email: text
+            }
             );
         }
         catch(error){

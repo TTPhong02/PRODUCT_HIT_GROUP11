@@ -3,6 +3,7 @@ import axios from "axios";
 import "./tableAccount.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import date from "../../../utils/date";
 
 const TableAccount = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,7 @@ const TableAccount = () => {
   const fetchProduct = async () => {
     try {
       const res = await axios.get(
-        `https://hit-sneaker.herokuapp.com/api/v1/products`
+        `https://test-sp-hit.herokuapp.com/api/v1/users`
       );
       setProducts(res.data);
     } catch (err) {
@@ -35,13 +36,13 @@ const TableAccount = () => {
       <table>
         <thead>
           <tr>
-            <th>Mã sản phẩm</th>
-            <th>Tên Voucher</th>
-            <th>Giá</th>
-            <th>Mô tả</th>
-            <th>Size</th>
-            <th>Màu sắc</th>
-            <th>Số lượng</th>
+            <th>ID</th>
+            <th>Họ Tên</th>
+            <th>Email</th>
+            <th>Số điện thoại</th>
+            <th>Giới Tính</th>
+            <th>ROLE</th>
+            <th>Ngày đăng kí</th>
             <th></th>
           </tr>
         </thead>
@@ -49,12 +50,12 @@ const TableAccount = () => {
           {products.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>{item.priceCurrent}</td>
-              <td>{item.shortDescription}</td>
-              <td>38, 39, 40, 41</td>
-              <td>Trắng, xanh, đen, đỏ</td>
-              <td>{item.amountSell}</td>
+              <td>{item.lastName + item.firstName}</td>
+              <td>{item.email}</td>
+              <td>{item.phone}</td>
+              <td>{item.gender}</td>
+              <td>{item.roles[0].name }</td>
+              <td>{date(item.updatedDate)}</td>
               <td>
                 <button onClick={handleChangeProduct}>Sửa</button>
                 <button onClick={handleDeleteProduct}>Xóa</button>
