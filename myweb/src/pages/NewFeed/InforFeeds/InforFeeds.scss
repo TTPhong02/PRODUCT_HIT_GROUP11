@@ -35,8 +35,10 @@
     }
     &_right{
         margin: 20px 0px;
+
             &_search{
                 display: flex;
+                position: relative;
                 justify-content: space-between;
                 align-items: center;
                 border: 2px solid #ccc;
@@ -52,6 +54,10 @@
                     color: #fff;
                     background-color: red;
                 }
+            }
+            &_list{
+                position: absolute;
+                // right: 0px;
             }
             &_bonus{
                 margin: 10px 30px;
