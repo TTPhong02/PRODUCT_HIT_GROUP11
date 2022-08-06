@@ -1,4 +1,10 @@
 // image adv 
 .sale-adv {
   padding-bottom: 50px;
+
+  img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+  }
 }

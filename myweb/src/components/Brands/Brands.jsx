@@ -10,25 +10,25 @@ const Brands = () => {
 
     {
       id: 2,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.png",
+      src: "https://pngimg.com/uploads/adidas/adidas_PNG7.png",
     },
 
     {
       id: 3,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.png",
+      src: "https://pngimg.com/uploads/converse/converse_PNG31.png",
     },
 
     {
       id: 4,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.png",
+      src: "https://pngimg.com/uploads/vans/vans_PNG38.png",
     },
     {
       id: 5,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.png",
+      src: "https://pngimg.com/uploads/dolce_gabanna/dolce_gabanna_PNG14.png",
     },
     {
       id: 6,
-      src: "http://pngimg.com/uploads/nike/nike_PNG18.png",
+      src: "https://pngimg.com/uploads/nba/nba_PNG3.png",
     },
   ];
 

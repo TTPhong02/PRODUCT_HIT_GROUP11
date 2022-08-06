@@ -5,6 +5,7 @@ import { useState } from "react";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarR } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
+import { useRef } from "react";
 
 const WriteReviews = ({ idProduct, idUser }) => {
   const [comment, setComment] = useState("");
@@ -31,7 +32,9 @@ const WriteReviews = ({ idProduct, idUser }) => {
     );
   };
 
+  const inputEl = useRef("");
   const postComment = async (star) => {
+    inputEl.current.value = "";
     await Promise.all([postStart(star), postContent()]);
   };
 
@@ -72,6 +75,7 @@ const WriteReviews = ({ idProduct, idUser }) => {
         ))}
       </div>
       <input
+        ref={inputEl}
         className={`box-reviews ${comment && "clicked"}`}
         type="text"
         placeholder="Nhận xét"
