@@ -30,51 +30,51 @@ const News = () => {
         Nơi cập nhật những xu hướng thời trang mới nhất hiện nay
       </p>
       {/* <div className="news-list grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-20">
-        <>
-          <div className="col-span-1 md:col-span-1 sm:col-span-1">
-            {news && (
-              <Link to="/:new" className="item-news">
-                <img
-                  className="img-left"
-                  src={news[0].images[0].imageUrl}
-                  alt=""
-                />
-                <p className="title-news">{news[0].title}</p>
-                <p className="date-post">{date(news[0].createdDate)}</p>
-                <p className="content-news">{news[0].description}</p>
-              </Link>
-            )}
-          </div>
-          <div className="lg:col-span-1 md:col-span-1 sm:col-span-1 grid grid-cols-2 grid-rows-2 lg:gap-20 md:gap-0 sm:gap-0">
-            {news &&
-              news.map((item) => {
-                if (item.id >= 1) {
-                  return (
-                    <Link
-                      to="/:new"
-                      key={item.id}
-                      className="item-news item-news__right lg:col-span-1 md:col-span-2 sm:col-span-2 row-span-1"
-                    >
-                      <img
-                        className="img-news img-news__right"
-                        src={item.images[0].imageUrl}
-                        alt=""
-                      />
-                      <div className="container-content__news">
-                        <p className="title-news title-news__right">
-                          {item.title}
-                        </p>
-                        <p className="date-post date-post__right">
-                          {date(item.createdDate)}
-                        </p>
-                      </div>
-                    </Link>
-                  );
-                }
-              })}
-          </div>
-        </>
-      </div> */}
+          <>
+            <div className="col-span-1 md:col-span-1 sm:col-span-1">
+              {news && (
+                <Link to="/:new" className="item-news">
+                  <img
+                    className="img-left"
+                    src={news[0].images[0].imageUrl}
+                    alt=""
+                  />
+                  <p className="title-news">{news[0].title}</p>
+                  <p className="date-post">{date(news[0].createdDate)}</p>
+                  <p className="content-news">{news[0].description}</p>
+                </Link>
+              )}
+            </div>
+            <div className="lg:col-span-1 md:col-span-1 sm:col-span-1 grid grid-cols-2 grid-rows-2 lg:gap-20 md:gap-0 sm:gap-0">
+              {news &&
+                news.map((item) => {
+                  if (item.id >= 1) {
+                    return (
+                      <Link
+                        to="/:new"
+                        key={item.id}
+                        className="item-news item-news__right lg:col-span-1 md:col-span-2 sm:col-span-2 row-span-1"
+                      >
+                        <img
+                          className="img-news img-news__right"
+                          src={item.images[0].imageUrl}
+                          alt=""
+                        />
+                        <div className="container-content__news">
+                          <p className="title-news title-news__right">
+                            {item.title}
+                          </p>
+                          <p className="date-post date-post__right">
+                            {date(item.createdDate)}
+                          </p>
+                        </div>
+                      </Link>
+                    );
+                  }
+                })}
+            </div>
+          </>
+        </div> */}
     </div>
   );
 };
