@@ -87,7 +87,7 @@ const SignUpForm = () => {
               username: values.username,
               email: values.email,
               phone: values.phone,
-              firstName: values.gender,
+              firstName: values.firstName,
               lastName: values.lastName,
               gender: values.gender,
               password: values.password,

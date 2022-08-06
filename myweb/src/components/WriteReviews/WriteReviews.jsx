@@ -52,6 +52,8 @@ const WriteReviews = ({ idProduct, idUser }) => {
         ratingString = "FIVE_STAR";
       }
       postComment(ratingString);
+    } else {
+      alert("Bạn chưa đăng nhập");
     }
   };
   return (

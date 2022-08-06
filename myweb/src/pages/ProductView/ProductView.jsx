@@ -57,7 +57,7 @@ const ProductView = () => {
   const [products, setProducts] = useState([]);
   const [pageCurrent, setPageCurrent] = useState("moreInfo");
   const [idProduct, setIdProduct] = useState("0");
-  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
 
   const fetchProduct = async () => {
     try {
@@ -81,9 +81,10 @@ const ProductView = () => {
   const fetchComment = async (id) => {
     try {
       const res = await axios.get(
-        `https://test-sp-hit.herokuapp.com/api/v1/product-rates/${id}`
+        `https://test-sp-hit.herokuapp.com/api/v1/products/rate/${id}`
       );
-      setComment(res.data.data.comment);
+      setComments(res.data);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -96,8 +97,11 @@ const ProductView = () => {
     }
   }, [product]);
 
-  // const user = localStorage.getItem("account");
-  // const idUser = JSON.parse(user).id;
+  const user = localStorage.getItem("account");
+  let idUser;
+  if (user) {
+    idUser = JSON.parse(user).id;
+  }
   return (
     <div className="contain-page">
       {product ? (
@@ -129,15 +133,23 @@ const ProductView = () => {
             {/* <AdditionalInformation /> */}
           </div>
           <div className="user-review">
-            {comment ? (
-              <>
-                <UserReview
-                  content={comment.content}
-                  avt={comment.user.avatar}
-                  firstName={comment.user.firstName}
-                  lastName={comment.user.lastName}
-                  date={date(comment.updatedDate)}
-                />
+            {comments ? (
+              <div>
+                {comments.map((item) => (
+                  <UserReview
+                    key={item.id}
+                    content={item.comment && item.comment.content}
+                    avt={item.user.avatar}
+                    firstName={
+                      item.user.firstName ? item.user.firstName : "Người đã"
+                    }
+                    lastName={
+                      item.user.lastName ? item.user.lastName : "mua sản phẩm"
+                    }
+                    date={date(item.createdDate)}
+                    star={item.value ? item.value : "ONE_STAR"}
+                  />
+                ))}
                 <div className="btn-view__more">
                   <div className="btn-more btn-move">
                     <FontAwesomeIcon icon={faAngleLeft} />
@@ -152,7 +164,7 @@ const ProductView = () => {
                     <FontAwesomeIcon icon={faAngleRight} />
                   </div>
                 </div>
-              </>
+              </div>
             ) : (
               <div className="commnet-empty">
                 <img
@@ -163,10 +175,7 @@ const ProductView = () => {
               </div>
             )}
           </div>
-          <WriteReviews
-            idProduct={idProduct}
-            // idUser={idUser}
-          />
+          <WriteReviews idProduct={idProduct} idUser={idUser} />
           <p className="title-products">Sản phẩm tương tự</p>
 
           <div className="products-list grid lg:grid-cols-5 lg:grid-rows-1 md:grid-cols-2 sm:grid-cols-2">
