@@ -4,9 +4,22 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import date from '../../../utils/date';
+import FindNews from '../../../components/FindNews/FindNews';
 import './NewFeeds.scss'
 
 export const NewFeed = () => {
+  const [search,setSearch] = useState()
+
+  const [key,setKey] = useState()
+
+  const SearchNews = async()=>{
+    try {
+      const res = await axios.post(`https://test-sp-hit.herokuapp.com/api/v1/news/search?q=${key}`)
+      setSearch(res.data.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
     
     const [feeds,setFeeds] = useState([])
     const fetchFeed = async () =>{
@@ -58,11 +71,13 @@ export const NewFeed = () => {
 
             </div>
             <div className="newfeed_main_right col-span-3">
-                <div className="newfeed_main_right_search">
-                    <input type="text" placeholder='Tìm kiếm'>
-
+                <div className="infor_right_search">
+                    <input type="text" placeholder='Tìm kiếm' onChange={(e)=>setKey(e.target.value)}>
                     </input>
-                    <i className="fa-solid fa-magnifying-glass"></i>
+                    <i className="fa-solid fa-magnifying-glass" onClick={()=>SearchNews()}></i>
+                </div>
+                <div className="infor_right_list">
+                  <FindNews news= {search}/>
                 </div>
                 <div className="newfeed_main_right_bonus">
                     <div className="newfeed_main_right_bonus_title">

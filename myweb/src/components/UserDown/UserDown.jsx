@@ -8,6 +8,7 @@ export const UserDown = () => {
   const logOut = () =>{
     localStorage.removeItem("accessToken")
     localStorage.removeItem("account")
+    localStorage.removeItem("cartItems")
     window.location.reload()
     alert("Bạn đã đăng xuất !! ")
   }
@@ -27,7 +28,7 @@ export const UserDown = () => {
           </li> 
         ):(
           <li className="down_manage">
-            <Link to={"/"}>Quản lý tài khoản</Link>
+            <Link to={"/profile"}>Quản lý tài khoản</Link>
           </li>
         )
       }

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import numberWithCommas from '../../../utils/numberWithCommas'
 
 export const PayDone = () => {
-    const cartItems = useSelector(state=> state.cartItems.carts.cart)
+    const cartItems = useSelector(state=> state.cartItems.value)
 
     const [productInCart,setProductInCart] = useState([])
 
@@ -19,8 +19,8 @@ export const PayDone = () => {
     const date = new Date();
 
     useEffect(()=>{
-        setProductInCart(cartItems)
-        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.product.priceOld))), 0))
+        setProductInCart(productData.getCartItemsInfo(cartItems))
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.quantity) * (Number(item.price))), 0))
     },[cartItems])
 
     useEffect(()=>{

@@ -3,9 +3,10 @@ import { useEffect,useState } from "react"
 import axios from "axios"
 import { getCartFromUSer } from "../apiRequest/apiRequest"
 
+const items = localStorage.getItem('cartItems') !== null ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 const initialState = {
-    value: []
+    value: items
 }
 export const cartItemSlice = createSlice({
     name: 'cartItems',
@@ -28,7 +29,7 @@ export const cartItemSlice = createSlice({
                 state.value = [...state.value, {
                     ...newItem,
                     id: duplicate[0].id,
-                    amount : newItem.amount + duplicate[0].amount
+                    quantity : newItem.quantity + duplicate[0].quantity
                 }]
             // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${JSON.parse(localStorage.getItem("account")).id}/add/${state.carts.cart.id}`)
             // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}?amount=${state.carts.cart.amount}`)
@@ -39,6 +40,7 @@ export const cartItemSlice = createSlice({
                 }]
                 // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${JSON.parse(localStorage.getItem("account")).id}/add/${state.carts.cart.id}`)
             }
+            localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
         },
         updateItem: (state, action) => {
             const itemUpdate = action.payload
@@ -52,8 +54,9 @@ export const cartItemSlice = createSlice({
                     ...itemUpdate,
                     id: item[0].id
                 }]
-                state.value = sortItems(state.value)
+                localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
             } 
+
             // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.amount}`)
         },
         removeItem: (state, action) => {
@@ -61,7 +64,7 @@ export const cartItemSlice = createSlice({
 
             state.value = delItem(state.value, removeItem)
 
-            state.value = sortItems(state.value) 
+            localStorage.setItem('cartItems', JSON.stringify(sortItems(state.value)))
         },
 
         // getCartUserSuccess : (state,action)=>{

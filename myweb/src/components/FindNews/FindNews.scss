@@ -1,0 +1,22 @@
+.list{
+    background-color: rgba(241, 235, 235,0.9);
+    &_content{
+        box-shadow: 0px 0px 1px 1px #000;
+        padding: 20px;
+        display: flex;
+        &_image{
+            flex: 1;
+            margin: 10px;
+            border: 1px solid #000;
+            img{
+                width: 100%;
+                max-height: 160px;
+            }
+        }
+        &_name{
+            flex: 1;
+            margin: 10px;
+            font-size: 2rem;
+        }
+    }
+}
