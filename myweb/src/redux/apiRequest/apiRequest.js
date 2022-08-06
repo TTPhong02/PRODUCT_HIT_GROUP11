@@ -7,7 +7,6 @@ import { getVoucherSuccess } from "../VoucherSlice/VoucherSlice";
 export const getCartFromUSer = async (dispatch)=>{
     const cartUser = JSON.parse(localStorage.getItem("account"))
     dispatch(getCartUserSuccess(cartUser.cartItems))
-    console.log(cartUser.cartItems);
 }
 
 export const getVoucherFromUSer = async (id,dispatch)=>{

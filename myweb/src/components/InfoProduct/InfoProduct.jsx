@@ -7,13 +7,21 @@ import { addItem } from "../../redux/CartItem/CartItemSlice";
 // import ProductReviews from "../ProductReviews/ProductReviews";
 
 import numberWithCommas from "../../utils/numberWithCommas";
+import axios from "axios";
 
 const InfoProduct = ({ product }) => {
+
   const category = "sneaker";
+
   const [quantity, setQuantity] = useState(1);
+
   const dispatch = useDispatch();
+
   const [color, setColor] = useState("");
+
   const [size, setSize] = useState("");
+
+  const [productFinds,setProductFinds] = useState() 
   const addToCart = () => {
     if (color === "" && size === "") {
       alert("Vui lòng màu và size");
@@ -24,19 +32,29 @@ const InfoProduct = ({ product }) => {
     } else {
       dispatch(
         addItem({
-          id: product.id,
-          slug: product.slug,
-          color: color,
-          size: size,
-          amount: quantity,
-          priceOld: product.priceCurrent,
-          imageUrl: product.images[0].imageUrl,
-          title: product.title,
+          // // id: product.id,
+          // amount: quantity,
+          // color: color,
+          // size: size,
+          // priceOld: product.priceCurrent,
+          // imageUrl: product.images[0].imageUrl,
+          // title: product.title,
+          // slug: product.slug,
+          productFinds
         })
       );
       alert("Đã thêm vào giỏ hàng!");
     }
   };
+
+  const productFind = async() => {
+    try {
+      const res = await axios.post("")
+      setProductFinds(res.data) 
+    } catch (error) {
+      console.log(error);
+    }
+  } 
   const handleMinus = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);

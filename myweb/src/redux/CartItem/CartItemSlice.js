@@ -26,15 +26,16 @@ export const cartItemSlice = createSlice({
                 state.carts.cart = [...state.carts.cart, {
                     ...newItem,
                     id: duplicate[0].id,
-                    quantity: newItem.quantity + duplicate[0].quantity
+                    amount : newItem.amount + duplicate[0].amount
                 }]
-                // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+            axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${JSON.parse(localStorage.getItem("account")).id}/add/${state.carts.cart.id}`)
+            axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}?amount=${state.carts.cart.amount}`)
             } else {
                 state.carts.cart = [...state.carts.cart, {
                     ...newItem,
                     id: state.carts.cart.length > 0 ? state.carts.cart[state.carts.cart.length - 1].id + 1 : 1
                 }]
-                // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+                // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/user/${JSON.parse(localStorage.getItem("account")).id}/add/${state.carts.cart.id}`)
             }
         },
         updateItem: (state, action) => {
@@ -51,7 +52,7 @@ export const cartItemSlice = createSlice({
                 }]
                 state.carts.cart = sortItems(state.carts.cart)
             } 
-            // axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.quantity}`)
+            axios.post(`https://test-sp-hit.herokuapp.com/api/v1/cart-items/${state.carts.cart.id}amount=${state.carts.cart.amount}`)
         },
         removeItem: (state, action) => {
             const removeItem = action.payload
@@ -63,13 +64,19 @@ export const cartItemSlice = createSlice({
 
         getCartUserSuccess : (state,action)=>{
             state.carts.cart = action.payload
-        }
+        },
+        // changeMount:(state,action)=>{
+        //     const itemUpdate = action.payload
+        //     c
+        // }
     }
 })
 
-const findItem = (arr, item) => arr.filter(e => e.slug === item.slug && e.color === item.color && e.size === item.size)
+// const findItem = (arr, item) => arr.filter(e => e.slug === item.slug && e.color === item.color && e.size === item.size)
+const findItem = (arr, item) => arr.filter(e => e.id === item.id )
 
-const delItem = (arr, item) => arr.filter(e => e.slug !== item.slug || e.color !== item.color || e.size !== item.size)
+// const delItem = (arr, item) => arr.filter(e => e.slug !== item.slug || e.color !== item.color || e.size !== item.size)
+const delItem = (arr, item) => arr.filter(e => e.id !== item.id )
 
 const sortItems = arr => arr.sort((a, b) => a.id > b.id ? 1 : (a.id < b.id ? -1 : 0))
 

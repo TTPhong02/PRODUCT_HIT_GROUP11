@@ -13,9 +13,6 @@ import axios from 'axios';
 import { getCartFromUSer } from '../../redux/apiRequest/apiRequest';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
-    const dispatch = useDispatch()
-
-    const user = useSelector(state => state.auth.login.data?.roleList?.id)
 
     const cartItems = useSelector(state => state.cartItems.carts.cart) 
 
@@ -42,7 +39,7 @@ export const CartMain = () => {
 
     useEffect(() => {
         setCartProducts(cartItems)
-        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.price))), 0))
+        setTotalPrice(cartItems.reduce((total, item) => total + (Number(item.amount) * (Number(item.product.priceOld))), 0))
     }, [cartItems])
 
 

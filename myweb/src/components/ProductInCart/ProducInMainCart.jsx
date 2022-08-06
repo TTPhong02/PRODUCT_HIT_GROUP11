@@ -19,10 +19,10 @@ export const ProducInMainCart = (props) => {
 
     const updateQuantity = (option) =>{
         if(option === '+'){
-            dispatch(updateItem({...item, quantity: quantity+1}))
+            dispatch(updateItem({...item, amount: quantity+1}))
         }
         if(option ==='-'){
-            dispatch(updateItem({...item , quantity:quantity-1 === 0 ? 1 : quantity -1 }))
+            dispatch(updateItem({...item , amount:quantity-1 === 0 ? 1 : quantity -1 }))
         }
     }
     const deleteItem = () => {
@@ -35,7 +35,7 @@ export const ProducInMainCart = (props) => {
                 <i className="fa-solid fa-trash-can"></i>
             </div>
             <div className="productmain_infor_image">
-                <img src={item.product.images[1].imageUrl} alt={item.name} />
+                <img src={item.product.images[0].imageUrl} alt={item.name} />
             </div>
             <div className="productmain_infor_about">
                 <h3>{item.product.title}</h3>
