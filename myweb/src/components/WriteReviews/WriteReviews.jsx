@@ -32,8 +32,8 @@ const WriteReviews = ({ idProduct, idUser }) => {
 
   const inputEl = useRef("");
   const postComment = async (star) => {
-    inputEl.current.value = "";
     await Promise.all([postStart(star), postContent()]);
+    inputEl.current.value = "";
   };
 
   const handleSubmit = () => {
