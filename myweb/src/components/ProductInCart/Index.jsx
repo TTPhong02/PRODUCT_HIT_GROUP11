@@ -13,7 +13,7 @@ export const ProductInCart = (props) => {
   return (
     <div className="product">
         <div className="product_image">
-            <img src={item.src} alt="" />
+            <img src={numberWithCommas(item.src)} alt="" />
         </div>
         <div className="product_infor">
             <p className='product_infor-name pr-2 pb-2'>{item.title}</p>
