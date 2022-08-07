@@ -13,6 +13,9 @@ import axios from 'axios';
 import { getCartFromUSer } from '../../redux/apiRequest/apiRequest';
 export const CartMain = () => {
     // const product = productData.getAllProducts()
+    const user = JSON.parse(localStorage.getItem("account"))
+
+    console.log(user);
 
     const cartItems = useSelector(state => state.cartItems.value)  
 
@@ -53,13 +56,21 @@ export const CartMain = () => {
     // },[])
 
     const check =()=>{
-        if(cartItems.length > 0){
+        if(cartItems.length > 0  && user != null ){
             navigate('/payment')
-        }else 
+        }
+        // else if (cartItems.length > 0 && user.length > 0){
+        //     navigate('/payment')
+        // }
+        // else if(user.length < 0 && cartItems.length > 0 ){
+        //     alert("Vui lòng đăng nhập !")
+        // }
+        else
         {
-            alert('Bạn chưa có sản phẩm nào trong giỏ hàng !')
+            alert('Bạn chưa có sản phẩm nào trong giỏ hàng hoặc chưa đăng nhập !')
             navigate('./')
         }
+
     }
 
   return (
