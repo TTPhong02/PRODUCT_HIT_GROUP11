@@ -7,16 +7,18 @@ import { useEffect } from "react";
 const UserReview = ({ content, avt, firstName, lastName, date, star }) => {
   const [rateStar, setRateStar] = useState(0);
 
+  console.log(content);
+
   useEffect(() => {
     if (star == "ONE_STAR") {
       setRateStar(1);
-    } else if (star == "TWO_STAR") {
+    } else if (star === "TWO_STAR") {
       setRateStar(2);
-    } else if (star == "THREE_STAR") {
+    } else if (star === "THREE_STAR") {
       setRateStar(3);
-    } else if (star == "FOUR_STAR") {
+    } else if (star === "FOUR_STAR") {
       setRateStar(4);
-    } else if (star == "FIVE_STAR") {
+    } else if (star === "FIVE_STAR") {
       setRateStar(5);
     }
   }, [rateStar]);
